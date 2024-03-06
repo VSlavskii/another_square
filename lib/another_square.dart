@@ -381,7 +381,8 @@ class SquareClient {
     required SearchSubscriptionRequest request,
     String? authToken,
   }) async {
-    return _subscriptionService.searchSubscription(request: request, authToken: authToken);
+    return _subscriptionService.searchSubscription(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -391,7 +392,8 @@ class SquareClient {
     required String subscriptionId,
     String? authToken,
   }) async {
-    return _subscriptionService.readSubscription(subscriptionId: subscriptionId, authToken: authToken);
+    return _subscriptionService.readSubscription(
+        subscriptionId: subscriptionId, authToken: authToken);
   }
 
   ///
@@ -404,7 +406,8 @@ class SquareClient {
     required Subscription request,
     String? authToken,
   }) async {
-    return _subscriptionService.updateSubscription(subscriptionId: subscriptionId, request: request, authToken: authToken);
+    return _subscriptionService.updateSubscription(
+        subscriptionId: subscriptionId, request: request, authToken: authToken);
   }
 
   ///
@@ -415,7 +418,10 @@ class SquareClient {
     required String actionId,
     String? authToken,
   }) async {
-    return _subscriptionService.deleteSubscription(subscriptionId: subscriptionId, actionId: actionId, authToken: authToken);
+    return _subscriptionService.deleteSubscription(
+        subscriptionId: subscriptionId,
+        actionId: actionId,
+        authToken: authToken);
   }
 
   ///
@@ -428,7 +434,8 @@ class SquareClient {
     required int subscriptionId,
     String? authToken,
   }) async {
-    return _subscriptionService.cancelSubscription(subscriptionId: subscriptionId, authToken: authToken);
+    return _subscriptionService.cancelSubscription(
+        subscriptionId: subscriptionId, authToken: authToken);
   }
 
   ///
@@ -444,7 +451,11 @@ class SquareClient {
     int? limit,
     String? authToken,
   }) async {
-    return _subscriptionService.listSubscriptionEvents(subscriptionId: subscriptionId, cursor: cursor, limit: limit?? 200, authToken: authToken);
+    return _subscriptionService.listSubscriptionEvents(
+        subscriptionId: subscriptionId,
+        cursor: cursor,
+        limit: limit ?? 200,
+        authToken: authToken);
   }
 
   ///
@@ -455,7 +466,8 @@ class SquareClient {
     required SubscriptionStateRequest request,
     String? authToken,
   }) async {
-    return _subscriptionService.pauseSubscription(subscriptionId: subscriptionId, request: request, authToken: authToken);
+    return _subscriptionService.pauseSubscription(
+        subscriptionId: subscriptionId, request: request, authToken: authToken);
   }
 
   ///
@@ -467,7 +479,8 @@ class SquareClient {
     required SubscriptionStateRequest request,
     String? authToken,
   }) async {
-    return _subscriptionService.resumeSubscription(subscriptionId: subscriptionId, request: request, authToken: authToken);
+    return _subscriptionService.resumeSubscription(
+        subscriptionId: subscriptionId, request: request, authToken: authToken);
   }
 
   ///
@@ -479,7 +492,10 @@ class SquareClient {
     required String newPlanId,
     String? authToken,
   }) async {
-    return _subscriptionService.swapPlan(subscriptionId: subscriptionId, newPlanId: newPlanId, authToken: authToken);
+    return _subscriptionService.swapPlan(
+        subscriptionId: subscriptionId,
+        newPlanId: newPlanId,
+        authToken: authToken);
   }
 
   // Invoice
@@ -498,7 +514,8 @@ class SquareClient {
     int limit = 200,
     String? authToken,
   }) async {
-    return _invoiceService.listInvoices(locationId: locationId, cursor: cursor, authToken: authToken);
+    return _invoiceService.listInvoices(
+        locationId: locationId, cursor: cursor, authToken: authToken);
   }
 
   ///
@@ -513,7 +530,8 @@ class SquareClient {
     required CreateInvoiceRequest request,
     String? authToken,
   }) async {
-    return _invoiceService.createInvoice(request: request, authToken: authToken);
+    return _invoiceService.createInvoice(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -531,7 +549,8 @@ class SquareClient {
     required SearchInvoiceRequest request,
     String? authToken,
   }) async {
-    return _invoiceService.searchInvoice(request: request, authToken: authToken);
+    return _invoiceService.searchInvoice(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -547,7 +566,8 @@ class SquareClient {
     required int version,
     String? authToken,
   }) async {
-    return _invoiceService.deleteInvoice(invoiceId: invoiceId, version: version, authToken: authToken);
+    return _invoiceService.deleteInvoice(
+        invoiceId: invoiceId, version: version, authToken: authToken);
   }
 
   ///
@@ -557,7 +577,8 @@ class SquareClient {
     required String invoiceId,
     String? authToken,
   }) async {
-    return _invoiceService.readInvoice(invoiceId: invoiceId, authToken: authToken);
+    return _invoiceService.readInvoice(
+        invoiceId: invoiceId, authToken: authToken);
   }
 
   ///
@@ -575,7 +596,8 @@ class SquareClient {
     required UpdateInvoiceRequest request,
     String? authToken,
   }) async {
-    return _invoiceService.updateInvoice(invoiceId: invoiceId, request: request, authToken: authToken);
+    return _invoiceService.updateInvoice(
+        invoiceId: invoiceId, request: request, authToken: authToken);
   }
 
   ///
@@ -591,7 +613,8 @@ class SquareClient {
     required int version,
     String? authToken,
   }) async {
-    return _invoiceService.cancelInvoice(invoiceId: invoiceId, version: version, authToken: authToken);
+    return _invoiceService.cancelInvoice(
+        invoiceId: invoiceId, version: version, authToken: authToken);
   }
 
   ///
@@ -608,9 +631,9 @@ class SquareClient {
     required PublishInvoiceRequest request,
     String? authToken,
   }) async {
-    return _invoiceService.publishInvoice(invoiceId: invoiceId, request: request, authToken: authToken);
+    return _invoiceService.publishInvoice(
+        invoiceId: invoiceId, request: request, authToken: authToken);
   }
-
 
   // CATALOG
   ///
@@ -629,7 +652,8 @@ class SquareClient {
     required List<String> objectIds,
     String? authToken,
   }) async {
-    return _catalogService.batchDeleteCatalog(objectIds: objectIds, authToken: authToken);
+    return _catalogService.batchDeleteCatalog(
+        objectIds: objectIds, authToken: authToken);
   }
 
   ///
@@ -644,7 +668,8 @@ class SquareClient {
     required RetrieveCatalogRequest request,
     String? authToken,
   }) async {
-    return _catalogService.batchRetrieveCatalog(request: request, authToken: authToken);
+    return _catalogService.batchRetrieveCatalog(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -665,7 +690,8 @@ class SquareClient {
     required BatchUpsertCatalogRequest request,
     String? authToken,
   }) async {
-    return _catalogService.batchUpsertCatalog(request: request, authToken: authToken);
+    return _catalogService.batchUpsertCatalog(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -683,7 +709,8 @@ class SquareClient {
     required CreateCatalogImageRequest request,
     String? authToken,
   }) async {
-    return _catalogService.createCatalogImage(request: request, authToken: authToken);
+    return _catalogService.createCatalogImage(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -698,7 +725,8 @@ class SquareClient {
     required String imageId,
     String? authToken,
   }) async {
-    return _catalogService.updateCatalogImage(request: request, imageId: imageId, authToken: authToken);
+    return _catalogService.updateCatalogImage(
+        request: request, imageId: imageId, authToken: authToken);
   }
 
   ///
@@ -711,7 +739,8 @@ class SquareClient {
     required String imageId,
     String? authToken,
   }) async {
-    return _catalogService.readCatalogInfo(request: request, imageId: imageId, authToken: authToken);
+    return _catalogService.readCatalogInfo(
+        request: request, imageId: imageId, authToken: authToken);
   }
 
   ///
@@ -739,7 +768,8 @@ class SquareClient {
     required UpsertCatalogRequest request,
     String? authToken,
   }) async {
-    return _catalogService.upsertCatalog(request: request, authToken: authToken);
+    return _catalogService.upsertCatalog(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -754,7 +784,8 @@ class SquareClient {
     required String objectId,
     String? authToken,
   }) async {
-    return _catalogService.deleteCatalog(objectId: objectId, authToken: authToken);
+    return _catalogService.deleteCatalog(
+        objectId: objectId, authToken: authToken);
   }
 
   ///
@@ -769,7 +800,8 @@ class SquareClient {
     required String objectId,
     String? authToken,
   }) async {
-    return _catalogService.readCatalog(objectId: objectId, authToken: authToken);
+    return _catalogService.readCatalog(
+        objectId: objectId, authToken: authToken);
   }
 
   ///
@@ -783,7 +815,8 @@ class SquareClient {
     required CatalogSearchRequest request,
     String? authToken,
   }) async {
-    return _catalogService.searchCatalog(objectId: objectId, request: request, authToken: authToken);
+    return _catalogService.searchCatalog(
+        objectId: objectId, request: request, authToken: authToken);
   }
 
   ///
@@ -796,7 +829,8 @@ class SquareClient {
     required CatalogItemsSearchRequest request,
     String? authToken,
   }) async {
-    return _catalogService.searchCatalogItems(objectId: objectId, request: request, authToken: authToken);
+    return _catalogService.searchCatalogItems(
+        objectId: objectId, request: request, authToken: authToken);
   }
 
   ///
@@ -809,7 +843,8 @@ class SquareClient {
     required UpdateCatalogItemsModifier request,
     String? authToken,
   }) async {
-    return _catalogService.updateCatalogItemsModifiers(objectId: objectId, request: request, authToken: authToken);
+    return _catalogService.updateCatalogItemsModifiers(
+        objectId: objectId, request: request, authToken: authToken);
   }
 
   // INVENTORY
@@ -821,7 +856,8 @@ class SquareClient {
     required String adjustmentId,
     String? authToken,
   }) async {
-    return _inventoryService.readInventoryAdjustment(adjustmentId: adjustmentId, authToken: authToken);
+    return _inventoryService.readInventoryAdjustment(
+        adjustmentId: adjustmentId, authToken: authToken);
   }
 
   ///
@@ -834,7 +870,8 @@ class SquareClient {
     required BatchInventoryChangeRequest request,
     String? authToken,
   }) async {
-    return _inventoryService.batchInventoryChange(request: request, authToken: authToken);
+    return _inventoryService.batchInventoryChange(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -848,7 +885,8 @@ class SquareClient {
     required BatchInventoryReadRequest request,
     String? authToken,
   }) async {
-    return _inventoryService.batchInventoryRead(request: request, authToken: authToken);
+    return _inventoryService.batchInventoryRead(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -862,7 +900,8 @@ class SquareClient {
     required BatchInventoryReadCountRequest request,
     String? authToken,
   }) async {
-    return _inventoryService.batchInventoryReadCounts(request: request, authToken: authToken);
+    return _inventoryService.batchInventoryReadCounts(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -873,7 +912,8 @@ class SquareClient {
     required String physicalCountId,
     String? authToken,
   }) async {
-    return _inventoryService.readInventoryPhysicalCount(physicalCountId: physicalCountId, authToken: authToken);
+    return _inventoryService.readInventoryPhysicalCount(
+        physicalCountId: physicalCountId, authToken: authToken);
   }
 
   ///
@@ -883,7 +923,8 @@ class SquareClient {
     required String transferId,
     String? authToken,
   }) async {
-    return _inventoryService.readInventoryTransfer(transferId: transferId, authToken: authToken);
+    return _inventoryService.readInventoryTransfer(
+        transferId: transferId, authToken: authToken);
   }
 
   ///
@@ -898,7 +939,10 @@ class SquareClient {
     InventoryCountRequest? request,
     String? authToken,
   }) async {
-    return _inventoryService.readInventoryCount(catalogObjectId: catalogObjectId, request: request, authToken: authToken);
+    return _inventoryService.readInventoryCount(
+        catalogObjectId: catalogObjectId,
+        request: request,
+        authToken: authToken);
   }
 
   ///
@@ -914,7 +958,8 @@ class SquareClient {
     required ListCustomerRequest request,
     String? authToken,
   }) async {
-    return _customerService.listCustomer(request: request, authToken: authToken);
+    return _customerService.listCustomer(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -927,7 +972,8 @@ class SquareClient {
     required CustomerUpsertRequest request,
     String? authToken,
   }) async {
-    return _customerService.createCustomer(request: request, authToken: authToken);
+    return _customerService.createCustomer(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -942,7 +988,8 @@ class SquareClient {
     required SearchCustomerRequest request,
     String? authToken,
   }) async {
-    return _customerService.searchCustomer(request: request, authToken: authToken);
+    return _customerService.searchCustomer(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -954,7 +1001,8 @@ class SquareClient {
     required String customerId,
     String? authToken,
   }) async {
-    return _customerService.deleteCustomer(customerId: customerId, authToken: authToken);
+    return _customerService.deleteCustomer(
+        customerId: customerId, authToken: authToken);
   }
 
   ///
@@ -964,7 +1012,8 @@ class SquareClient {
     required String customerId,
     String? authToken,
   }) async {
-    return _customerService.readCustomer(customerId: customerId, authToken: authToken);
+    return _customerService.readCustomer(
+        customerId: customerId, authToken: authToken);
   }
 
   ///
@@ -978,7 +1027,8 @@ class SquareClient {
     required CustomerUpsertRequest request,
     String? authToken,
   }) async {
-    return _customerService.updateCustomer(customerId: customerId, request: request, authToken: authToken);
+    return _customerService.updateCustomer(
+        customerId: customerId, request: request, authToken: authToken);
   }
 
   ///
@@ -992,7 +1042,8 @@ class SquareClient {
     required String groupId,
     String? authToken,
   }) async {
-    return _customerService.removeCustomerFromGroup(customerId: customerId, groupId: groupId, authToken: authToken);
+    return _customerService.removeCustomerFromGroup(
+        customerId: customerId, groupId: groupId, authToken: authToken);
   }
 
   ///
@@ -1006,9 +1057,9 @@ class SquareClient {
     required String groupId,
     String? authToken,
   }) async {
-    return _customerService.addCustomerToGroup(customerId: customerId, groupId: groupId, authToken: authToken);
+    return _customerService.addCustomerToGroup(
+        customerId: customerId, groupId: groupId, authToken: authToken);
   }
-
 
   ///
   /// Retrieves the list of customer groups of a business.
@@ -1017,7 +1068,8 @@ class SquareClient {
     required SearchRequest request,
     String? authToken,
   }) async {
-    return _customerService.listCustomerGroup(request: request, authToken: authToken);
+    return _customerService.listCustomerGroup(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1029,7 +1081,8 @@ class SquareClient {
     required CreateCustomerGroup request,
     String? authToken,
   }) async {
-    return _customerService.createCustomerGroup(request: request, authToken: authToken);
+    return _customerService.createCustomerGroup(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1039,7 +1092,8 @@ class SquareClient {
     required String groupId,
     String? authToken,
   }) async {
-    return _customerService.deleteCustomerGroup(groupId: groupId, authToken: authToken);
+    return _customerService.deleteCustomerGroup(
+        groupId: groupId, authToken: authToken);
   }
 
   ///
@@ -1049,7 +1103,8 @@ class SquareClient {
     required String groupId,
     String? authToken,
   }) async {
-    return _customerService.readCustomerGroup(groupId: groupId, authToken: authToken);
+    return _customerService.readCustomerGroup(
+        groupId: groupId, authToken: authToken);
   }
 
   ///
@@ -1060,7 +1115,8 @@ class SquareClient {
     required CustomerGroup group,
     String? authToken,
   }) async {
-    return _customerService.updateCustomerGroup(groupId: groupId, group: group, authToken: authToken);
+    return _customerService.updateCustomerGroup(
+        groupId: groupId, group: group, authToken: authToken);
   }
 
   ///
@@ -1070,7 +1126,8 @@ class SquareClient {
     required SearchRequest request,
     String? authToken,
   }) async {
-    return _customerService.listCustomerSegments(request: request, authToken: authToken);
+    return _customerService.listCustomerSegments(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1081,7 +1138,8 @@ class SquareClient {
     required String segmentId,
     String? authToken,
   }) async {
-    return _customerService.readCustomerSegments(segmentId: segmentId, authToken: authToken);
+    return _customerService.readCustomerSegments(
+        segmentId: segmentId, authToken: authToken);
   }
 
   // LOYALTY
@@ -1095,7 +1153,8 @@ class SquareClient {
     required LoyaltyUpsertRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.createLoyalty(request: request, authToken: authToken);
+    return _loyaltyService.createLoyalty(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1109,7 +1168,8 @@ class SquareClient {
     required SearchLoyaltyRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.searchLoyalty(request: request, authToken: authToken);
+    return _loyaltyService.searchLoyalty(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1119,7 +1179,8 @@ class SquareClient {
     required String accountId,
     String? authToken,
   }) async {
-    return _loyaltyService.readLoyalty(accountId: accountId, authToken: authToken);
+    return _loyaltyService.readLoyalty(
+        accountId: accountId, authToken: authToken);
   }
 
   ///
@@ -1130,7 +1191,8 @@ class SquareClient {
     required AccumulateLoyaltyPointRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.accumulateLoyaltyPoints(accountId: accountId, request: request, authToken: authToken);
+    return _loyaltyService.accumulateLoyaltyPoints(
+        accountId: accountId, request: request, authToken: authToken);
   }
 
   ///
@@ -1145,7 +1207,8 @@ class SquareClient {
     required AdjustLoyaltyPointRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.adjustLoyaltyPoints(accountId: accountId, request: request, authToken: authToken);
+    return _loyaltyService.adjustLoyaltyPoints(
+        accountId: accountId, request: request, authToken: authToken);
   }
 
   ///
@@ -1161,7 +1224,8 @@ class SquareClient {
     required SearchLoyaltyEventsRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.searchLoyaltyEvents(request: request, authToken: authToken);
+    return _loyaltyService.searchLoyaltyEvents(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1172,7 +1236,8 @@ class SquareClient {
     required String programId,
     String? authToken,
   }) async {
-    return _loyaltyService.readLoyaltyProgram(programId: programId, authToken: authToken);
+    return _loyaltyService.readLoyaltyProgram(
+        programId: programId, authToken: authToken);
   }
 
   ///
@@ -1183,7 +1248,8 @@ class SquareClient {
     required CalculateLoyaltyPointsRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.calculateLoyaltyPoints(programId: programId, request: request, authToken: authToken);
+    return _loyaltyService.calculateLoyaltyPoints(
+        programId: programId, request: request, authToken: authToken);
   }
 
   ///
@@ -1193,7 +1259,8 @@ class SquareClient {
     required UpsertLoyaltyRewardRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.calculateLoyaltyReward(request: request, authToken: authToken);
+    return _loyaltyService.calculateLoyaltyReward(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1206,7 +1273,8 @@ class SquareClient {
     required SearchLoyaltyRewardRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.searchLoyaltyReward(request: request, authToken: authToken);
+    return _loyaltyService.searchLoyaltyReward(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1216,7 +1284,8 @@ class SquareClient {
     required String rewardId,
     String? authToken,
   }) async {
-    return _loyaltyService.deleteLoyaltyReward(rewardId: rewardId, authToken: authToken);
+    return _loyaltyService.deleteLoyaltyReward(
+        rewardId: rewardId, authToken: authToken);
   }
 
   ///
@@ -1226,7 +1295,8 @@ class SquareClient {
     required String rewardId,
     String? authToken,
   }) async {
-    return _loyaltyService.readLoyaltyReward(rewardId: rewardId, authToken: authToken);
+    return _loyaltyService.readLoyaltyReward(
+        rewardId: rewardId, authToken: authToken);
   }
 
   ///
@@ -1239,11 +1309,11 @@ class SquareClient {
     required RedeemLoyaltyRequest request,
     String? authToken,
   }) async {
-    return _loyaltyService.redeemLoyaltyReward(rewardId: rewardId, request: request, authToken: authToken);
+    return _loyaltyService.redeemLoyaltyReward(
+        rewardId: rewardId, request: request, authToken: authToken);
   }
 
   // GIFTCARD
-
 
   ///
   /// Lists all gift cards.
@@ -1255,7 +1325,8 @@ class SquareClient {
     required ListGiftCardRequest request,
     String? authToken,
   }) async {
-    return _giftCardService.listGiftCards(request: request, authToken: authToken);
+    return _giftCardService.listGiftCards(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1268,7 +1339,8 @@ class SquareClient {
     required CreateGiftCardRequest request,
     String? authToken,
   }) async {
-    return _giftCardService.createGiftCard(request: request, authToken: authToken);
+    return _giftCardService.createGiftCard(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1289,7 +1361,8 @@ class SquareClient {
     required String nonce,
     String? authToken,
   }) async {
-    return _giftCardService.readGiftCardFromNonce(nonce: nonce, authToken: authToken);
+    return _giftCardService.readGiftCardFromNonce(
+        nonce: nonce, authToken: authToken);
   }
 
   ///
@@ -1301,7 +1374,8 @@ class SquareClient {
     required String customerId,
     String? authToken,
   }) async {
-    return _giftCardService.linkGiftCardToCustomer(giftCardId: giftCardId, customerId: customerId, authToken: authToken);
+    return _giftCardService.linkGiftCardToCustomer(
+        giftCardId: giftCardId, customerId: customerId, authToken: authToken);
   }
 
   ///
@@ -1313,7 +1387,8 @@ class SquareClient {
     required String customerId,
     String? authToken,
   }) async {
-    return _giftCardService.unlinkGiftCardToCustomer(giftCardId: giftCardId, customerId: customerId, authToken: authToken);
+    return _giftCardService.unlinkGiftCardToCustomer(
+        giftCardId: giftCardId, customerId: customerId, authToken: authToken);
   }
 
   ///
@@ -1323,7 +1398,8 @@ class SquareClient {
     required String giftCardId,
     String? authToken,
   }) async {
-    return _giftCardService.readGiftCard(giftCardId: giftCardId, authToken: authToken);
+    return _giftCardService.readGiftCard(
+        giftCardId: giftCardId, authToken: authToken);
   }
 
   ///
@@ -1340,7 +1416,8 @@ class SquareClient {
     required ListGiftCardActivityRequest request,
     String? authToken,
   }) async {
-    return _giftCardService.listGiftCardActivities(request: request, authToken: authToken);
+    return _giftCardService.listGiftCardActivities(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1353,9 +1430,9 @@ class SquareClient {
     required CreateGiftCardActivityRequest request,
     String? authToken,
   }) async {
-    return _giftCardService.createGiftCardActivities(request: request, authToken: authToken);
+    return _giftCardService.createGiftCardActivities(
+        request: request, authToken: authToken);
   }
-
 
   // BOOKINGS
   ///
@@ -1371,7 +1448,8 @@ class SquareClient {
     required ListBookingsRequest request,
     String? authToken,
   }) async {
-    return _bookingsService.listBookings(request: request, authToken: authToken);
+    return _bookingsService.listBookings(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1386,7 +1464,8 @@ class SquareClient {
     required UpsertBookingRequest request,
     String? authToken,
   }) async {
-    return _bookingsService.createBooking(request: request, authToken: authToken);
+    return _bookingsService.createBooking(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1401,7 +1480,8 @@ class SquareClient {
     required SearchAvailabilityQuery query,
     String? authToken,
   }) async {
-    return _bookingsService.searchBookingAvailability(query: query, authToken: authToken);
+    return _bookingsService.searchBookingAvailability(
+        query: query, authToken: authToken);
   }
 
   ///
@@ -1420,7 +1500,8 @@ class SquareClient {
     required ReadTeamMemberBookingProfileRequest request,
     String? authToken,
   }) async {
-    return _bookingsService.listTeamMemberBookingProfile(request: request, authToken: authToken);
+    return _bookingsService.listTeamMemberBookingProfile(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1430,7 +1511,8 @@ class SquareClient {
     required String teamMemberId,
     String? authToken,
   }) async {
-    return _bookingsService.readTeamMemberBookingProfile(teamMemberId: teamMemberId, authToken: authToken);
+    return _bookingsService.readTeamMemberBookingProfile(
+        teamMemberId: teamMemberId, authToken: authToken);
   }
 
   ///
@@ -1445,7 +1527,8 @@ class SquareClient {
     required String bookingId,
     String? authToken,
   }) async {
-    return _bookingsService.readBooking(bookingId: bookingId, authToken: authToken);
+    return _bookingsService.readBooking(
+        bookingId: bookingId, authToken: authToken);
   }
 
   ///
@@ -1461,7 +1544,8 @@ class SquareClient {
     required UpsertBookingRequest request,
     String? authToken,
   }) async {
-    return _bookingsService.updateBooking(bookingId: bookingId, request: request, authToken: authToken);
+    return _bookingsService.updateBooking(
+        bookingId: bookingId, request: request, authToken: authToken);
   }
 
   ///
@@ -1477,7 +1561,8 @@ class SquareClient {
     required CancelBookingRequest request,
     String? authToken,
   }) async {
-    return _bookingsService.cancelBooking(bookingId: bookingId, request: request, authToken: authToken);
+    return _bookingsService.cancelBooking(
+        bookingId: bookingId, request: request, authToken: authToken);
   }
 
   // MERCHANT
@@ -1508,7 +1593,8 @@ class SquareClient {
     required String merchantId,
     String? authToken,
   }) async {
-    return _merchantService.readMerchant(merchantId: merchantId, authToken: authToken);
+    return _merchantService.readMerchant(
+        merchantId: merchantId, authToken: authToken);
   }
 
   ///
@@ -1519,7 +1605,8 @@ class SquareClient {
     required String merchantId,
     String? authToken,
   }) async {
-    return _merchantService.listLocation(merchantId: merchantId, authToken: authToken);
+    return _merchantService.listLocation(
+        merchantId: merchantId, authToken: authToken);
   }
 
   ///
@@ -1538,7 +1625,8 @@ class SquareClient {
     required Location location,
     String? authToken,
   }) async {
-    return _merchantService.createLocation(location: location, authToken: authToken);
+    return _merchantService.createLocation(
+        location: location, authToken: authToken);
   }
 
   ///
@@ -1551,7 +1639,8 @@ class SquareClient {
     required String locationId,
     String? authToken,
   }) async {
-    return _merchantService.readLocation(locationId: locationId, authToken: authToken);
+    return _merchantService.readLocation(
+        locationId: locationId, authToken: authToken);
   }
 
   ///
@@ -1561,7 +1650,8 @@ class SquareClient {
     required Location location,
     String? authToken,
   }) async {
-    return _merchantService.updateLocation(location: location, authToken: authToken);
+    return _merchantService.updateLocation(
+        location: location, authToken: authToken);
   }
 
   // TEAM
@@ -1575,7 +1665,8 @@ class SquareClient {
     required TeamMemberUpsertRequest request,
     String? authToken,
   }) async {
-    return _teamService.createTeamMember(request: request, authToken: authToken);
+    return _teamService.createTeamMember(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1592,7 +1683,8 @@ class SquareClient {
     required TeamMemberBatchUpsertRequest request,
     String? authToken,
   }) async {
-    return _teamService.batchCreateTeamMember(request: request, authToken: authToken);
+    return _teamService.batchCreateTeamMember(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1610,7 +1702,8 @@ class SquareClient {
     required TeamMemberBatchUpsertRequest request,
     String? authToken,
   }) async {
-    return _teamService.batchUpdateTeamMember(request: request, authToken: authToken);
+    return _teamService.batchUpdateTeamMember(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1620,7 +1713,8 @@ class SquareClient {
     required TeamMemberSearchRequest request,
     String? authToken,
   }) async {
-    return _teamService.searchTeamMember(request: request, authToken: authToken);
+    return _teamService.searchTeamMember(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1632,7 +1726,8 @@ class SquareClient {
     required String teamMemberId,
     String? authToken,
   }) async {
-    return _teamService.readTeamMember(teamMemberId: teamMemberId, authToken: authToken);
+    return _teamService.readTeamMember(
+        teamMemberId: teamMemberId, authToken: authToken);
   }
 
   ///
@@ -1645,7 +1740,8 @@ class SquareClient {
     required TeamMember teamMember,
     String? authToken,
   }) async {
-    return _teamService.updateTeamMember(teamMember: teamMember, authToken: authToken);
+    return _teamService.updateTeamMember(
+        teamMember: teamMember, authToken: authToken);
   }
 
   ///
@@ -1658,7 +1754,8 @@ class SquareClient {
     required String teamMemberId,
     String? authToken,
   }) async {
-    return _teamService.readWageSetting(teamMemberId: teamMemberId, authToken: authToken);
+    return _teamService.readWageSetting(
+        teamMemberId: teamMemberId, authToken: authToken);
   }
 
   ///
@@ -1674,7 +1771,8 @@ class SquareClient {
     required WageSetting wageSetting,
     String? authToken,
   }) async {
-    return _teamService.updateWageSetting(wageSetting: wageSetting, authToken: authToken);
+    return _teamService.updateWageSetting(
+        wageSetting: wageSetting, authToken: authToken);
   }
 
   ///
@@ -1694,7 +1792,8 @@ class SquareClient {
     required CreateBreakTypeRequest request,
     String? authToken,
   }) async {
-    return _teamService.createBreakTypes(request: request, authToken: authToken);
+    return _teamService.createBreakTypes(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1706,7 +1805,8 @@ class SquareClient {
     required String breakTypeId,
     String? authToken,
   }) async {
-    return _teamService.deleteBreakTypes(breakTypeId: breakTypeId, authToken: authToken);
+    return _teamService.deleteBreakTypes(
+        breakTypeId: breakTypeId, authToken: authToken);
   }
 
   ///
@@ -1716,7 +1816,8 @@ class SquareClient {
     required String breakTypeId,
     String? authToken,
   }) async {
-    return _teamService.readBreakTypes(breakTypeId: breakTypeId, authToken: authToken);
+    return _teamService.readBreakTypes(
+        breakTypeId: breakTypeId, authToken: authToken);
   }
 
   ///
@@ -1726,7 +1827,8 @@ class SquareClient {
     required BreakType breakType,
     String? authToken,
   }) async {
-    return _teamService.updateBreakTypes(breakType: breakType, authToken: authToken);
+    return _teamService.updateBreakTypes(
+        breakType: breakType, authToken: authToken);
   }
 
   ///
@@ -1795,7 +1897,8 @@ class SquareClient {
     required ListTeamMemberWageRequest request,
     String? authToken,
   }) async {
-    return _teamService.listTeamMemberWages(request: request, authToken: authToken);
+    return _teamService.listTeamMemberWages(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1805,7 +1908,8 @@ class SquareClient {
     required String teamMemberId,
     String? authToken,
   }) async {
-    return _teamService.getTeamMemberWages(teamMemberId: teamMemberId, authToken: authToken);
+    return _teamService.getTeamMemberWages(
+        teamMemberId: teamMemberId, authToken: authToken);
   }
 
   ///
@@ -1815,7 +1919,8 @@ class SquareClient {
     required SearchWorkWeekConfigRequest request,
     String? authToken,
   }) async {
-    return _teamService.listWorkWeekConfigs(request: request, authToken: authToken);
+    return _teamService.listWorkWeekConfigs(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1825,9 +1930,9 @@ class SquareClient {
     required WorkweekConfig config,
     String? authToken,
   }) async {
-    return _teamService.updateWorkWeekConfigs(config: config, authToken: authToken);
+    return _teamService.updateWorkWeekConfigs(
+        config: config, authToken: authToken);
   }
-
 
   // Financial/Bank Account
   ///
@@ -1837,7 +1942,8 @@ class SquareClient {
     required ListBankAccountsRequest request,
     String? authToken,
   }) async {
-    return _bankAccountService.listBankAccounts(request: request, authToken: authToken);
+    return _bankAccountService.listBankAccounts(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1847,7 +1953,8 @@ class SquareClient {
     required String v1BankAccountId,
     String? authToken,
   }) async {
-    return _bankAccountService.readBankAccountByV1Id(v1BankAccountId: v1BankAccountId, authToken: authToken);
+    return _bankAccountService.readBankAccountByV1Id(
+        v1BankAccountId: v1BankAccountId, authToken: authToken);
   }
 
   ///
@@ -1857,7 +1964,8 @@ class SquareClient {
     required String bankAccountId,
     String? authToken,
   }) async {
-    return _bankAccountService.readBankAccountById(bankAccountId: bankAccountId, authToken: authToken);
+    return _bankAccountService.readBankAccountById(
+        bankAccountId: bankAccountId, authToken: authToken);
   }
 
   // ONLINE
@@ -1944,7 +2052,8 @@ class SquareClient {
     required CreatePaymentRequest request,
     String? authToken,
   }) async {
-    return _paymentService.createPayment(request: request, authToken: authToken);
+    return _paymentService.createPayment(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -1967,7 +2076,8 @@ class SquareClient {
     required String idempotencyKey,
     String? authToken,
   }) async {
-    return _paymentService.cancelPaymentByIdempotencyKey(idempotencyKey: idempotencyKey, authToken: authToken);
+    return _paymentService.cancelPaymentByIdempotencyKey(
+        idempotencyKey: idempotencyKey, authToken: authToken);
   }
 
   ///
@@ -1977,7 +2087,8 @@ class SquareClient {
     required String paymentId,
     String? authToken,
   }) async {
-    return _paymentService.readPayment(paymentId: paymentId, authToken: authToken);
+    return _paymentService.readPayment(
+        paymentId: paymentId, authToken: authToken);
   }
 
   ///
@@ -1990,7 +2101,8 @@ class SquareClient {
     required UpdatePaymentRequest request,
     String? authToken,
   }) async {
-    return _paymentService.updatePayment(paymentId: paymentId, request: request, authToken: authToken);
+    return _paymentService.updatePayment(
+        paymentId: paymentId, request: request, authToken: authToken);
   }
 
   ///
@@ -2002,7 +2114,8 @@ class SquareClient {
     required String paymentId,
     String? authToken,
   }) async {
-    return _paymentService.cancelPayment(paymentId: paymentId, authToken: authToken);
+    return _paymentService.cancelPayment(
+        paymentId: paymentId, authToken: authToken);
   }
 
   ///
@@ -2019,7 +2132,8 @@ class SquareClient {
     required CompletePaymentRequest request,
     String? authToken,
   }) async {
-    return _paymentService.completePayment(paymentId: paymentId, request: request, authToken: authToken);
+    return _paymentService.completePayment(
+        paymentId: paymentId, request: request, authToken: authToken);
   }
 
   ///
@@ -2047,7 +2161,8 @@ class SquareClient {
     required RefundPaymentRequest request,
     String? authToken,
   }) async {
-    return _paymentService.refundPayment(request: request, authToken: authToken);
+    return _paymentService.refundPayment(
+        request: request, authToken: authToken);
   }
 
   ///
@@ -2057,7 +2172,8 @@ class SquareClient {
     required String refundId,
     String? authToken,
   }) async {
-    return _paymentService.readPaymentRefund(refundId: refundId, authToken: authToken);
+    return _paymentService.readPaymentRefund(
+        refundId: refundId, authToken: authToken);
   }
 
   ///
@@ -2077,7 +2193,8 @@ class SquareClient {
     required String disputeId,
     String? authToken,
   }) async {
-    return _paymentService.readDispute(disputeId: disputeId, authToken: authToken);
+    return _paymentService.readDispute(
+        disputeId: disputeId, authToken: authToken);
   }
 
   ///
@@ -2094,7 +2211,8 @@ class SquareClient {
     required String disputeId,
     String? authToken,
   }) async {
-    return _paymentService.acceptDispute(disputeId: disputeId, authToken: authToken);
+    return _paymentService.acceptDispute(
+        disputeId: disputeId, authToken: authToken);
   }
 
   ///
@@ -2105,7 +2223,8 @@ class SquareClient {
     String? cursor,
     String? authToken,
   }) async {
-    return _paymentService.listDisputeEvidence(disputeId: disputeId, cursor: cursor, authToken: authToken);
+    return _paymentService.listDisputeEvidence(
+        disputeId: disputeId, cursor: cursor, authToken: authToken);
   }
 
   ///
@@ -2119,7 +2238,8 @@ class SquareClient {
     required CreateDisputeEvidenceFileRequest request,
     String? authToken,
   }) async {
-    return _paymentService.createDisputeEvidenceFile(disputeId: disputeId, request: request, authToken: authToken);
+    return _paymentService.createDisputeEvidenceFile(
+        disputeId: disputeId, request: request, authToken: authToken);
   }
 
   ///
@@ -2130,7 +2250,8 @@ class SquareClient {
     required CreateDisputeEvidenceTextRequest request,
     String? authToken,
   }) async {
-    return _paymentService.createDisputeEvidenceText(disputeId: disputeId, request: request, authToken: authToken);
+    return _paymentService.createDisputeEvidenceText(
+        disputeId: disputeId, request: request, authToken: authToken);
   }
 
   ///
@@ -2145,7 +2266,8 @@ class SquareClient {
     required String evidenceId,
     String? authToken,
   }) async {
-    return _paymentService.deleteDisputeEvidence(disputeId: disputeId, evidenceId: evidenceId, authToken: authToken);
+    return _paymentService.deleteDisputeEvidence(
+        disputeId: disputeId, evidenceId: evidenceId, authToken: authToken);
   }
 
   ///
@@ -2157,7 +2279,8 @@ class SquareClient {
     required String evidenceId,
     String? authToken,
   }) async {
-    return _paymentService.readDisputeEvidence(disputeId: disputeId, evidenceId: evidenceId, authToken: authToken);
+    return _paymentService.readDisputeEvidence(
+        disputeId: disputeId, evidenceId: evidenceId, authToken: authToken);
   }
 
   ///
@@ -2172,7 +2295,8 @@ class SquareClient {
     required String disputeId,
     String? authToken,
   }) async {
-    return _paymentService.submitDisputeEvidence(disputeId: disputeId, authToken: authToken);
+    return _paymentService.submitDisputeEvidence(
+        disputeId: disputeId, authToken: authToken);
   }
 
   ///
@@ -2186,7 +2310,8 @@ class SquareClient {
     required CreateCheckoutRequest request,
     String? authToken,
   }) async {
-    return _paymentService.createCheckout(locationId: locationId, request: request, authToken: authToken);
+    return _paymentService.createCheckout(
+        locationId: locationId, request: request, authToken: authToken);
   }
 
   ///
@@ -2206,7 +2331,8 @@ class SquareClient {
     required String domainName,
     String? authToken,
   }) async {
-    return _paymentService.registerApplePayDomain(domainName: domainName, authToken: authToken);
+    return _paymentService.registerApplePayDomain(
+        domainName: domainName, authToken: authToken);
   }
 
   ///
@@ -2253,7 +2379,7 @@ class SquareClient {
     return _paymentService.disableCard(cardId: cardId, authToken: authToken);
   }
 
-    bool isInitialized() {
+  bool isInitialized() {
     return _authenticationService != null;
   }
 }

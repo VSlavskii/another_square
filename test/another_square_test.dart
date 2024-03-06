@@ -4,16 +4,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:another_square/another_square.dart';
 
 void main() {
-  const String applicationId = "sq0idp-wAI8-tQ0nFxsDKZGl3Fe1g";
-  const String clientId = applicationId;
-  const String clientSecret = "sq0csp-tz4D8MB760Kf1IvBOmXlkRw5nEq5QLBRbqh8VL8csZ0";
+  const String applicationId = "sandbox-sq0idb-lZHiG9Ww8_5AwBx1KmP4PA";
+  const String clientId = "sandbox-sq0idb-lZHiG9Ww8_5AwBx1KmP4PA";
+  const String clientSecret =
+      "sandbox-sq0csb-VFEpzNUra5KajfCBT48uUzoI15e2s2R2jnSDhK9K_y8";
 
   //const String applicationId = "sandbox-sq0idb-BOZshuZ7XTKLKpBk73rJtQ";
   //const String clientId = "sandbox-sq0idb-BOZshuZ7XTKLKpBk73rJtQ";
   //const String clientSecret = "sandbox-sq0csb-JFyKEpzTvo2Sp_TXf8yZ20FAaOycuokBeQR0Fj3KXaQ";
-  const String refreshToken = "EQAAENfNieufQblDRPhuWTDJicWLTlgoPTFJctN_OfokyNLve9fxD6yWOmuY1QWf";
-  const String authToken = "EAAAENBS3PLg1fNJoLZ72y3g-uwtloX3Lmmj5YQuskG4tcXKIKH7xGmHpfYJ7fh0";
-
+  const String refreshToken =
+      "EAAAlw0W0S97-EQAAl3HoR01sEJCqsUDPl6phcu0MjuaJQdqx9P3Pc1YxUCqXs9Hk3X6LOYPAuAsr";
+  const String authToken =
+      "EAAAl0ao3ZDPHb7msEd3MC4cGitqUxn9xwU4gGx5sSDpAxHEk6ePsfBBoDmwTSNS";
 
   ///
   /// Test that the correct auth URL is generated
@@ -24,22 +26,21 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-    environmentType: EnvironmentType.Production
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     String authUrl = squareClient.getAuthorizationPageUrl(
-        //scopes: [Scope.CustomerWrite,Scope.CustomerRead,],
-        scopes: Scope.getScopes(),//.sublist(0, 3),//[Scope.PaymentRead,Scope.PaymentRead, Scope.PaymentWriteAdditionalRecipients, Scope.PaymentWriteInPerson],
+        // scopes: [Scope.CustomerRead,],
+        scopes: Scope
+            .getScopes(), //.sublist(0, 3),//[Scope.PaymentRead,Scope.PaymentRead, Scope.PaymentWriteAdditionalRecipients, Scope.PaymentWriteInPerson],
         redirectUrl: "https://localhost/v2/OAuth2Playground/RedirectUrl",
         state: "82201dd8d83d23cc8a48caf52b");
 
-    print (authUrl);
-    expect(authUrl, "https://connect.squareupsandbox.com/oauth2/authorize?client_id=$applicationId&scope=CUSTOMERS_WRITE+CUSTOMERS_READ&session=False&state=82201dd8d83d23cc8a48caf52b");
-
+    print(authUrl);
+    expect(authUrl,
+        "https://connect.squareupsandbox.com/oauth2/authorize?client_id=$applicationId&scope=BANK_ACCOUNTS_READ+APPOINTMENTS_READ+APPOINTMENTS_WRITE+APPOINTMENTS_BUSINESS_SETTINGS_READ+CASH_DRAWER_READ+CUSTOMERS_READ+CUSTOMERS_WRITE+DEVICE_CREDENTIAL_MANAGEMENT+DISPUTES_READ+DISPUTES_WRITE+EMPLOYEES_READ+EMPLOYEES_WRITE+GIFTCARDS_READ+GIFTCARDS_WRITE+ITEMS_READ+ITEMS_WRITE+INVENTORY_READ+INVENTORY_WRITE+INVOICES_READ+INVOICES_WRITE+LOYALTY_READ+LOYALTY_WRITE+MERCHANT_PROFILE_READ+MERCHANT_PROFILE_WRITE+ONLINE_STORE_SITE_READ+ONLINE_STORE_SNIPPETS_READ+ONLINE_STORE_SNIPPETS_WRITE+ORDERS_READ+ORDERS_WRITE+PAYMENTS_READ+PAYMENTS_WRITE+PAYMENTS_WRITE_IN_PERSON+PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS+SUBSCRIPTIONS_READ+SUBSCRIPTIONS_WRITE+TIMECARDS_READ+TIMECARDS_WRITE+TIMECARDS_SETTINGS_READ+TIMECARDS_SETTINGS_WRITE&session=False&state=82201dd8d83d23cc8a48caf52b");
   });
-
 
   ///
   /// Test the request for a auth code
@@ -50,19 +51,16 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var response = await squareClient.getAuthToken(
-      code: 'sq0cgp-d1ncPIgm6QdeZY0beHDF2Q',//"sandbox-sq0cgb-g-AjFOCFJtBmtIUIKqk8hg",
-        redirectUrl: "https://localhost"
-    );
+        code:
+            'sandbox-sq0cgb-WVkZbHO0ROTlxHuKrsllfQ', //"sandbox-sq0cgb-g-AjFOCFJtBmtIUIKqk8hg",
+        redirectUrl: "https://localhost/v2/OAuth2Playground/RedirectUrl");
 
-    print (response);
     expect(response.accessToken, isNotNull);
-
   });
 
   ///
@@ -72,18 +70,15 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var response = await squareClient.refreshToken(
-        refreshToken: refreshToken
-    );
+        refreshToken:
+            "EQAAlxOXwyaM_JtycGypfkgJN5z3MCinFzvcbcyjxrxfxhv5gqzoCZ8k6ruCMj_W");
 
-    print (response);
     expect(response, isNotNull);
-
   });
 
   ///
@@ -93,32 +88,25 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.createTerminalCheckout(
         authToken: authToken,
-        request:
-    CreateTerminalCheckoutRequest.fromJson({
-      "idempotency_key": "28a0c3bc-7839-11ea-bc55-0242ac130003",
-      "checkout": {
-        "amount_money": {
-          "amount": 2610,
-          "currency": "USD"
-        },
-        "reference_id": "id11572",
-        "device_options": {
-          "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003"
-        },
-        "note": "A brief note"
-      }
-    }));
-
+        request: CreateTerminalCheckoutRequest.fromJson({
+          "idempotency_key": "28a0c3bc-7839-11ea-bc55-0242ac130043",
+          "checkout": {
+            "amount_money": {"amount": 2610, "currency": "USD"},
+            "reference_id": "id11572",
+            "device_options": {
+              "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003"
+            },
+            "note": "A brief note"
+          }
+        }));
 
     expect(result, isNotNull);
-
   });
 
   ///
@@ -128,26 +116,20 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.searchTerminalCheckout(
         authToken: authToken,
-        request:
-    SearchTerminalRequest.fromJson({
-      "limit": 2,
-      "query": {
-        "filter": {
-          "status": "COMPLETED"
-        }
-      }
-    }));
-
+        request: SearchTerminalRequest.fromJson({
+          "limit": 2,
+          "query": {
+            "filter": {"status": "COMPLETED"}
+          }
+        }));
 
     expect(result, isNotNull);
-
   });
 
   ///
@@ -157,17 +139,14 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.readTerminalCheckout(
-        authToken: authToken,
-        checkoutId: "6Thw6JW8cSYqO");
+        authToken: authToken, checkoutId: "hKizkVQxl1pqO");
 
     expect(result, isNotNull);
-
   });
 
   ///
@@ -178,17 +157,14 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.cancelTerminalCheckout(
-        authToken: authToken,
-        checkoutId: "6Thw6JW8cSYqO");
+        authToken: authToken, checkoutId: "hKizkVQxl1pqO");
 
     expect(result, isNotNull);
-
   });
 
   ///
@@ -198,31 +174,23 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
-
     var result = await squareClient.createTerminalRefund(
         authToken: authToken,
-        request:
-    CreateRefundRequest.fromJson({
-      "idempotency_key": "402a640b-b26f-401f-b406-46f839590c04",
-      "refund": {
-        "amount_money": {
-          "amount": 111,
-          "currency": "CAD"
-        },
-        "device_id": "f72dfb8e-4d65-4e56-aade-ec3fb8d33291",
-        "reason": "Returning items",
-        "payment_id": "5O5OvgkcNUhl7JBuINflcjKqUzXZY"
-      }
-    }));
-
+        request: CreateRefundRequest.fromJson({
+          "idempotency_key": "402a640b-b26f-401f-b406-46f839590c06",
+          "refund": {
+            "amount_money": {"amount": 111, "currency": "USD"},
+            "device_id": "f72dfb8e-4d65-4e56-aade-ec3fb8d33291",
+            "reason": "Returning items",
+            "payment_id": "5O5OvgkcNUhl7JBuINflcjKqUzXZY"
+          }
+        }));
 
     expect(result, isNotNull);
-
   });
 
   ///
@@ -232,26 +200,20 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.searchTerminalRefund(
         authToken: authToken,
-        request:
-        SearchTerminalRequest.fromJson({
+        request: SearchTerminalRequest.fromJson({
           "limit": 1,
           "query": {
-            "filter": {
-              "status": "COMPLETED"
-            }
+            "filter": {"status": "COMPLETED"}
           }
         }));
 
-
     expect(result, isNotNull);
-
   });
 
   ///
@@ -262,17 +224,14 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.readTerminalRefund(
-        authToken: authToken,
-        terminalRefundId: "terminal_refund_id0");
+        authToken: authToken, terminalRefundId: "terminal_refund_id0");
 
     expect(result, isNotNull);
-
   });
 
   ///
@@ -283,17 +242,14 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.cancelTerminalRefund(
-        authToken: authToken,
-        terminalRefundId: "terminal_refund_id0");
+        authToken: authToken, terminalRefundId: "terminal_refund_id0");
 
     expect(result, isNotNull);
-
   });
 
   // TODO Order Test Cases
@@ -304,8 +260,7 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
@@ -315,15 +270,12 @@ void main() {
           "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
           "order": {
             "reference_id": "my-order-001",
-            "location_id": "LPYKKD4HSCRGP",
+            "location_id": "LX5AZ7VQDMCHQ",
             "line_items": [
               {
                 "name": "New York Strip Steak",
                 "quantity": "1",
-                "base_price_money": {
-                  "amount": 1599,
-                  "currency": "USD"
-                }
+                "base_price_money": {"amount": 1599, "currency": "USD"}
               },
             ],
             "taxes": [
@@ -338,7 +290,6 @@ void main() {
         }));
 
     expect(result, isNotNull);
-
   });
 
   test('test batch read order ', () async {
@@ -346,22 +297,20 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.batchOrderRead(
         authToken: authToken,
         request: BatchOrderRequest.fromJson({
-          "location_id": "LPYKKD4HSCRGP",
+          "location_id": "LX5AZ7VQDMCHQ",
           "order_ids": [
-            "oTuVRPmTDfXBSLbyzdyynm7MYc4F",
+            "7xfRc07Ca9riZ2eiMZOw0f9LxLJZY",
           ]
         }));
 
     expect(result, isNotNull);
-
   });
 
   test('test read order ', () async {
@@ -369,20 +318,16 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.readOrder(
-        authToken: authToken,
-      orderId: "oTuVRPmTDfXBSLbyzdyynm7MYc4F"
-        );
+        authToken: authToken, orderId: "7xfRc07Ca9riZ2eiMZOw0f9LxLJZY");
 
     expect(result, isNotNull);
-
   });
-  
+
   // TODO Subscription Test Cases
   // TODO Invoice Test Cases
   // TODO Catalog Test Cases
@@ -391,8 +336,7 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
@@ -411,9 +355,7 @@ void main() {
                     "name": "Tea",
                     "description": "Hot Leaf Juice",
                     "category_id": "#Beverages",
-                    "tax_ids": [
-                      "#SalesTax"
-                    ],
+                    "tax_ids": ["#SalesTax"],
                     "variations": [
                       {
                         "type": "ITEM_VARIATION",
@@ -423,10 +365,7 @@ void main() {
                           "item_id": "#Tea",
                           "name": "Mug",
                           "pricing_type": "FIXED_PRICING",
-                          "price_money": {
-                            "amount": 150,
-                            "currency": "USD"
-                          }
+                          "price_money": {"amount": 150, "currency": "USD"}
                         }
                       }
                     ]
@@ -440,9 +379,7 @@ void main() {
                     "name": "Coffee",
                     "description": "Hot Bean Juice",
                     "category_id": "#Beverages",
-                    "tax_ids": [
-                      "#SalesTax"
-                    ],
+                    "tax_ids": ["#SalesTax"],
                     "variations": [
                       {
                         "type": "ITEM_VARIATION",
@@ -452,10 +389,7 @@ void main() {
                           "item_id": "#Coffee",
                           "name": "Regular",
                           "pricing_type": "FIXED_PRICING",
-                          "price_money": {
-                            "amount": 250,
-                            "currency": "USD"
-                          }
+                          "price_money": {"amount": 250, "currency": "USD"}
                         }
                       },
                       {
@@ -466,10 +400,7 @@ void main() {
                           "item_id": "#Coffee",
                           "name": "Large",
                           "pricing_type": "FIXED_PRICING",
-                          "price_money": {
-                            "amount": 350,
-                            "currency": "USD"
-                          }
+                          "price_money": {"amount": 350, "currency": "USD"}
                         }
                       }
                     ]
@@ -479,9 +410,7 @@ void main() {
                   "type": "CATEGORY",
                   "id": "#Beverages",
                   "present_at_all_locations": true,
-                  "category_data": {
-                    "name": "Beverages"
-                  }
+                  "category_data": {"name": "Beverages"}
                 },
                 {
                   "type": "TAX",
@@ -502,7 +431,6 @@ void main() {
         }));
 
     expect(result, isNotNull);
-
   });
 
   test('test list catalog ', () async {
@@ -510,17 +438,14 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
     var result = await squareClient.listCatalog(
-        authToken: authToken,
-        request: ListCatalogRequest());
+        authToken: authToken, request: ListCatalogRequest());
 
     expect(result, isNotNull);
-
   });
 
   test('test batch retrieve catalog ', () async {
@@ -528,8 +453,7 @@ void main() {
         applicationId: applicationId,
         clientId: clientId,
         clientSecret: clientSecret,
-        environmentType: EnvironmentType.Sandbox
-    );
+        environmentType: EnvironmentType.Sandbox);
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
@@ -544,7 +468,6 @@ void main() {
         }));
 
     expect(result, isNotNull);
-
   });
 
   // TODO Inventory Test Cases

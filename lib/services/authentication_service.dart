@@ -23,27 +23,25 @@ class AuthenticationService {
 
   /// Returns an authorization URL to be used in a web for to allow the
   /// user to authorize the application.
-  String getAuthorizationPageUrl({
-      required List<Scope> scopes, required String state}) {
+  String getAuthorizationPageUrl(
+      {required List<Scope> scopes, required String state}) {
     Uri authUri = Uri.parse(authorizationEndpoint);
-    authUri = _appendQueryParamsToUri(authUri,
-        {
-          "client_id": clientId,
-          "scope": scopes.map((e) => e.scope).join(" "),
-          "session": "False",
-          "state": state,
-          //"redirect_uri": redirectUrl,
-          //"response_type": "code",
-
-        });
+    authUri = _appendQueryParamsToUri(authUri, {
+      "client_id": clientId,
+      "scope": scopes.map((e) => e.scope).join(" "),
+      "session": "False",
+      "state": state,
+      //"redirect_uri": redirectUrl,
+      //"response_type": "code",
+    });
     return authUri.toString();
   }
 
   ///
   /// Obtains the access token from the authorization code.
   ///
-  Future<TokenResponse> getAuthToken({required String code, required String redirectUrl}) async {
-
+  Future<TokenResponse> getAuthToken(
+      {required String code, required String redirectUrl}) async {
     var credentials = "$clientId:$clientSecret";
     Codec<String, String> stringToBase64Url = utf8.fuse(base64Url);
     String encoded = stringToBase64Url.encode(credentials);
@@ -65,15 +63,13 @@ class AuthenticationService {
     Uri tokenUri = Uri.parse(tokenEndpoint);
 
     //print("tokenUri $tokenUri}");
-    final response = await http.post(tokenUri, body: body,
-        headers:  headers);
+    final response = await http.post(tokenUri, body: body, headers: headers);
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       //print (response.body);
       _lastTokenResponse = TokenResponse.fromJson(jsonDecode(response.body));
       return _lastTokenResponse!;
-    }
-    else {
+    } else {
       //print(response.body);
       throw TokenRequestFailedException(response.statusCode, response.body);
     }
@@ -83,7 +79,6 @@ class AuthenticationService {
   /// Refreshes the authorization token.
   ///
   Future<TokenResponse> refreshToken({String refreshToken = ""}) async {
-
     if (refreshToken.isEmpty) {
       refreshToken = _lastTokenResponse?.refreshToken ?? "";
     }
@@ -99,24 +94,22 @@ class AuthenticationService {
     };
 
     Map<String, String> body = {
-      "refresh_token": refreshToken,
-      "grant_type": "refresh_token",
       "client_id": clientId,
+      "grant_type": "refresh_token",
+      "refresh_token": refreshToken,
       "client_secret": clientSecret
     };
 
     Uri tokenUri = Uri.parse(tokenEndpoint);
 
     //print("tokenUri $tokenUri}");
-    final response = await http.post(tokenUri, body: jsonEncode(body),
-        headers:  headers);
+    final response = await http.post(tokenUri, body: body, headers: headers);
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       //print (response.body);
       _lastTokenResponse = TokenResponse.fromJson(jsonDecode(response.body));
       return _lastTokenResponse!;
-    }
-    else {
+    } else {
       //print(response.body);
       throw TokenRequestFailedException(response.statusCode, response.body);
     }
@@ -143,7 +136,6 @@ class AuthenticationService {
   TokenResponse? getCachedToken() {
     return _lastTokenResponse;
   }
-
 }
 
 class TokenRequestFailedException implements Exception {

@@ -44,7 +44,7 @@ class MerchantService {
 
     };
 
-    Map<String, String>? params = null;
+    Map<String, String>? params;
 
     if (cursor != null) {
       params = {

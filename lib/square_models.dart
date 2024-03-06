@@ -173,13 +173,12 @@ class Scope {
   ];
 
   static List<Scope> getScopes() {
-
     List<Scope> outScopes = List<Scope>.empty(growable: true);
-    _values.forEach((element) {
+    for (var element in _values) {
       if (element != Scope.Invalid) {
         outScopes.add(element);
       }
-    });
+    }
     return outScopes;
   }
 
@@ -1931,7 +1930,6 @@ class SubscriptionSource {
   }
 }
 
-
 @JsonSerializable(includeIfNull: false)
 class SquareError {
   final String? category;
@@ -2311,9 +2309,7 @@ class InvoiceCustomField {
 
   final String? value;
 
-  InvoiceCustomField({
-    this.value, this.label, this.placement
-      });
+  InvoiceCustomField({this.value, this.label, this.placement});
 
   factory InvoiceCustomField.fromJson(Map<String, dynamic> json) =>
       _$InvoiceCustomFieldFromJson(json);
@@ -2328,7 +2324,6 @@ class InvoiceCustomField {
 
 @JsonSerializable(includeIfNull: false)
 class InvoiceAcceptedPaymentMethods {
-
   @JsonKey(name: "bank_account")
   final bool? bankAccount;
 
@@ -2337,9 +2332,8 @@ class InvoiceAcceptedPaymentMethods {
   @JsonKey(name: "square_gift_card")
   final bool? squareGiftCard;
 
-  InvoiceAcceptedPaymentMethods({
-    this.card, this.bankAccount, this.squareGiftCard
-  });
+  InvoiceAcceptedPaymentMethods(
+      {this.card, this.bankAccount, this.squareGiftCard});
 
   factory InvoiceAcceptedPaymentMethods.fromJson(Map<String, dynamic> json) =>
       _$InvoiceAcceptedPaymentMethodsFromJson(json);
@@ -2353,15 +2347,12 @@ class InvoiceAcceptedPaymentMethods {
 }
 
 @JsonSerializable(includeIfNull: false)
-class InvoiceQuery{
-
+class InvoiceQuery {
   final InvoiceFilter? filter;
 
   final InvoiceSort? sort;
 
-  InvoiceQuery({
-  this.filter, this.sort
-  });
+  InvoiceQuery({this.filter, this.sort});
 
   factory InvoiceQuery.fromJson(Map<String, dynamic> json) =>
       _$InvoiceQueryFromJson(json);
@@ -2372,21 +2363,17 @@ class InvoiceQuery{
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class InvoiceFilter {
-
   @JsonKey(name: "location_ids")
   final List<String>? locationIds;
 
   @JsonKey(name: "customer_ids")
   final List<String>? customerIds;
 
-  InvoiceFilter({
-  this.locationIds, this.customerIds
-  });
+  InvoiceFilter({this.locationIds, this.customerIds});
 
   factory InvoiceFilter.fromJson(Map<String, dynamic> json) =>
       _$InvoiceFilterFromJson(json);
@@ -2401,14 +2388,11 @@ class InvoiceFilter {
 
 @JsonSerializable(includeIfNull: false)
 class InvoiceSort {
-
   final InvoiceSortField? field;
 
   final SortOrder? order;
 
-  InvoiceSort({
-    this.field, this.order
-  });
+  InvoiceSort({this.field, this.order});
 
   factory InvoiceSort.fromJson(Map<String, dynamic> json) =>
       _$InvoiceSortFromJson(json);
@@ -2463,7 +2447,7 @@ class CatalogObject {
   @JsonKey(name: "item_variation_data")
   final CatalogItemVariation? itemVariationData;
 
-  @JsonKey(name:"measurement_unit_data")
+  @JsonKey(name: "measurement_unit_data")
   final CatalogMeasurementUnit? measurementUnitData;
 
   @JsonKey(name: "modifier_data")
@@ -2501,16 +2485,34 @@ class CatalogObject {
 
   final int? version;
 
-  CatalogObject({
-    this.updatedAt, this.id, this.version, this.type, this.absentAtLocationIds,
-    this.catalogV1Ids, this.categoryData, this.customAttributeDefinitionData,
-    this.customAttributeValues, this.discountData, this.imageData,
-    this.isDeleted, this.itemData, this.itemOptionData, this.itemOptionValueData,
-    this.itemVariationData, this.measurementUnitData, this.modifierData,
-    this.modifierListData, this.presentAtAllLocations, this.presentAtLocationIds,
-    this.pricingRuleData, this.productSetData, this.quickAmountsSettingsData,
-    this.subscriptionPlanData, this.taxData, this.timePeriodData
-  });
+  CatalogObject(
+      {this.updatedAt,
+      this.id,
+      this.version,
+      this.type,
+      this.absentAtLocationIds,
+      this.catalogV1Ids,
+      this.categoryData,
+      this.customAttributeDefinitionData,
+      this.customAttributeValues,
+      this.discountData,
+      this.imageData,
+      this.isDeleted,
+      this.itemData,
+      this.itemOptionData,
+      this.itemOptionValueData,
+      this.itemVariationData,
+      this.measurementUnitData,
+      this.modifierData,
+      this.modifierListData,
+      this.presentAtAllLocations,
+      this.presentAtLocationIds,
+      this.pricingRuleData,
+      this.productSetData,
+      this.quickAmountsSettingsData,
+      this.subscriptionPlanData,
+      this.taxData,
+      this.timePeriodData});
 
   factory CatalogObject.fromJson(Map<String, dynamic> json) =>
       _$CatalogObjectFromJson(json);
@@ -2521,18 +2523,13 @@ class CatalogObject {
   String toString() {
     return toJson().toString();
   }
-
 }
-
 
 @JsonSerializable(includeIfNull: false)
 class CatalogTimePeriod {
-
   final String? event;
 
-  CatalogTimePeriod({
-    this.event
-  });
+  CatalogTimePeriod({this.event});
 
   factory CatalogTimePeriod.fromJson(Map<String, dynamic> json) =>
       _$CatalogTimePeriodFromJson(json);
@@ -2546,8 +2543,7 @@ class CatalogTimePeriod {
 }
 
 @JsonSerializable(includeIfNull: false)
-class CatalogTax{
-
+class CatalogTax {
   @JsonKey(name: "applies_to_custom_amounts")
   final bool? appliesToCustomAmounts;
 
@@ -2563,10 +2559,13 @@ class CatalogTax{
 
   final String? percentage;
 
-  CatalogTax({
-    this.name, this.enabled, this.percentage, this.calculationPhase,
-    this.appliesToCustomAmounts, this.inclusionType
-  });
+  CatalogTax(
+      {this.name,
+      this.enabled,
+      this.percentage,
+      this.calculationPhase,
+      this.appliesToCustomAmounts,
+      this.inclusionType});
 
   factory CatalogTax.fromJson(Map<String, dynamic> json) =>
       _$CatalogTaxFromJson(json);
@@ -2581,14 +2580,11 @@ class CatalogTax{
 
 @JsonSerializable(includeIfNull: false)
 class CatalogSubscriptionPlan {
-
   final String? name;
 
   final List<SubscriptionPhase>? phases;
 
-  CatalogSubscriptionPlan({
-    this.name, this.phases
-  });
+  CatalogSubscriptionPlan({this.name, this.phases});
 
   factory CatalogSubscriptionPlan.fromJson(Map<String, dynamic> json) =>
       _$CatalogSubscriptionPlanFromJson(json);
@@ -2603,7 +2599,6 @@ class CatalogSubscriptionPlan {
 
 @JsonSerializable(includeIfNull: false)
 class SubscriptionPhase {
-
   final SubscriptionCadence? cadence;
 
   @JsonKey(name: "recurring_price_money")
@@ -2615,9 +2610,12 @@ class SubscriptionPhase {
 
   final String? uid;
 
-  SubscriptionPhase({
-    this.uid, this.cadence, this.ordinal, this.periods, this.recurringPriceMoney
-  });
+  SubscriptionPhase(
+      {this.uid,
+      this.cadence,
+      this.ordinal,
+      this.periods,
+      this.recurringPriceMoney});
 
   factory SubscriptionPhase.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionPhaseFromJson(json);
@@ -2628,12 +2626,10 @@ class SubscriptionPhase {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQuickAmountsSettings {
-
   final CatalogQuickAmountsSettingsOption? option;
 
   final List<CatalogQuickAmount>? amounts;
@@ -2641,9 +2637,8 @@ class CatalogQuickAmountsSettings {
   @JsonKey(name: "eligible_for_auto_amounts")
   final bool? eligibleForAutoAmounts;
 
-  CatalogQuickAmountsSettings({
-    this.option, this.amounts, this.eligibleForAutoAmounts
-  });
+  CatalogQuickAmountsSettings(
+      {this.option, this.amounts, this.eligibleForAutoAmounts});
 
   factory CatalogQuickAmountsSettings.fromJson(Map<String, dynamic> json) =>
       _$CatalogQuickAmountsSettingsFromJson(json);
@@ -2658,7 +2653,6 @@ class CatalogQuickAmountsSettings {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQuickAmount {
-
   final Money? amount;
 
   final CatalogQuickAmountType? type;
@@ -2667,9 +2661,7 @@ class CatalogQuickAmount {
 
   final int? score;
 
-  CatalogQuickAmount({
-    this.ordinal, this.type, this.amount, this.score
-  });
+  CatalogQuickAmount({this.ordinal, this.type, this.amount, this.score});
 
   factory CatalogQuickAmount.fromJson(Map<String, dynamic> json) =>
       _$CatalogQuickAmountFromJson(json);
@@ -2684,7 +2676,6 @@ class CatalogQuickAmount {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogProductSet {
-
   @JsonKey(name: "all_products")
   final bool? allProducts;
 
@@ -2702,13 +2693,17 @@ class CatalogProductSet {
   @JsonKey(name: "quantity_max")
   final int? quantityMax;
 
-  @JsonKey(name:"quantity_min")
+  @JsonKey(name: "quantity_min")
   final int? quantityMin;
 
-  CatalogProductSet({
-    this.name, this.allProducts, this.productIdsAll, this.productIdsAny,
-    this.quantityExact, this.quantityMax, this.quantityMin
-  });
+  CatalogProductSet(
+      {this.name,
+      this.allProducts,
+      this.productIdsAll,
+      this.productIdsAny,
+      this.quantityExact,
+      this.quantityMax,
+      this.quantityMin});
 
   factory CatalogProductSet.fromJson(Map<String, dynamic> json) =>
       _$CatalogProductSetFromJson(json);
@@ -2723,7 +2718,6 @@ class CatalogProductSet {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogPricingRule {
-
   @JsonKey(name: "customer_group_ids_any")
   final List<String>? customerGroupIdsAny;
 
@@ -2753,7 +2747,7 @@ class CatalogPricingRule {
   @JsonKey(name: "valid_from_local_time")
   final String? validFromLocalTime;
 
-  @JsonKey(name:"valid_until_date")
+  @JsonKey(name: "valid_until_date")
   final String? validUntilDate;
 
   @JsonKey(name: "valid_until_local_time")
@@ -2762,12 +2756,20 @@ class CatalogPricingRule {
   @JsonKey(name: "apply_products_id")
   final String? applyProductsId;
 
-  CatalogPricingRule({
-    this.name, this.applyProductsId, this.customerGroupIdsAny, this.discountId,
-    this.excludeProductsId, this.excludeStrategy, this.matchProductsId,
-    this.minimumOrderSubtotalMoney, this.timePeriodIds, this.validFromDate,
-    this.validFromLocalTime, this.validUntilDate, this.validUntilLocalTime
-  });
+  CatalogPricingRule(
+      {this.name,
+      this.applyProductsId,
+      this.customerGroupIdsAny,
+      this.discountId,
+      this.excludeProductsId,
+      this.excludeStrategy,
+      this.matchProductsId,
+      this.minimumOrderSubtotalMoney,
+      this.timePeriodIds,
+      this.validFromDate,
+      this.validFromLocalTime,
+      this.validUntilDate,
+      this.validUntilLocalTime});
 
   factory CatalogPricingRule.fromJson(Map<String, dynamic> json) =>
       _$CatalogPricingRuleFromJson(json);
@@ -2782,8 +2784,7 @@ class CatalogPricingRule {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogModifierList {
-
-  @JsonKey(name:"image_ids")
+  @JsonKey(name: "image_ids")
   final List<String>? imageIds;
 
   final List<CatalogObject>? modifiers;
@@ -2795,9 +2796,12 @@ class CatalogModifierList {
   @JsonKey(name: "selection_type")
   final CatalogModifierListSelectionType? selectionType;
 
-  CatalogModifierList({
-    this.name, this.ordinal, this.modifiers, this.imageIds, this.selectionType
-  });
+  CatalogModifierList(
+      {this.name,
+      this.ordinal,
+      this.modifiers,
+      this.imageIds,
+      this.selectionType});
 
   factory CatalogModifierList.fromJson(Map<String, dynamic> json) =>
       _$CatalogModifierListFromJson(json);
@@ -2812,20 +2816,18 @@ class CatalogModifierList {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogModifier {
-
   @JsonKey(name: "modifier_list_id")
   final String? modifierListId;
 
   final String? name;
-  
+
   final int? ordinal;
 
   @JsonKey(name: "price_money")
   final Money? priceMoney;
 
-  CatalogModifier({
-    this.ordinal, this.name, this.modifierListId, this.priceMoney
-  });
+  CatalogModifier(
+      {this.ordinal, this.name, this.modifierListId, this.priceMoney});
 
   factory CatalogModifier.fromJson(Map<String, dynamic> json) =>
       _$CatalogModifierFromJson(json);
@@ -2840,15 +2842,12 @@ class CatalogModifier {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogMeasurementUnit {
-
   @JsonKey(name: "measurement_unit")
   final MeasurementUnit? measurementUnit;
 
   final int? precision;
 
-  CatalogMeasurementUnit({
-    this.precision, this.measurementUnit
-  });
+  CatalogMeasurementUnit({this.precision, this.measurementUnit});
 
   factory CatalogMeasurementUnit.fromJson(Map<String, dynamic> json) =>
       _$CatalogMeasurementUnitFromJson(json);
@@ -2863,7 +2862,6 @@ class CatalogMeasurementUnit {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemVariation {
-
   @JsonKey(name: "available_for_booking")
   final bool? availableForBooking;
 
@@ -2892,7 +2890,7 @@ class CatalogItemVariation {
 
   final int? ordinal;
 
-  @JsonKey(name:"price_money")
+  @JsonKey(name: "price_money")
   final Money? priceMoney;
 
   @JsonKey(name: "pricing_type")
@@ -2919,13 +2917,27 @@ class CatalogItemVariation {
   @JsonKey(name: "user_data")
   final String? userData;
 
-  CatalogItemVariation({
-    this.priceMoney, this.name, this.ordinal, this.imageIds, this.sku,
-    this.availableForBooking, this.inventoryAlertThreshold, this.inventoryAlertType,
-    this.itemId, this.itemOptionValues, this.locationOverrides, this.measurementUnitId,
-    this.pricingType, this.serviceDuration, this.stockable, this.stockableConversion,
-    this.teamMemberIds, this.trackInventory, this.upc, this.userData
-  });
+  CatalogItemVariation(
+      {this.priceMoney,
+      this.name,
+      this.ordinal,
+      this.imageIds,
+      this.sku,
+      this.availableForBooking,
+      this.inventoryAlertThreshold,
+      this.inventoryAlertType,
+      this.itemId,
+      this.itemOptionValues,
+      this.locationOverrides,
+      this.measurementUnitId,
+      this.pricingType,
+      this.serviceDuration,
+      this.stockable,
+      this.stockableConversion,
+      this.teamMemberIds,
+      this.trackInventory,
+      this.upc,
+      this.userData});
 
   factory CatalogItemVariation.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemVariationFromJson(json);
@@ -2940,19 +2952,19 @@ class CatalogItemVariation {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogStockConversion {
-
   @JsonKey(name: "nonstockable_quantity")
   final String? nonstockableQuantity;
 
   @JsonKey(name: "stockable_item_variation_id")
   final String? stockableItemVariationId;
 
-  @JsonKey(name:"stockable_quantity")
+  @JsonKey(name: "stockable_quantity")
   final String? stockableQuantity;
 
-  CatalogStockConversion({
-    this.nonstockableQuantity, this.stockableItemVariationId, this.stockableQuantity
-  });
+  CatalogStockConversion(
+      {this.nonstockableQuantity,
+      this.stockableItemVariationId,
+      this.stockableQuantity});
 
   factory CatalogStockConversion.fromJson(Map<String, dynamic> json) =>
       _$CatalogStockConversionFromJson(json);
@@ -2963,11 +2975,10 @@ class CatalogStockConversion {
   String toString() {
     return toJson().toString();
   }
-
 }
+
 @JsonSerializable(includeIfNull: false)
 class ItemVariationLocationOverrides {
-
   @JsonKey(name: "inventory_alert_threshold")
   final int? inventoryAlertThreshold;
 
@@ -2986,10 +2997,13 @@ class ItemVariationLocationOverrides {
   @JsonKey(name: "track_inventory")
   final bool? trackInventory;
 
-  ItemVariationLocationOverrides({
-    this.trackInventory, this.pricingType, this.inventoryAlertType,
-    this.inventoryAlertThreshold, this.priceMoney, this.locationId
-  });
+  ItemVariationLocationOverrides(
+      {this.trackInventory,
+      this.pricingType,
+      this.inventoryAlertType,
+      this.inventoryAlertThreshold,
+      this.priceMoney,
+      this.locationId});
 
   factory ItemVariationLocationOverrides.fromJson(Map<String, dynamic> json) =>
       _$ItemVariationLocationOverridesFromJson(json);
@@ -3004,21 +3018,21 @@ class ItemVariationLocationOverrides {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemOptionValueForItemVariation {
-
   @JsonKey(name: "item_option_id")
   final String? itemOptionId;
 
   @JsonKey(name: "item_option_value_id")
   final String? itemOptionValueId;
 
-  CatalogItemOptionValueForItemVariation({
-    this.itemOptionId, this.itemOptionValueId
-  });
+  CatalogItemOptionValueForItemVariation(
+      {this.itemOptionId, this.itemOptionValueId});
 
-  factory CatalogItemOptionValueForItemVariation.fromJson(Map<String, dynamic> json) =>
+  factory CatalogItemOptionValueForItemVariation.fromJson(
+          Map<String, dynamic> json) =>
       _$CatalogItemOptionValueForItemVariationFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogItemOptionValueForItemVariationToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogItemOptionValueForItemVariationToJson(this);
 
   @override
   String toString() {
@@ -3028,7 +3042,6 @@ class CatalogItemOptionValueForItemVariation {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemOptionValue {
-
   final String? color;
 
   final String? description;
@@ -3040,9 +3053,12 @@ class CatalogItemOptionValue {
 
   final int? ordinal;
 
-  CatalogItemOptionValue({
-    this.itemOptionId, this.ordinal, this.name, this.description, this.color
-  });
+  CatalogItemOptionValue(
+      {this.itemOptionId,
+      this.ordinal,
+      this.name,
+      this.description,
+      this.color});
 
   factory CatalogItemOptionValue.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemOptionValueFromJson(json);
@@ -3057,7 +3073,6 @@ class CatalogItemOptionValue {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemOption {
-
   final String? description;
 
   @JsonKey(name: "display_name")
@@ -3070,9 +3085,12 @@ class CatalogItemOption {
 
   final List<CatalogObject>? values;
 
-  CatalogItemOption({
-    this.description, this.name, this.displayName, this.showColors, this.values
-  });
+  CatalogItemOption(
+      {this.description,
+      this.name,
+      this.displayName,
+      this.showColors,
+      this.values});
 
   factory CatalogItemOption.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemOptionFromJson(json);
@@ -3087,7 +3105,6 @@ class CatalogItemOption {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItem {
-
   final String? abbreviation;
 
   @JsonKey(name: "available_electronically")
@@ -3107,7 +3124,7 @@ class CatalogItem {
   @JsonKey(name: "image_ids")
   final List<String>? imageIds;
 
-  @JsonKey(name:"item_options")
+  @JsonKey(name: "item_options")
   final List<CatalogItemOptionForItem>? itemOptions;
 
   @JsonKey(name: "label_color")
@@ -3115,7 +3132,7 @@ class CatalogItem {
 
   @JsonKey(name: "modifier_list_info")
   final List<CatalogItemModifierListInfo>? modifierListInfo;
-  
+
   final String? name;
 
   @JsonKey(name: "product_type")
@@ -3132,13 +3149,23 @@ class CatalogItem {
 
   final List<CatalogObject>? variations;
 
-  CatalogItem({
-    this.name, this.description, this.imageIds, this.taxIds,
-    this.abbreviation, this.availableElectronically, this.availableForPickup,
-    this.availableOnline, this.categoryId, this.itemOptions, this.labelColor,
-    this.modifierListInfo, this.productType, this.skipModifierScreen,
-    this.sortName, this.variations
-  });
+  CatalogItem(
+      {this.name,
+      this.description,
+      this.imageIds,
+      this.taxIds,
+      this.abbreviation,
+      this.availableElectronically,
+      this.availableForPickup,
+      this.availableOnline,
+      this.categoryId,
+      this.itemOptions,
+      this.labelColor,
+      this.modifierListInfo,
+      this.productType,
+      this.skipModifierScreen,
+      this.sortName,
+      this.variations});
 
   factory CatalogItem.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemFromJson(json);
@@ -3149,12 +3176,10 @@ class CatalogItem {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemModifierListInfo {
-
   @JsonKey(name: "modifier_list_id")
   final String? modifierListId;
 
@@ -3166,13 +3191,15 @@ class CatalogItemModifierListInfo {
   @JsonKey(name: "min_selected_modifiers")
   final int? minSelectedModifiers;
 
-  @JsonKey(name:"modifier_overrides")
+  @JsonKey(name: "modifier_overrides")
   final List<CatalogModifierOverride>? modifierOverrides;
 
-  CatalogItemModifierListInfo({
-    this.modifierListId, this.enabled, this.maxSelectedModifiers,
-    this.minSelectedModifiers, this.modifierOverrides
-  });
+  CatalogItemModifierListInfo(
+      {this.modifierListId,
+      this.enabled,
+      this.maxSelectedModifiers,
+      this.minSelectedModifiers,
+      this.modifierOverrides});
 
   factory CatalogItemModifierListInfo.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemModifierListInfoFromJson(json);
@@ -3183,21 +3210,17 @@ class CatalogItemModifierListInfo {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogModifierOverride {
-
   @JsonKey(name: "modifier_id")
   final String? modifierId;
 
   @JsonKey(name: "on_by_default")
   final bool? onByDefault;
 
-  CatalogModifierOverride({
-   this.modifierId, this.onByDefault
-  });
+  CatalogModifierOverride({this.modifierId, this.onByDefault});
 
   factory CatalogModifierOverride.fromJson(Map<String, dynamic> json) =>
       _$CatalogModifierOverrideFromJson(json);
@@ -3212,13 +3235,10 @@ class CatalogModifierOverride {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemOptionForItem {
-
   @JsonKey(name: "item_option_id")
   final String? itemOptionId;
 
-  CatalogItemOptionForItem({
-    this.itemOptionId
-  });
+  CatalogItemOptionForItem({this.itemOptionId});
 
   factory CatalogItemOptionForItem.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemOptionForItemFromJson(json);
@@ -3232,8 +3252,7 @@ class CatalogItemOptionForItem {
 }
 
 @JsonSerializable(includeIfNull: false)
-class CatalogImage{
-
+class CatalogImage {
   final String? caption;
 
   final String? name;
@@ -3243,9 +3262,7 @@ class CatalogImage{
 
   final String? url;
 
-  CatalogImage({
-    this.name, this.caption, this.url, this.photoStudioOrderId
-  });
+  CatalogImage({this.name, this.caption, this.url, this.photoStudioOrderId});
 
   factory CatalogImage.fromJson(Map<String, dynamic> json) =>
       _$CatalogImageFromJson(json);
@@ -3260,7 +3277,6 @@ class CatalogImage{
 
 @JsonSerializable(includeIfNull: false)
 class CatalogDiscount {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
@@ -3275,7 +3291,7 @@ class CatalogDiscount {
 
   @JsonKey(name: "modify_tax_basis")
   final CatalogDiscountModifyTaxBasis? modifyTaxBasis;
-  
+
   final String? name;
 
   final String? percentage;
@@ -3283,11 +3299,15 @@ class CatalogDiscount {
   @JsonKey(name: "pin_required")
   final bool? pinRequired;
 
-  CatalogDiscount({
-    this.name, this.labelColor, this.percentage, this.amountMoney,
-    this.discountType, this.maximumAmountMoney, this.modifyTaxBasis,
-    this.pinRequired
-  });
+  CatalogDiscount(
+      {this.name,
+      this.labelColor,
+      this.percentage,
+      this.amountMoney,
+      this.discountType,
+      this.maximumAmountMoney,
+      this.modifyTaxBasis,
+      this.pinRequired});
 
   factory CatalogDiscount.fromJson(Map<String, dynamic> json) =>
       _$CatalogDiscountFromJson(json);
@@ -3300,9 +3320,8 @@ class CatalogDiscount {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class CatalogCustomAttributeValue {
-
   @JsonKey(name: "boolean_value")
   final bool? booleanValue;
 
@@ -3321,11 +3340,14 @@ class CatalogCustomAttributeValue {
 
   final CatalogCustomAttributeDefinitionType? type;
 
-  CatalogCustomAttributeValue({
-    this.name, this.type, this.booleanValue, this.stringValue,
-    this.customAttributeDefinitionId, this.key,
-    this.numberValue
-  });
+  CatalogCustomAttributeValue(
+      {this.name,
+      this.type,
+      this.booleanValue,
+      this.stringValue,
+      this.customAttributeDefinitionId,
+      this.key,
+      this.numberValue});
 
   factory CatalogCustomAttributeValue.fromJson(Map<String, dynamic> json) =>
       _$CatalogCustomAttributeValueFromJson(json);
@@ -3340,7 +3362,6 @@ class CatalogCustomAttributeValue {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogCustomAttributeDefinition {
-
   @JsonKey(name: "allowed_object_types")
   final List<CatalogObjectType>? allowedObjectTypes;
 
@@ -3361,7 +3382,7 @@ class CatalogCustomAttributeDefinition {
   @JsonKey(name: "number_config")
   final CatalogCustomAttributeDefinitionNumberConfig? numberConfig;
 
-  @JsonKey(name:"selection_config")
+  @JsonKey(name: "selection_config")
   final CatalogCustomAttributeDefinitionSelectionConfig? selectionConfig;
 
   @JsonKey(name: "seller_visibility")
@@ -3370,20 +3391,29 @@ class CatalogCustomAttributeDefinition {
   @JsonKey(name: "sourceApplication")
   final SourceApplication? sourceApplication;
 
-  @JsonKey(name:"string_config")
+  @JsonKey(name: "string_config")
   final CatalogCustomAttributeDefinitionStringConfig? stringConfig;
 
-  CatalogCustomAttributeDefinition({
-    this.key, this.type, this.name, this.description, this.allowedObjectTypes,
-    this.appVisibility, this.customAttributeUsageCount, this.numberConfig,
-    this.selectionConfig, this.sellerVisibility, this.sourceApplication,
-    this.stringConfig
-  });
+  CatalogCustomAttributeDefinition(
+      {this.key,
+      this.type,
+      this.name,
+      this.description,
+      this.allowedObjectTypes,
+      this.appVisibility,
+      this.customAttributeUsageCount,
+      this.numberConfig,
+      this.selectionConfig,
+      this.sellerVisibility,
+      this.sourceApplication,
+      this.stringConfig});
 
-  factory CatalogCustomAttributeDefinition.fromJson(Map<String, dynamic> json) =>
+  factory CatalogCustomAttributeDefinition.fromJson(
+          Map<String, dynamic> json) =>
       _$CatalogCustomAttributeDefinitionFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogCustomAttributeDefinitionToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogCustomAttributeDefinitionToJson(this);
 
   @override
   String toString() {
@@ -3392,19 +3422,18 @@ class CatalogCustomAttributeDefinition {
 }
 
 @JsonSerializable(includeIfNull: false)
-class CatalogCustomAttributeDefinitionStringConfig{
-
+class CatalogCustomAttributeDefinitionStringConfig {
   @JsonKey(name: "enforce_uniqueness")
   final bool? enforceUniqueness;
 
-  CatalogCustomAttributeDefinitionStringConfig({
-    this.enforceUniqueness
-  });
+  CatalogCustomAttributeDefinitionStringConfig({this.enforceUniqueness});
 
-  factory CatalogCustomAttributeDefinitionStringConfig.fromJson(Map<String, dynamic> json) =>
+  factory CatalogCustomAttributeDefinitionStringConfig.fromJson(
+          Map<String, dynamic> json) =>
       _$CatalogCustomAttributeDefinitionStringConfigFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogCustomAttributeDefinitionStringConfigToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogCustomAttributeDefinitionStringConfigToJson(this);
 
   @override
   String toString() {
@@ -3414,7 +3443,6 @@ class CatalogCustomAttributeDefinitionStringConfig{
 
 @JsonSerializable(includeIfNull: false)
 class SourceApplication {
-
   @JsonKey(name: "application_id")
   final String? applicationId;
 
@@ -3422,9 +3450,7 @@ class SourceApplication {
 
   final ProductValue? product;
 
-  SourceApplication({
-    this.name, this.applicationId, this.product
-  });
+  SourceApplication({this.name, this.applicationId, this.product});
 
   factory SourceApplication.fromJson(Map<String, dynamic> json) =>
       _$SourceApplicationFromJson(json);
@@ -3435,49 +3461,51 @@ class SourceApplication {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogCustomAttributeDefinitionSelectionConfig {
-
-  @JsonKey(name:"allowed_selections")
-  final List<CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection>? allowedSelections;
+  @JsonKey(name: "allowed_selections")
+  final List<
+          CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection>?
+      allowedSelections;
 
   @JsonKey(name: "max_allowed_selections")
   final int? maxAllowedSelections;
 
-  CatalogCustomAttributeDefinitionSelectionConfig({
-    this.allowedSelections, this.maxAllowedSelections
-  });
+  CatalogCustomAttributeDefinitionSelectionConfig(
+      {this.allowedSelections, this.maxAllowedSelections});
 
-  factory CatalogCustomAttributeDefinitionSelectionConfig.fromJson(Map<String, dynamic> json) =>
+  factory CatalogCustomAttributeDefinitionSelectionConfig.fromJson(
+          Map<String, dynamic> json) =>
       _$CatalogCustomAttributeDefinitionSelectionConfigFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogCustomAttributeDefinitionSelectionConfigToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogCustomAttributeDefinitionSelectionConfigToJson(this);
 
   @override
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection {
-
   final String? name;
 
   final String? uid;
 
-  CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection({
-      this.name, this.uid
-  });
+  CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection(
+      {this.name, this.uid});
 
-  factory CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection.fromJson(Map<String, dynamic> json) =>
-      _$CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionFromJson(json);
+  factory CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection.fromJson(
+          Map<String, dynamic> json) =>
+      _$CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionFromJson(
+          json);
 
-  Map<String, dynamic> toJson() => _$CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionToJson(
+          this);
 
   @override
   String toString() {
@@ -3485,19 +3513,18 @@ class CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class CatalogCustomAttributeDefinitionNumberConfig {
-
   final int? precision;
 
-  CatalogCustomAttributeDefinitionNumberConfig({
-    this.precision
-  });
+  CatalogCustomAttributeDefinitionNumberConfig({this.precision});
 
-  factory CatalogCustomAttributeDefinitionNumberConfig.fromJson(Map<String, dynamic> json) =>
+  factory CatalogCustomAttributeDefinitionNumberConfig.fromJson(
+          Map<String, dynamic> json) =>
       _$CatalogCustomAttributeDefinitionNumberConfigFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogCustomAttributeDefinitionNumberConfigToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogCustomAttributeDefinitionNumberConfigToJson(this);
 
   @override
   String toString() {
@@ -3507,15 +3534,12 @@ class CatalogCustomAttributeDefinitionNumberConfig {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogCategory {
-
   @JsonKey(name: "image_ids")
   final List<String>? imageIds;
 
   final String? name;
 
-  CatalogCategory({
-    this.name, this.imageIds
-  });
+  CatalogCategory({this.name, this.imageIds});
 
   factory CatalogCategory.fromJson(Map<String, dynamic> json) =>
       _$CatalogCategoryFromJson(json);
@@ -3530,16 +3554,13 @@ class CatalogCategory {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogV1Id {
-
   @JsonKey(name: "catalog_v1_id")
   final String? catalogV1Id;
 
   @JsonKey(name: "location_id")
   final String? locationId;
 
-  CatalogV1Id({
-    this.locationId, this.catalogV1Id
-  });
+  CatalogV1Id({this.locationId, this.catalogV1Id});
 
   factory CatalogV1Id.fromJson(Map<String, dynamic> json) =>
       _$CatalogV1IdFromJson(json);
@@ -3554,7 +3575,6 @@ class CatalogV1Id {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogInfoResponseLimits {
-
   @JsonKey(name: "batch_delete_max_object_ids")
   final int? batchDeleteMaxObjectIds;
 
@@ -3570,26 +3590,28 @@ class CatalogInfoResponseLimits {
   @JsonKey(name: "search_max_page_limit")
   final int? searchMaxPageLimit;
 
-
   @JsonKey(name: "update_item_modifier_lists_max_modifier_lists_to_disable")
   final int? updateItemModifierListsMaxModifierListsToDisable;
 
   @JsonKey(name: "update_item_modifier_lists_max_modifier_lists_to_enable")
   final int? updateItemModifierListsMaxModifierListsToEnable;
 
-  @JsonKey(name:"update_item_taxes_max_taxes_to_disable")
+  @JsonKey(name: "update_item_taxes_max_taxes_to_disable")
   final int? updateItemTaxesMaxTaxesToDisable;
 
   @JsonKey(name: "update_item_taxes_max_taxes_to_enable")
   final int? updateItemTaxesMaxTaxesToEnable;
 
-  CatalogInfoResponseLimits({
-    this.batchDeleteMaxObjectIds, this.batchRetrieveMaxObjectIds,
-    this.batchUpsertMaxObjectsPerBatch, this.batchUpsertMaxTotalObjects,
-    this.searchMaxPageLimit, this.updateItemModifierListsMaxModifierListsToDisable,
-    this.updateItemModifierListsMaxModifierListsToEnable,
-    this.updateItemTaxesMaxTaxesToDisable, this.updateItemTaxesMaxTaxesToEnable
-  });
+  CatalogInfoResponseLimits(
+      {this.batchDeleteMaxObjectIds,
+      this.batchRetrieveMaxObjectIds,
+      this.batchUpsertMaxObjectsPerBatch,
+      this.batchUpsertMaxTotalObjects,
+      this.searchMaxPageLimit,
+      this.updateItemModifierListsMaxModifierListsToDisable,
+      this.updateItemModifierListsMaxModifierListsToEnable,
+      this.updateItemTaxesMaxTaxesToDisable,
+      this.updateItemTaxesMaxTaxesToEnable});
 
   factory CatalogInfoResponseLimits.fromJson(Map<String, dynamic> json) =>
       _$CatalogInfoResponseLimitsFromJson(json);
@@ -3600,21 +3622,18 @@ class CatalogInfoResponseLimits {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class StandardUnitDescriptionGroup {
-
   @JsonKey(name: "language_code")
   final String? languageCode;
 
   @JsonKey(name: "standard_unit_descriptions")
   final List<StandardUnitDescription>? standardUnitDescriptions;
 
-  StandardUnitDescriptionGroup({
-    this.languageCode, this.standardUnitDescriptions
-  });
+  StandardUnitDescriptionGroup(
+      {this.languageCode, this.standardUnitDescriptions});
 
   factory StandardUnitDescriptionGroup.fromJson(Map<String, dynamic> json) =>
       _$StandardUnitDescriptionGroupFromJson(json);
@@ -3627,18 +3646,15 @@ class StandardUnitDescriptionGroup {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
-class StandardUnitDescription{
-
+@JsonSerializable(includeIfNull: false)
+class StandardUnitDescription {
   final String? abbreviation;
 
   final String? name;
 
   final MeasurementUnit? unit;
 
-  StandardUnitDescription({
-    this.name, this.abbreviation, this.unit
-  });
+  StandardUnitDescription({this.name, this.abbreviation, this.unit});
 
   factory StandardUnitDescription.fromJson(Map<String, dynamic> json) =>
       _$StandardUnitDescriptionFromJson(json);
@@ -3653,16 +3669,13 @@ class StandardUnitDescription{
 
 @JsonSerializable(includeIfNull: false)
 class CatalogIdMapping {
-
   @JsonKey(name: "client_object_id")
   final String? clientObjectId;
 
   @JsonKey(name: "object_id")
   final String? objectId;
 
-  CatalogIdMapping({
-    this.clientObjectId, this.objectId
-  });
+  CatalogIdMapping({this.clientObjectId, this.objectId});
 
   factory CatalogIdMapping.fromJson(Map<String, dynamic> json) =>
       _$CatalogIdMappingFromJson(json);
@@ -3673,17 +3686,16 @@ class CatalogIdMapping {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQuery {
-
   @JsonKey(name: "exact_query")
   final CatalogQueryExact? exactQuery;
 
   @JsonKey(name: "item_variations_for_item_option_values_query")
-  final CatalogQueryItemVariationsForItemOptionValues? itemVariationsForItemOptionValuesQuery;
+  final CatalogQueryItemVariationsForItemOptionValues?
+      itemVariationsForItemOptionValuesQuery;
 
   @JsonKey(name: "items_for_item_options_query")
   final CatalogQueryItemsForItemOptions? itemsForItemOptionsQuery;
@@ -3691,7 +3703,7 @@ class CatalogQuery {
   @JsonKey(name: "items_for_modifier_list_query")
   final CatalogQueryItemsForModifierList? itemsForModifierListQuery;
 
-  @JsonKey(name:"items_for_tax_query")
+  @JsonKey(name: "items_for_tax_query")
   final CatalogQueryItemsForTax? itemsForTaxQuery;
 
   @JsonKey(name: "prefix_query")
@@ -3706,15 +3718,20 @@ class CatalogQuery {
   @JsonKey(name: "sorted_attribute_query")
   final CatalogQuerySortedAttribute? sortedAttributeQuery;
 
-  @JsonKey(name:"text_query")
+  @JsonKey(name: "text_query")
   final CatalogQueryText? textQuery;
 
-  CatalogQuery({
-    this.exactQuery, this.itemsForItemOptionsQuery, this.itemsForModifierListQuery,
-    this.itemsForTaxQuery, this.itemVariationsForItemOptionValuesQuery,
-    this.prefixQuery, this.rangeQuery, this.setQuery,
-    this.sortedAttributeQuery, this.textQuery
-  });
+  CatalogQuery(
+      {this.exactQuery,
+      this.itemsForItemOptionsQuery,
+      this.itemsForModifierListQuery,
+      this.itemsForTaxQuery,
+      this.itemVariationsForItemOptionValuesQuery,
+      this.prefixQuery,
+      this.rangeQuery,
+      this.setQuery,
+      this.sortedAttributeQuery,
+      this.textQuery});
 
   factory CatalogQuery.fromJson(Map<String, dynamic> json) =>
       _$CatalogQueryFromJson(json);
@@ -3729,12 +3746,9 @@ class CatalogQuery {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQueryText {
-
   final List<String>? keywords;
 
-  CatalogQueryText({
-    this.keywords
-  });
+  CatalogQueryText({this.keywords});
 
   factory CatalogQueryText.fromJson(Map<String, dynamic> json) =>
       _$CatalogQueryTextFromJson(json);
@@ -3749,7 +3763,6 @@ class CatalogQueryText {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQuerySortedAttribute {
-
   @JsonKey(name: "attribute_name")
   final String? attributeName;
 
@@ -3759,9 +3772,8 @@ class CatalogQuerySortedAttribute {
   @JsonKey(name: "sort_order")
   final SortOrder? sortOrder;
 
-  CatalogQuerySortedAttribute({
-    this.attributeName, this.initialAttributeValue, this.sortOrder
-  });
+  CatalogQuerySortedAttribute(
+      {this.attributeName, this.initialAttributeValue, this.sortOrder});
 
   factory CatalogQuerySortedAttribute.fromJson(Map<String, dynamic> json) =>
       _$CatalogQuerySortedAttributeFromJson(json);
@@ -3776,16 +3788,13 @@ class CatalogQuerySortedAttribute {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQuerySet {
-
   @JsonKey(name: "attribute_name")
   final String? attributeName;
 
   @JsonKey(name: "attribute_values")
   final List<String>? attributeValues;
 
-  CatalogQuerySet({
-    this.attributeName, this.attributeValues
-  });
+  CatalogQuerySet({this.attributeName, this.attributeValues});
 
   factory CatalogQuerySet.fromJson(Map<String, dynamic> json) =>
       _$CatalogQuerySetFromJson(json);
@@ -3799,20 +3808,18 @@ class CatalogQuerySet {
 }
 
 @JsonSerializable(includeIfNull: false)
-class CatalogQueryRange{
-
+class CatalogQueryRange {
   @JsonKey(name: "attribute_name")
   final String? attributeName;
 
   @JsonKey(name: "attribute_max_value")
   final int? attributeMaxValue;
 
-  @JsonKey(name:"attribute_min_value")
+  @JsonKey(name: "attribute_min_value")
   final int? attributeMinValue;
 
-  CatalogQueryRange({
-    this.attributeName, this.attributeMaxValue, this.attributeMinValue
-  });
+  CatalogQueryRange(
+      {this.attributeName, this.attributeMaxValue, this.attributeMinValue});
 
   factory CatalogQueryRange.fromJson(Map<String, dynamic> json) =>
       _$CatalogQueryRangeFromJson(json);
@@ -3827,16 +3834,13 @@ class CatalogQueryRange{
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQueryPrefix {
-
   @JsonKey(name: "attribute_name")
   final String? attributeName;
 
-  @JsonKey(name:"attribute_prefix")
+  @JsonKey(name: "attribute_prefix")
   final String? attributePrefix;
 
-  CatalogQueryPrefix({
-    this.attributeName, this.attributePrefix
-  });
+  CatalogQueryPrefix({this.attributeName, this.attributePrefix});
 
   factory CatalogQueryPrefix.fromJson(Map<String, dynamic> json) =>
       _$CatalogQueryPrefixFromJson(json);
@@ -3847,18 +3851,14 @@ class CatalogQueryPrefix {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQueryItemsForTax {
-
   @JsonKey(name: "tax_ids")
   final List<String>? taxIds;
 
-  CatalogQueryItemsForTax({
-    this.taxIds
-  });
+  CatalogQueryItemsForTax({this.taxIds});
 
   factory CatalogQueryItemsForTax.fromJson(Map<String, dynamic> json) =>
       _$CatalogQueryItemsForTaxFromJson(json);
@@ -3873,18 +3873,17 @@ class CatalogQueryItemsForTax {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQueryItemsForModifierList {
-
   @JsonKey(name: "modifier_list_ids")
   final List<String>? modifierListIds;
 
-  CatalogQueryItemsForModifierList({
-    this.modifierListIds
-  });
+  CatalogQueryItemsForModifierList({this.modifierListIds});
 
-  factory CatalogQueryItemsForModifierList.fromJson(Map<String, dynamic> json) =>
+  factory CatalogQueryItemsForModifierList.fromJson(
+          Map<String, dynamic> json) =>
       _$CatalogQueryItemsForModifierListFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogQueryItemsForModifierListToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogQueryItemsForModifierListToJson(this);
 
   @override
   String toString() {
@@ -3894,40 +3893,36 @@ class CatalogQueryItemsForModifierList {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQueryItemsForItemOptions {
-
   @JsonKey(name: "item_option_ids")
   final List<String>? itemOptionIds;
 
-  CatalogQueryItemsForItemOptions({
-   this.itemOptionIds
-  });
+  CatalogQueryItemsForItemOptions({this.itemOptionIds});
 
   factory CatalogQueryItemsForItemOptions.fromJson(Map<String, dynamic> json) =>
       _$CatalogQueryItemsForItemOptionsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogQueryItemsForItemOptionsToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogQueryItemsForItemOptionsToJson(this);
 
   @override
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQueryItemVariationsForItemOptionValues {
-
   @JsonKey(name: "item_option_value_ids")
   final List<String>? itemOptionValueIds;
 
-  CatalogQueryItemVariationsForItemOptionValues({
-    this.itemOptionValueIds
-  });
+  CatalogQueryItemVariationsForItemOptionValues({this.itemOptionValueIds});
 
-  factory CatalogQueryItemVariationsForItemOptionValues.fromJson(Map<String, dynamic> json) =>
+  factory CatalogQueryItemVariationsForItemOptionValues.fromJson(
+          Map<String, dynamic> json) =>
       _$CatalogQueryItemVariationsForItemOptionValuesFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CatalogQueryItemVariationsForItemOptionValuesToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CatalogQueryItemVariationsForItemOptionValuesToJson(this);
 
   @override
   String toString() {
@@ -3937,16 +3932,13 @@ class CatalogQueryItemVariationsForItemOptionValues {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogQueryExact {
-
   @JsonKey(name: "attribute_name")
   final String? attributeName;
 
   @JsonKey(name: "attribute_value")
   final String? attributeValue;
 
-  CatalogQueryExact({
-      this.attributeName, this.attributeValue
-  });
+  CatalogQueryExact({this.attributeName, this.attributeValue});
 
   factory CatalogQueryExact.fromJson(Map<String, dynamic> json) =>
       _$CatalogQueryExactFromJson(json);
@@ -3961,14 +3953,13 @@ class CatalogQueryExact {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogResponse {
-
   final List<SquareError>? errors;
 
   final String? cursor;
 
   final List<CatalogObject>? objects;
 
-  @JsonKey(name:"related_objects")
+  @JsonKey(name: "related_objects")
   final List<CatalogObject>? relatedObjects;
 
   @JsonKey(name: "latest_time")
@@ -3987,12 +3978,17 @@ class CatalogResponse {
   @JsonKey(name: "standard_unit_description_group")
   final StandardUnitDescriptionGroup? standardUnitDescriptionGroup;
 
-
-  CatalogResponse({
-    this.cursor, this.errors, this.latestTime, this.objects,
-    this.relatedObjects, this.updatedAt, this.idMappings, this.image, this.limits,
-  this.standardUnitDescriptionGroup
-  });
+  CatalogResponse(
+      {this.cursor,
+      this.errors,
+      this.latestTime,
+      this.objects,
+      this.relatedObjects,
+      this.updatedAt,
+      this.idMappings,
+      this.image,
+      this.limits,
+      this.standardUnitDescriptionGroup});
 
   factory CatalogResponse.fromJson(Map<String, dynamic> json) =>
       _$CatalogResponseFromJson(json);
@@ -4007,20 +4003,15 @@ class CatalogResponse {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogInfoResponse {
-
   final List<SquareError>? errors;
-
 
   final CatalogInfoResponseLimits? limits;
 
   @JsonKey(name: "standard_unit_description_group")
   final StandardUnitDescriptionGroup? standardUnitDescriptionGroup;
 
-
-  CatalogInfoResponse({
-    this.limits, this.errors,
-    this.standardUnitDescriptionGroup
-  });
+  CatalogInfoResponse(
+      {this.limits, this.errors, this.standardUnitDescriptionGroup});
 
   factory CatalogInfoResponse.fromJson(Map<String, dynamic> json) =>
       _$CatalogInfoResponseFromJson(json);
@@ -4043,9 +4034,7 @@ class CatalogDeleteResponse {
   @JsonKey(name: "deleted_at")
   final String? deletedAt;
 
-  CatalogDeleteResponse({
-    this.errors, this.deletedObjectIds, this.deletedAt
-  });
+  CatalogDeleteResponse({this.errors, this.deletedObjectIds, this.deletedAt});
 
   factory CatalogDeleteResponse.fromJson(Map<String, dynamic> json) =>
       _$CatalogDeleteResponseFromJson(json);
@@ -4059,26 +4048,25 @@ class CatalogDeleteResponse {
 }
 
 @JsonSerializable(includeIfNull: false)
-class InventoryAdjustment
-{
+class InventoryAdjustment {
   final String? id;
 
   @JsonKey(name: "adjustment_group")
   final InventoryAdjustmentGroup? adjustmentGroup;
 
-  @JsonKey(name:"catalog_object_id")
+  @JsonKey(name: "catalog_object_id")
   final String? catalogObjectId;
 
   @JsonKey(name: "catalog_object_type")
   final String? catalogObjectType;
 
-  @JsonKey(name:"created_at")
+  @JsonKey(name: "created_at")
   final String? createdAt;
 
   @JsonKey(name: "employee_id")
   final String? employeeId;
 
-  @JsonKey(name:"from_state")
+  @JsonKey(name: "from_state")
   final String? fromState;
 
   @JsonKey(name: "goods_receipt_id")
@@ -4112,14 +4100,25 @@ class InventoryAdjustment
   @JsonKey(name: "transaction_id")
   final String? transactionId;
 
-  InventoryAdjustment({
-    this.locationId, this.id, this.createdAt, this.source,
-    this.totalPriceMoney, this.catalogObjectId, this.referenceId,
-    this.quantity, this.transactionId, this.refundId,
-    this.employeeId, this.adjustmentGroup, this.catalogObjectType,
-    this.fromState, this.goodsReceiptId, this.occurredAt,
-    this.purchaseOrderId, this.toState
-  });
+  InventoryAdjustment(
+      {this.locationId,
+      this.id,
+      this.createdAt,
+      this.source,
+      this.totalPriceMoney,
+      this.catalogObjectId,
+      this.referenceId,
+      this.quantity,
+      this.transactionId,
+      this.refundId,
+      this.employeeId,
+      this.adjustmentGroup,
+      this.catalogObjectType,
+      this.fromState,
+      this.goodsReceiptId,
+      this.occurredAt,
+      this.purchaseOrderId,
+      this.toState});
 
   factory InventoryAdjustment.fromJson(Map<String, dynamic> json) =>
       _$InventoryAdjustmentFromJson(json);
@@ -4134,7 +4133,6 @@ class InventoryAdjustment
 
 @JsonSerializable(includeIfNull: false)
 class InventoryAdjustmentGroup {
-
   final String? id;
 
   @JsonKey(name: "from_state")
@@ -4146,9 +4144,8 @@ class InventoryAdjustmentGroup {
   @JsonKey(name: "to_state")
   final InventoryState? toState;
 
-  InventoryAdjustmentGroup({
-    this.toState, this.fromState, this.id, this.rootAdjustmentId
-  });
+  InventoryAdjustmentGroup(
+      {this.toState, this.fromState, this.id, this.rootAdjustmentId});
 
   factory InventoryAdjustmentGroup.fromJson(Map<String, dynamic> json) =>
       _$InventoryAdjustmentGroupFromJson(json);
@@ -4171,7 +4168,7 @@ class InventoryPhysicalCount {
   @JsonKey(name: "catalog_object_type")
   final String? catalogObjectType;
 
-  @JsonKey(name:"created_at")
+  @JsonKey(name: "created_at")
   final String? createdAt;
 
   @JsonKey(name: "employee_id")
@@ -4192,11 +4189,18 @@ class InventoryPhysicalCount {
 
   final InventoryState? state;
 
-  InventoryPhysicalCount({
-    this.id, this.occurredAt, this.catalogObjectType, this.employeeId,
-  this.quantity, this.referenceId, this.catalogObjectId, this.source,
-  this.createdAt, this.locationId, this.state
-  });
+  InventoryPhysicalCount(
+      {this.id,
+      this.occurredAt,
+      this.catalogObjectType,
+      this.employeeId,
+      this.quantity,
+      this.referenceId,
+      this.catalogObjectId,
+      this.source,
+      this.createdAt,
+      this.locationId,
+      this.state});
 
   factory InventoryPhysicalCount.fromJson(Map<String, dynamic> json) =>
       _$InventoryPhysicalCountFromJson(json);
@@ -4243,11 +4247,19 @@ class InventoryTransfer {
   @JsonKey(name: "to_location_id")
   final String? toLocationId;
 
-  InventoryTransfer({
-    this.state, this.createdAt, this.source, this.catalogObjectId,
-  this.referenceId, this.quantity, this.employeeId, this.catalogObjectType,
-    this.occurredAt, this.id, this.fromLocationId, this.toLocationId
-  });
+  InventoryTransfer(
+      {this.state,
+      this.createdAt,
+      this.source,
+      this.catalogObjectId,
+      this.referenceId,
+      this.quantity,
+      this.employeeId,
+      this.catalogObjectType,
+      this.occurredAt,
+      this.id,
+      this.fromLocationId,
+      this.toLocationId});
 
   factory InventoryTransfer.fromJson(Map<String, dynamic> json) =>
       _$InventoryTransferFromJson(json);
@@ -4262,7 +4274,6 @@ class InventoryTransfer {
 
 @JsonSerializable(includeIfNull: false)
 class InventoryChange {
-
   final InventoryAdjustment? adjustment;
 
   @JsonKey(name: "measurement_unit")
@@ -4278,10 +4289,13 @@ class InventoryChange {
 
   final InventoryChangeType? type;
 
-  InventoryChange({
-    this.type, this.measurementUnitId, this.measurementUnit,
-    this.adjustment, this.physicalCount, this.transfer
-  });
+  InventoryChange(
+      {this.type,
+      this.measurementUnitId,
+      this.measurementUnit,
+      this.adjustment,
+      this.physicalCount,
+      this.transfer});
 
   factory InventoryChange.fromJson(Map<String, dynamic> json) =>
       _$InventoryChangeFromJson(json);
@@ -4296,7 +4310,6 @@ class InventoryChange {
 
 @JsonSerializable(includeIfNull: false)
 class Customer {
-
   final String? id;
 
   final Address? address;
@@ -4349,13 +4362,27 @@ class Customer {
 
   final List<Card>? cards;
 
-  Customer({
-    this.id, this.referenceId, this.createdAt, this.taxIds,
-  this.version, this.updatedAt, this.familyName, this.givenName,
-  this.companyName, this.phoneNumber, this.address, this.emailAddress,
-    this.note, this.preferences, this.birthday, this.cards,
-  this.creationSource, this.groupIds, this.nickname, this.segmentIds
-  });
+  Customer(
+      {this.id,
+      this.referenceId,
+      this.createdAt,
+      this.taxIds,
+      this.version,
+      this.updatedAt,
+      this.familyName,
+      this.givenName,
+      this.companyName,
+      this.phoneNumber,
+      this.address,
+      this.emailAddress,
+      this.note,
+      this.preferences,
+      this.birthday,
+      this.cards,
+      this.creationSource,
+      this.groupIds,
+      this.nickname,
+      this.segmentIds});
 
   factory Customer.fromJson(Map<String, dynamic> json) =>
       _$CustomerFromJson(json);
@@ -4370,13 +4397,10 @@ class Customer {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerTaxIds {
-
   @JsonKey(name: "eu_vat")
   final String? euVat;
 
-  CustomerTaxIds({
-    this.euVat
-  });
+  CustomerTaxIds({this.euVat});
 
   factory CustomerTaxIds.fromJson(Map<String, dynamic> json) =>
       _$CustomerTaxIdsFromJson(json);
@@ -4391,13 +4415,10 @@ class CustomerTaxIds {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerPreferences {
-
   @JsonKey(name: "email_unsubscribed")
   final bool? emailUnsubscribed;
 
-  CustomerPreferences({
-    this.emailUnsubscribed
-  });
+  CustomerPreferences({this.emailUnsubscribed});
 
   factory CustomerPreferences.fromJson(Map<String, dynamic> json) =>
       _$CustomerPreferencesFromJson(json);
@@ -4412,11 +4433,10 @@ class CustomerPreferences {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerQuery {
-
   @JsonKey(name: "created_at")
   final TimeRange? createdAt;
 
-  @JsonKey(name:" creation_source")
+  @JsonKey(name: " creation_source")
   final CustomerCreationSourceFilter? creationSource;
 
   @JsonKey(name: "email_address")
@@ -4434,10 +4454,14 @@ class CustomerQuery {
   @JsonKey(name: "updated_at")
   final TimeRange? updated_at;
 
-  CustomerQuery({
-    this.groupIds, this.creationSource, this.emailAddress, this.phoneNumber,
-    this.createdAt, this.referenceId, this.updated_at
-  });
+  CustomerQuery(
+      {this.groupIds,
+      this.creationSource,
+      this.emailAddress,
+      this.phoneNumber,
+      this.createdAt,
+      this.referenceId,
+      this.updated_at});
 
   factory CustomerQuery.fromJson(Map<String, dynamic> json) =>
       _$CustomerQueryFromJson(json);
@@ -4452,16 +4476,13 @@ class CustomerQuery {
 
 @JsonSerializable(includeIfNull: false)
 class FilterValue {
-
   final List<String>? all;
 
   final List<String>? any;
-  
+
   final List<String>? none;
 
-  FilterValue({
-    this.all, this.any, this.none
-  });
+  FilterValue({this.all, this.any, this.none});
 
   factory FilterValue.fromJson(Map<String, dynamic> json) =>
       _$FilterValueFromJson(json);
@@ -4480,9 +4501,7 @@ class CustomerTextFilter {
 
   final String? fuzzy;
 
-  CustomerTextFilter({
-    this.exact, this.fuzzy
-  });
+  CustomerTextFilter({this.exact, this.fuzzy});
 
   factory CustomerTextFilter.fromJson(Map<String, dynamic> json) =>
       _$CustomerTextFilterFromJson(json);
@@ -4497,14 +4516,11 @@ class CustomerTextFilter {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerCreationSourceFilter {
-
   final CustomerInclusionExclusion? rule;
 
   final List<CustomerCreationSource>? values;
 
-  CustomerCreationSourceFilter({
-    this.values, this.rule
-  });
+  CustomerCreationSourceFilter({this.values, this.rule});
 
   factory CustomerCreationSourceFilter.fromJson(Map<String, dynamic> json) =>
       _$CustomerCreationSourceFilterFromJson(json);
@@ -4519,16 +4535,13 @@ class CustomerCreationSourceFilter {
 
 @JsonSerializable(includeIfNull: false)
 class TimeRange {
-
   @JsonKey(name: "end_at")
   final String? endAt;
 
   @JsonKey(name: "start_at")
   final String? startAt;
 
-  TimeRange({
-    this.endAt, this.startAt
-  });
+  TimeRange({this.endAt, this.startAt});
 
   factory TimeRange.fromJson(Map<String, dynamic> json) =>
       _$TimeRangeFromJson(json);
@@ -4543,7 +4556,6 @@ class TimeRange {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerFilter {
-
   @JsonKey(name: "created_at")
   final TimeRange? createdAt;
 
@@ -4565,11 +4577,14 @@ class CustomerFilter {
   @JsonKey(name: "updated_at")
   final TimeRange? updatedAt;
 
-  CustomerFilter({
-    this.referenceId, this.createdAt, this.phoneNumber,
-    this.emailAddress, this.creationSource, this.groupIds,
-  this.updatedAt
-  });
+  CustomerFilter(
+      {this.referenceId,
+      this.createdAt,
+      this.phoneNumber,
+      this.emailAddress,
+      this.creationSource,
+      this.groupIds,
+      this.updatedAt});
 
   factory CustomerFilter.fromJson(Map<String, dynamic> json) =>
       _$CustomerFilterFromJson(json);
@@ -4580,21 +4595,15 @@ class CustomerFilter {
   String toString() {
     return toJson().toString();
   }
-
-
 }
-
 
 @JsonSerializable(includeIfNull: false)
 class CustomerSort {
-
   final CustomerSortField? field;
 
   final SortOrder? order;
 
-  CustomerSort({
-    this.order, this.field
-  });
+  CustomerSort({this.order, this.field});
 
   factory CustomerSort.fromJson(Map<String, dynamic> json) =>
       _$CustomerSortFromJson(json);
@@ -4609,7 +4618,6 @@ class CustomerSort {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerGroup {
-
   final String? id;
 
   final String? name;
@@ -4620,9 +4628,7 @@ class CustomerGroup {
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  CustomerGroup({
-    this.updatedAt, this.createdAt, this.id, this.name
-  });
+  CustomerGroup({this.updatedAt, this.createdAt, this.id, this.name});
 
   factory CustomerGroup.fromJson(Map<String, dynamic> json) =>
       _$CustomerGroupFromJson(json);
@@ -4637,7 +4643,6 @@ class CustomerGroup {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerSegment {
-
   final String? id;
 
   final String? name;
@@ -4648,9 +4653,7 @@ class CustomerSegment {
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  CustomerSegment({
-    this.name, this.id, this.createdAt, this.updatedAt
-  });
+  CustomerSegment({this.name, this.id, this.createdAt, this.updatedAt});
 
   factory CustomerSegment.fromJson(Map<String, dynamic> json) =>
       _$CustomerSegmentFromJson(json);
@@ -4665,7 +4668,6 @@ class CustomerSegment {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyAccount {
-
   final String? id;
 
   @JsonKey(name: "program_id")
@@ -4673,7 +4675,7 @@ class LoyaltyAccount {
 
   final int? balance;
 
-  @JsonKey(name:"created_at")
+  @JsonKey(name: "created_at")
   final String? createdAt;
 
   @JsonKey(name: "customer_id")
@@ -4690,14 +4692,20 @@ class LoyaltyAccount {
 
   final LoyaltyAccountMapping? mapping;
 
-  @JsonKey(name:"updated_at")
+  @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  LoyaltyAccount({
-    this.updatedAt, this.createdAt, this.id, this.customerId,
-  this.balance, this.enrolledAt, this.expiringPointDeadlines, this.lifetimePoints,
-    this.mapping, this.programId
-  });
+  LoyaltyAccount(
+      {this.updatedAt,
+      this.createdAt,
+      this.id,
+      this.customerId,
+      this.balance,
+      this.enrolledAt,
+      this.expiringPointDeadlines,
+      this.lifetimePoints,
+      this.mapping,
+      this.programId});
 
   factory LoyaltyAccount.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyAccountFromJson(json);
@@ -4712,7 +4720,6 @@ class LoyaltyAccount {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyAccountMapping {
-
   final String? id;
 
   @JsonKey(name: "created_at")
@@ -4721,9 +4728,7 @@ class LoyaltyAccountMapping {
   @JsonKey(name: "phone_number")
   final String? phoneNumber;
 
-  LoyaltyAccountMapping({
-    this.id, this.createdAt, this.phoneNumber
-  });
+  LoyaltyAccountMapping({this.id, this.createdAt, this.phoneNumber});
 
   factory LoyaltyAccountMapping.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyAccountMappingFromJson(json);
@@ -4738,21 +4743,20 @@ class LoyaltyAccountMapping {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyAccountExpiringPointDeadline {
-
   @JsonKey(name: "expires_at")
   final String? expiresAt;
 
   @JsonKey(name: "points")
   final int? points;
 
-  LoyaltyAccountExpiringPointDeadline({
-    this.expiresAt, this.points
-  });
+  LoyaltyAccountExpiringPointDeadline({this.expiresAt, this.points});
 
-  factory LoyaltyAccountExpiringPointDeadline.fromJson(Map<String, dynamic> json) =>
+  factory LoyaltyAccountExpiringPointDeadline.fromJson(
+          Map<String, dynamic> json) =>
       _$LoyaltyAccountExpiringPointDeadlineFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoyaltyAccountExpiringPointDeadlineToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$LoyaltyAccountExpiringPointDeadlineToJson(this);
 
   @override
   String toString() {
@@ -4762,20 +4766,20 @@ class LoyaltyAccountExpiringPointDeadline {
 
 @JsonSerializable(includeIfNull: false)
 class SearchLoyaltyAccountsRequestLoyaltyAccountQuery {
-
   @JsonKey(name: "customer_ids")
   final List<String>? customerIds;
 
   final List<LoyaltyAccountMapping>? mappings;
 
-  SearchLoyaltyAccountsRequestLoyaltyAccountQuery({
-    this.customerIds, this.mappings
-  });
+  SearchLoyaltyAccountsRequestLoyaltyAccountQuery(
+      {this.customerIds, this.mappings});
 
-  factory SearchLoyaltyAccountsRequestLoyaltyAccountQuery.fromJson(Map<String, dynamic> json) =>
+  factory SearchLoyaltyAccountsRequestLoyaltyAccountQuery.fromJson(
+          Map<String, dynamic> json) =>
       _$SearchLoyaltyAccountsRequestLoyaltyAccountQueryFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SearchLoyaltyAccountsRequestLoyaltyAccountQueryToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$SearchLoyaltyAccountsRequestLoyaltyAccountQueryToJson(this);
 
   @override
   String toString() {
@@ -4785,7 +4789,6 @@ class SearchLoyaltyAccountsRequestLoyaltyAccountQuery {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgram {
-
   final String? id;
 
   @JsonKey(name: "accrual_rules")
@@ -4804,17 +4807,22 @@ class LoyaltyProgram {
 
   final LoyaltyProgramTerminology? terminology;
 
-  @JsonKey(name:"updated_at")
+  @JsonKey(name: "updated_at")
   final String? updatedAt;
 
   @JsonKey(name: "expiration_policy")
   final LoyaltyProgramExpirationPolicy? expirationPolicy;
 
-  LoyaltyProgram({
-    this.createdAt, this.id, this.updatedAt, this.locationIds,
-    this.status, this.accrualRules, this.expirationPolicy, 
-    this.rewardTiers, this.terminology
-  });
+  LoyaltyProgram(
+      {this.createdAt,
+      this.id,
+      this.updatedAt,
+      this.locationIds,
+      this.status,
+      this.accrualRules,
+      this.expirationPolicy,
+      this.rewardTiers,
+      this.terminology});
 
   factory LoyaltyProgram.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyProgramFromJson(json);
@@ -4829,13 +4837,10 @@ class LoyaltyProgram {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramExpirationPolicy {
-
   @JsonKey(name: "expiration_duration")
   final String? expirationDuration;
 
-  LoyaltyProgramExpirationPolicy({
-  this.expirationDuration
-  });
+  LoyaltyProgramExpirationPolicy({this.expirationDuration});
 
   factory LoyaltyProgramExpirationPolicy.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyProgramExpirationPolicyFromJson(json);
@@ -4846,19 +4851,15 @@ class LoyaltyProgramExpirationPolicy {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramTerminology {
-
   final String? one;
 
   final String? other;
 
-  LoyaltyProgramTerminology({
-    this.one, this.other
-  });
+  LoyaltyProgramTerminology({this.one, this.other});
 
   factory LoyaltyProgramTerminology.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyProgramTerminologyFromJson(json);
@@ -4873,7 +4874,6 @@ class LoyaltyProgramTerminology {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramRewardTier {
-
   final String? id;
 
   @JsonKey(name: "created_at")
@@ -4888,10 +4888,13 @@ class LoyaltyProgramRewardTier {
 
   final LoyaltyProgramRewardDefinition? definition;
 
-  LoyaltyProgramRewardTier({
-    this.id, this.createdAt, this.points, this.name,
-    this.definition, this.pricingRuleReference
-  });
+  LoyaltyProgramRewardTier(
+      {this.id,
+      this.createdAt,
+      this.points,
+      this.name,
+      this.definition,
+      this.pricingRuleReference});
 
   factory LoyaltyProgramRewardTier.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyProgramRewardTierFromJson(json);
@@ -4902,18 +4905,16 @@ class LoyaltyProgramRewardTier {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramRewardDefinition {
-
-  @JsonKey(name:"discount_type")
+  @JsonKey(name: "discount_type")
   final LoyaltyProgramRewardDefinitionType? discountType;
 
   final LoyaltyProgramRewardDefinitionScope? scope;
 
-  @JsonKey(name:"catalog_object_ids")
+  @JsonKey(name: "catalog_object_ids")
   final List<String>? catalogObjectIds;
 
   @JsonKey(name: "fixed_discount_money")
@@ -4925,10 +4926,13 @@ class LoyaltyProgramRewardDefinition {
   @JsonKey(name: "percentage_discount")
   final String? percentageDiscount;
 
-  LoyaltyProgramRewardDefinition({
-    this.discountType, this.scope, this.catalogObjectIds,
-    this.fixedDiscountMoney, this.maxDiscountMoney, this.percentageDiscount
-  });
+  LoyaltyProgramRewardDefinition(
+      {this.discountType,
+      this.scope,
+      this.catalogObjectIds,
+      this.fixedDiscountMoney,
+      this.maxDiscountMoney,
+      this.percentageDiscount});
 
   factory LoyaltyProgramRewardDefinition.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyProgramRewardDefinitionFromJson(json);
@@ -4943,16 +4947,13 @@ class LoyaltyProgramRewardDefinition {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogObjectReference {
-
   @JsonKey(name: "catalog_version")
   final int? catalogVersion;
 
   @JsonKey(name: "object_id")
   final String? objectId;
 
-  CatalogObjectReference({
-    this.objectId, this.catalogVersion
-  });
+  CatalogObjectReference({this.objectId, this.catalogVersion});
 
   factory CatalogObjectReference.fromJson(Map<String, dynamic> json) =>
       _$CatalogObjectReferenceFromJson(json);
@@ -4963,19 +4964,17 @@ class CatalogObjectReference {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramAccrualRule {
-
   @JsonKey(name: "accrual_type")
   final LoyaltyProgramAccrualRuleType? accrualType;
 
   @JsonKey(name: "category_data")
   final LoyaltyProgramAccrualRuleCategoryData? categoryData;
 
-  @JsonKey(name:"item_variation_data")
+  @JsonKey(name: "item_variation_data")
   final LoyaltyProgramAccrualRuleItemVariationData? itemVariationData;
 
   final int? points;
@@ -4986,10 +4985,13 @@ class LoyaltyProgramAccrualRule {
   @JsonKey(name: "visit_data")
   final LoyaltyProgramAccrualRuleVisitData? visitData;
 
-  LoyaltyProgramAccrualRule({
-    this.points, this.itemVariationData, this.categoryData,
-    this.accrualType, this.spendData, this.visitData
-  });
+  LoyaltyProgramAccrualRule(
+      {this.points,
+      this.itemVariationData,
+      this.categoryData,
+      this.accrualType,
+      this.spendData,
+      this.visitData});
 
   factory LoyaltyProgramAccrualRule.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyProgramAccrualRuleFromJson(json);
@@ -5000,26 +5002,24 @@ class LoyaltyProgramAccrualRule {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramAccrualRuleVisitData {
-
   @JsonKey(name: "tax_mode")
   final LoyaltyProgramAccrualRuleTaxMode? taxMode;
 
   @JsonKey(name: "minimum_amount_money")
   final Money? minimumAmountMoney;
 
-  LoyaltyProgramAccrualRuleVisitData({
-    this.minimumAmountMoney, this.taxMode
-  });
+  LoyaltyProgramAccrualRuleVisitData({this.minimumAmountMoney, this.taxMode});
 
-  factory LoyaltyProgramAccrualRuleVisitData.fromJson(Map<String, dynamic> json) =>
+  factory LoyaltyProgramAccrualRuleVisitData.fromJson(
+          Map<String, dynamic> json) =>
       _$LoyaltyProgramAccrualRuleVisitDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoyaltyProgramAccrualRuleVisitDataToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$LoyaltyProgramAccrualRuleVisitDataToJson(this);
 
   @override
   String toString() {
@@ -5027,11 +5027,10 @@ class LoyaltyProgramAccrualRuleVisitData {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class LoyaltyProgramAccrualRuleSpendData {
-
   @JsonKey(name: "amount_money")
-  final Money ? amountMoney;
+  final Money? amountMoney;
 
   @JsonKey(name: "tax_mode")
   final LoyaltyProgramAccrualRuleTaxMode? taxMode;
@@ -5042,14 +5041,18 @@ class LoyaltyProgramAccrualRuleSpendData {
   @JsonKey(name: "excluded_item_variation_ids")
   final List<String>? excludedItemVariationIds;
 
-  LoyaltyProgramAccrualRuleSpendData({
-    this.taxMode, this.amountMoney, this.excludedCategoryIds, this.excludedItemVariationIds
-  });
+  LoyaltyProgramAccrualRuleSpendData(
+      {this.taxMode,
+      this.amountMoney,
+      this.excludedCategoryIds,
+      this.excludedItemVariationIds});
 
-  factory LoyaltyProgramAccrualRuleSpendData.fromJson(Map<String, dynamic> json) =>
+  factory LoyaltyProgramAccrualRuleSpendData.fromJson(
+          Map<String, dynamic> json) =>
       _$LoyaltyProgramAccrualRuleSpendDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoyaltyProgramAccrualRuleSpendDataToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$LoyaltyProgramAccrualRuleSpendDataToJson(this);
 
   @override
   String toString() {
@@ -5059,18 +5062,17 @@ class LoyaltyProgramAccrualRuleSpendData {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramAccrualRuleItemVariationData {
-
   @JsonKey(name: "item_variation_id")
   final String? itemVariationId;
 
-  LoyaltyProgramAccrualRuleItemVariationData({
-    this.itemVariationId
-  });
+  LoyaltyProgramAccrualRuleItemVariationData({this.itemVariationId});
 
-  factory LoyaltyProgramAccrualRuleItemVariationData.fromJson(Map<String, dynamic> json) =>
+  factory LoyaltyProgramAccrualRuleItemVariationData.fromJson(
+          Map<String, dynamic> json) =>
       _$LoyaltyProgramAccrualRuleItemVariationDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoyaltyProgramAccrualRuleItemVariationDataToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$LoyaltyProgramAccrualRuleItemVariationDataToJson(this);
 
   @override
   String toString() {
@@ -5080,28 +5082,26 @@ class LoyaltyProgramAccrualRuleItemVariationData {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyProgramAccrualRuleCategoryData {
-
   @JsonKey(name: "category_id")
   final String? categoryId;
 
-  LoyaltyProgramAccrualRuleCategoryData({
-    this.categoryId
-  });
+  LoyaltyProgramAccrualRuleCategoryData({this.categoryId});
 
-  factory LoyaltyProgramAccrualRuleCategoryData.fromJson(Map<String, dynamic> json) =>
+  factory LoyaltyProgramAccrualRuleCategoryData.fromJson(
+          Map<String, dynamic> json) =>
       _$LoyaltyProgramAccrualRuleCategoryDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoyaltyProgramAccrualRuleCategoryDataToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$LoyaltyProgramAccrualRuleCategoryDataToJson(this);
 
   @override
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
-class LoyaltyReward{
+class LoyaltyReward {
   final String? id;
 
   @JsonKey(name: "loyalty_account_id")
@@ -5115,7 +5115,7 @@ class LoyaltyReward{
 
   @JsonKey(name: "order_id")
   final String? orderId;
-  
+
   final int? points;
 
   @JsonKey(name: "redeemed_at")
@@ -5126,11 +5126,16 @@ class LoyaltyReward{
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  LoyaltyReward({
-    this.points, this.createdAt, this.id, this.status,
-    this.updatedAt, this.orderId, this.rewardTierId, this.loyaltyAccountId,
-    this.redeemedAt
-  });
+  LoyaltyReward(
+      {this.points,
+      this.createdAt,
+      this.id,
+      this.status,
+      this.updatedAt,
+      this.orderId,
+      this.rewardTierId,
+      this.loyaltyAccountId,
+      this.redeemedAt});
 
   factory LoyaltyReward.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyRewardFromJson(json);
@@ -5145,20 +5150,20 @@ class LoyaltyReward{
 
 @JsonSerializable(includeIfNull: false)
 class SearchLoyaltyRewardsRequestLoyaltyRewardQuery {
-
   @JsonKey(name: "loyalty_account_id")
   final String? loyaltyAccountId;
 
   final LoyaltyRewardStatus? status;
 
-  SearchLoyaltyRewardsRequestLoyaltyRewardQuery({
-    this.loyaltyAccountId, this.status
-  });
+  SearchLoyaltyRewardsRequestLoyaltyRewardQuery(
+      {this.loyaltyAccountId, this.status});
 
-  factory SearchLoyaltyRewardsRequestLoyaltyRewardQuery.fromJson(Map<String, dynamic> json) =>
+  factory SearchLoyaltyRewardsRequestLoyaltyRewardQuery.fromJson(
+          Map<String, dynamic> json) =>
       _$SearchLoyaltyRewardsRequestLoyaltyRewardQueryFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SearchLoyaltyRewardsRequestLoyaltyRewardQueryToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$SearchLoyaltyRewardsRequestLoyaltyRewardQueryToJson(this);
 
   @override
   String toString() {
@@ -5168,7 +5173,6 @@ class SearchLoyaltyRewardsRequestLoyaltyRewardQuery {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCard {
-
   final String? id;
 
   final GiftCardType? type;
@@ -5189,10 +5193,15 @@ class GiftCard {
 
   final GiftCardStatus? status;
 
-  GiftCard({
-    this.status, this.id, this.createdAt, this.customerIds,
-    this.type, this.balanceMoney, this.gan, this.ganSource
-  });
+  GiftCard(
+      {this.status,
+      this.id,
+      this.createdAt,
+      this.customerIds,
+      this.type,
+      this.balanceMoney,
+      this.gan,
+      this.ganSource});
 
   factory GiftCard.fromJson(Map<String, dynamic> json) =>
       _$GiftCardFromJson(json);
@@ -5207,7 +5216,6 @@ class GiftCard {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivity {
-
   final String? id;
 
   @JsonKey(name: "location_id")
@@ -5245,7 +5253,7 @@ class GiftCardActivity {
   @JsonKey(name: "gift_card_id")
   final String? giftCardId;
 
-  @JsonKey(name:"import_activity_details")
+  @JsonKey(name: "import_activity_details")
   final GiftCardActivityImport? importActivityDetails;
 
   @JsonKey(name: "import_reversal_activity_details")
@@ -5264,19 +5272,30 @@ class GiftCardActivity {
   final GiftCardActivityUnblock? unblockActivityDetails;
 
   @JsonKey(name: "unlinked_activity_refund_activity_details")
-  final GiftCardActivityUnlinkedActivityRefund? unlinkedActivityRefundActivityDetails;
+  final GiftCardActivityUnlinkedActivityRefund?
+      unlinkedActivityRefundActivityDetails;
 
-
-
-  GiftCardActivity({
-    this.type, this.createdAt, this.id, this.locationId, this.activateActivityDetails,
-  this.adjustDecrementActivityDetails, this.adjustIncrementActivityDetails,
-  this.blockActivityDetails, this.clearBalanceActivityDetails, this.deactivateActivityDetails,
-  this.giftCardBalanceMoney, this.giftCardGan, this.giftCardId,
-  this.importActivityDetails, this.importReversalActivityDetails, this.loadActivityDetails,
-  this.redeemActivityDetails, this.refundActivityDetails, this.unblockActivityDetails,
-    this.unlinkedActivityRefundActivityDetails
-  });
+  GiftCardActivity(
+      {this.type,
+      this.createdAt,
+      this.id,
+      this.locationId,
+      this.activateActivityDetails,
+      this.adjustDecrementActivityDetails,
+      this.adjustIncrementActivityDetails,
+      this.blockActivityDetails,
+      this.clearBalanceActivityDetails,
+      this.deactivateActivityDetails,
+      this.giftCardBalanceMoney,
+      this.giftCardGan,
+      this.giftCardId,
+      this.importActivityDetails,
+      this.importReversalActivityDetails,
+      this.loadActivityDetails,
+      this.redeemActivityDetails,
+      this.refundActivityDetails,
+      this.unblockActivityDetails,
+      this.unlinkedActivityRefundActivityDetails});
 
   factory GiftCardActivity.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityFromJson(json);
@@ -5287,12 +5306,10 @@ class GiftCardActivity {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityUnlinkedActivityRefund {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
@@ -5302,30 +5319,27 @@ class GiftCardActivityUnlinkedActivityRefund {
   @JsonKey(name: "reference_id")
   final String? referenceId;
 
-  GiftCardActivityUnlinkedActivityRefund({
-    this.amountMoney, this.referenceId, this.paymentId
-  });
+  GiftCardActivityUnlinkedActivityRefund(
+      {this.amountMoney, this.referenceId, this.paymentId});
 
-  factory GiftCardActivityUnlinkedActivityRefund.fromJson(Map<String, dynamic> json) =>
+  factory GiftCardActivityUnlinkedActivityRefund.fromJson(
+          Map<String, dynamic> json) =>
       _$GiftCardActivityUnlinkedActivityRefundFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GiftCardActivityUnlinkedActivityRefundToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GiftCardActivityUnlinkedActivityRefundToJson(this);
 
   @override
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
-class GiftCardActivityUnblock  {
-
+class GiftCardActivityUnblock {
   final String? reason;
 
-  GiftCardActivityUnblock({
-    this.reason
-  });
+  GiftCardActivityUnblock({this.reason});
 
   factory GiftCardActivityUnblock.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityUnblockFromJson(json);
@@ -5338,10 +5352,8 @@ class GiftCardActivityUnblock  {
   }
 }
 
-
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityRefund {
-
   @JsonKey(name: "redeem_activity_id")
   final String? redeemActivityId;
 
@@ -5354,9 +5366,11 @@ class GiftCardActivityRefund {
   @JsonKey(name: "reference_id")
   final String? referenceId;
 
-  GiftCardActivityRefund({
-    this.paymentId, this.referenceId, this.amountMoney, this.redeemActivityId
-  });
+  GiftCardActivityRefund(
+      {this.paymentId,
+      this.referenceId,
+      this.amountMoney,
+      this.redeemActivityId});
 
   factory GiftCardActivityRefund.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityRefundFromJson(json);
@@ -5371,19 +5385,16 @@ class GiftCardActivityRefund {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityRedeem {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
   @JsonKey(name: "payment_id")
   final String? paymentId;
 
-  @JsonKey(name:"reference_id")
+  @JsonKey(name: "reference_id")
   final String? referenceId;
 
-  GiftCardActivityRedeem({
-    this.amountMoney, this.referenceId, this.paymentId
-  });
+  GiftCardActivityRedeem({this.amountMoney, this.referenceId, this.paymentId});
 
   factory GiftCardActivityRedeem.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityRedeemFromJson(json);
@@ -5398,7 +5409,6 @@ class GiftCardActivityRedeem {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityLoad {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
@@ -5414,10 +5424,12 @@ class GiftCardActivityLoad {
   @JsonKey(name: "reference_id")
   final String? referenceId;
 
-  GiftCardActivityLoad({
-    this.referenceId, this.amountMoney, this.orderId,
-    this.buyerPaymentInstrumentIds, this.lineItemUid
-  });
+  GiftCardActivityLoad(
+      {this.referenceId,
+      this.amountMoney,
+      this.orderId,
+      this.buyerPaymentInstrumentIds,
+      this.lineItemUid});
 
   factory GiftCardActivityLoad.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityLoadFromJson(json);
@@ -5432,13 +5444,10 @@ class GiftCardActivityLoad {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityImportReversal {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
-  GiftCardActivityImportReversal({
-    this.amountMoney
-  });
+  GiftCardActivityImportReversal({this.amountMoney});
 
   factory GiftCardActivityImportReversal.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityImportReversalFromJson(json);
@@ -5456,9 +5465,7 @@ class GiftCardActivityImport {
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
-  GiftCardActivityImport({
-    this.amountMoney
-  });
+  GiftCardActivityImport({this.amountMoney});
 
   factory GiftCardActivityImport.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityImportFromJson(json);
@@ -5473,12 +5480,9 @@ class GiftCardActivityImport {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityDeactivate {
-
   final String? reason;
 
-  GiftCardActivityDeactivate({
-    this.reason
-  });
+  GiftCardActivityDeactivate({this.reason});
 
   factory GiftCardActivityDeactivate.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityDeactivateFromJson(json);
@@ -5493,12 +5497,9 @@ class GiftCardActivityDeactivate {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityClearBalance {
-
   final String? reason;
 
-  GiftCardActivityClearBalance({
-    this.reason
-  });
+  GiftCardActivityClearBalance({this.reason});
 
   factory GiftCardActivityClearBalance.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityClearBalanceFromJson(json);
@@ -5513,12 +5514,9 @@ class GiftCardActivityClearBalance {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityBlock {
-
   final String? reason;
 
-  GiftCardActivityBlock({
-    this.reason
-  });
+  GiftCardActivityBlock({this.reason});
 
   factory GiftCardActivityBlock.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityBlockFromJson(json);
@@ -5533,21 +5531,18 @@ class GiftCardActivityBlock {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityAdjustIncrement {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
   final String? reason;
 
-  GiftCardActivityAdjustIncrement({
-  this.amountMoney,
-    this.reason
-  });
+  GiftCardActivityAdjustIncrement({this.amountMoney, this.reason});
 
   factory GiftCardActivityAdjustIncrement.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityAdjustIncrementFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GiftCardActivityAdjustIncrementToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GiftCardActivityAdjustIncrementToJson(this);
 
   @override
   String toString() {
@@ -5557,21 +5552,18 @@ class GiftCardActivityAdjustIncrement {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityAdjustDecrement {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
   final String? reason;
 
-  GiftCardActivityAdjustDecrement({
-    this.amountMoney,
-    this.reason
-  });
+  GiftCardActivityAdjustDecrement({this.amountMoney, this.reason});
 
   factory GiftCardActivityAdjustDecrement.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityAdjustDecrementFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GiftCardActivityAdjustDecrementToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GiftCardActivityAdjustDecrementToJson(this);
 
   @override
   String toString() {
@@ -5581,7 +5573,6 @@ class GiftCardActivityAdjustDecrement {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityActivate {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
@@ -5597,10 +5588,12 @@ class GiftCardActivityActivate {
   @JsonKey(name: "reference_id")
   final String? referenceId;
 
-  GiftCardActivityActivate({
-    this.referenceId, this.amountMoney, this.orderId,
-    this.buyerPaymentInstrumentIds, this.lineItemUid
-  });
+  GiftCardActivityActivate(
+      {this.referenceId,
+      this.amountMoney,
+      this.orderId,
+      this.buyerPaymentInstrumentIds,
+      this.lineItemUid});
 
   factory GiftCardActivityActivate.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityActivateFromJson(json);
@@ -5615,7 +5608,6 @@ class GiftCardActivityActivate {
 
 @JsonSerializable(includeIfNull: false)
 class Booking {
-  
   final String? id;
 
   @JsonKey(name: "all_day")
@@ -5660,13 +5652,23 @@ class Booking {
 
   final int? version;
 
-  Booking({
-    this.locationId, this.id, this.createdAt, this.status,
-  this.updatedAt, this.customerId, this.startAt,
-  this.version, this.source, this.allDay, this.appointmentSegments,
-    this.creatorDetails, this.customerNote, this.locationType,
-  this.sellerNote, this.transitionTimeMinutes
-  });
+  Booking(
+      {this.locationId,
+      this.id,
+      this.createdAt,
+      this.status,
+      this.updatedAt,
+      this.customerId,
+      this.startAt,
+      this.version,
+      this.source,
+      this.allDay,
+      this.appointmentSegments,
+      this.creatorDetails,
+      this.customerNote,
+      this.locationType,
+      this.sellerNote,
+      this.transitionTimeMinutes});
 
   factory Booking.fromJson(Map<String, dynamic> json) =>
       _$BookingFromJson(json);
@@ -5681,7 +5683,6 @@ class Booking {
 
 @JsonSerializable(includeIfNull: false)
 class BookingCreatorDetails {
-
   @JsonKey(name: "creator_type")
   final BookingCreatorDetailsCreatorType? creatorType;
 
@@ -5691,9 +5692,7 @@ class BookingCreatorDetails {
   @JsonKey(name: "team_member_id")
   final String? teamMemberId;
 
-  BookingCreatorDetails({
-    this.customerId, this.creatorType, this.teamMemberId
-  });
+  BookingCreatorDetails({this.customerId, this.creatorType, this.teamMemberId});
 
   factory BookingCreatorDetails.fromJson(Map<String, dynamic> json) =>
       _$BookingCreatorDetailsFromJson(json);
@@ -5708,7 +5707,6 @@ class BookingCreatorDetails {
 
 @JsonSerializable(includeIfNull: false)
 class AppointmentSegment {
-
   @JsonKey(name: "duration_minutes")
   final int? durationMinutes;
 
@@ -5730,11 +5728,14 @@ class AppointmentSegment {
   @JsonKey(name: "resource_ids")
   final List<String>? resourceIds;
 
-  AppointmentSegment({
-    this.teamMemberId, this.anyTeamMember, this.durationMinutes,
-  this.intermissionMinutes, this.resourceIds, this.serviceVariationId,
-  this.serviceVariationVersion
-  });
+  AppointmentSegment(
+      {this.teamMemberId,
+      this.anyTeamMember,
+      this.durationMinutes,
+      this.intermissionMinutes,
+      this.resourceIds,
+      this.serviceVariationId,
+      this.serviceVariationVersion});
 
   factory AppointmentSegment.fromJson(Map<String, dynamic> json) =>
       _$AppointmentSegmentFromJson(json);
@@ -5749,12 +5750,9 @@ class AppointmentSegment {
 
 @JsonSerializable(includeIfNull: false)
 class SearchAvailabilityQuery {
-
   final SearchAvailabilityFilter? filter;
 
-  SearchAvailabilityQuery({
-    this.filter
-  });
+  SearchAvailabilityQuery({this.filter});
 
   factory SearchAvailabilityQuery.fromJson(Map<String, dynamic> json) =>
       _$SearchAvailabilityQueryFromJson(json);
@@ -5765,12 +5763,10 @@ class SearchAvailabilityQuery {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class SearchAvailabilityFilter {
-
   @JsonKey(name: "start_at_range")
   final TimeRange? startAtRange;
 
@@ -5780,13 +5776,14 @@ class SearchAvailabilityFilter {
   @JsonKey(name: "location_id")
   final String? locationId;
 
-  @JsonKey(name:"segment_filters")
+  @JsonKey(name: "segment_filters")
   final List<SegmentFilter>? segmentFilters;
 
-  SearchAvailabilityFilter({
-    this.locationId, this.bookingId, this.segmentFilters,
-    this.startAtRange
-  });
+  SearchAvailabilityFilter(
+      {this.locationId,
+      this.bookingId,
+      this.segmentFilters,
+      this.startAtRange});
 
   factory SearchAvailabilityFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchAvailabilityFilterFromJson(json);
@@ -5801,16 +5798,13 @@ class SearchAvailabilityFilter {
 
 @JsonSerializable(includeIfNull: false)
 class SegmentFilter {
-
   @JsonKey(name: "service_variation_id")
   final String? serviceVariationId;
 
   @JsonKey(name: "team_member_id_filter")
   final FilterValue? team_memberIdFilter;
 
-  SegmentFilter({
-    this.serviceVariationId, this.team_memberIdFilter
-  });
+  SegmentFilter({this.serviceVariationId, this.team_memberIdFilter});
 
   factory SegmentFilter.fromJson(Map<String, dynamic> json) =>
       _$SegmentFilterFromJson(json);
@@ -5825,7 +5819,6 @@ class SegmentFilter {
 
 @JsonSerializable(includeIfNull: false)
 class Availability {
-
   @JsonKey(name: "appointment_segments")
   final List<AppointmentSegment>? appointmentSegments;
 
@@ -5835,9 +5828,7 @@ class Availability {
   @JsonKey(name: "start_at")
   final String? startAt;
 
-  Availability({
-    this.locationId, this.appointmentSegments, this.startAt
-  });
+  Availability({this.locationId, this.appointmentSegments, this.startAt});
 
   factory Availability.fromJson(Map<String, dynamic> json) =>
       _$AvailabilityFromJson(json);
@@ -5852,7 +5843,6 @@ class Availability {
 
 @JsonSerializable(includeIfNull: false)
 class BusinessBookingProfile {
-
   @JsonKey(name: "allow_user_cancel")
   final bool? allowUserCancel;
 
@@ -5874,11 +5864,14 @@ class BusinessBookingProfile {
   @JsonKey(name: "seller_id")
   final String? sellerId;
 
-  BusinessBookingProfile({
-    this.createdAt, this.allowUserCancel, this.bookingEnabled,
-  this.bookingPolicy, this.businessAppointmentSettings, this.customerTimezoneChoice,
-  this.sellerId
-  });
+  BusinessBookingProfile(
+      {this.createdAt,
+      this.allowUserCancel,
+      this.bookingEnabled,
+      this.bookingPolicy,
+      this.businessAppointmentSettings,
+      this.customerTimezoneChoice,
+      this.sellerId});
 
   factory BusinessBookingProfile.fromJson(Map<String, dynamic> json) =>
       _$BusinessBookingProfileFromJson(json);
@@ -5893,7 +5886,6 @@ class BusinessBookingProfile {
 
 @JsonSerializable(includeIfNull: false)
 class BusinessAppointmentSettings {
-
   @JsonKey(name: "alignment_time")
   final BusinessAppointmentSettingsAlignmentTime? alignmentTime;
 
@@ -5919,7 +5911,8 @@ class BusinessAppointmentSettings {
   final int? maxAppointmentsPerDayLimit;
 
   @JsonKey(name: "max_appointments_per_day_limit_type")
-  final BusinessAppointmentSettingsMaxAppointmentsPerDayLimitType? maxAppointmentsPerDayLimitType;
+  final BusinessAppointmentSettingsMaxAppointmentsPerDayLimitType?
+      maxAppointmentsPerDayLimitType;
 
   @JsonKey(name: "max_booking_lead_time_seconds")
   final int? maxBookingLeadTimeSeconds;
@@ -5927,15 +5920,22 @@ class BusinessAppointmentSettings {
   @JsonKey(name: "min_booking_lead_time_seconds")
   final int? minBookingLeadTimeSeconds;
 
-  @JsonKey(name:"multiple_service_booking_enabled")
+  @JsonKey(name: "multiple_service_booking_enabled")
   final bool? multipleServiceBookingEnabled;
 
-  BusinessAppointmentSettings({
-    this.alignmentTime, this.anyTeamMemberBookingEnabled, this.cancellation_policy,
-  this.cancellationFeeMoney, this.cancellationPolicyText, this.cancellationWindowSeconds,
-    this.locationTypes, this.maxAppointmentsPerDayLimit, this.maxAppointmentsPerDayLimitType,
-    this.maxBookingLeadTimeSeconds, this.minBookingLeadTimeSeconds, this.multipleServiceBookingEnabled
-  });
+  BusinessAppointmentSettings(
+      {this.alignmentTime,
+      this.anyTeamMemberBookingEnabled,
+      this.cancellation_policy,
+      this.cancellationFeeMoney,
+      this.cancellationPolicyText,
+      this.cancellationWindowSeconds,
+      this.locationTypes,
+      this.maxAppointmentsPerDayLimit,
+      this.maxAppointmentsPerDayLimitType,
+      this.maxBookingLeadTimeSeconds,
+      this.minBookingLeadTimeSeconds,
+      this.multipleServiceBookingEnabled});
 
   factory BusinessAppointmentSettings.fromJson(Map<String, dynamic> json) =>
       _$BusinessAppointmentSettingsFromJson(json);
@@ -5950,7 +5950,6 @@ class BusinessAppointmentSettings {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberBookingProfile {
-
   final String? description;
 
   @JsonKey(name: "display_name")
@@ -5965,10 +5964,12 @@ class TeamMemberBookingProfile {
   @JsonKey(name: "team_member_id")
   final String? teamMemberId;
 
-  TeamMemberBookingProfile({
-    this.teamMemberId, this.description, this.displayName,
-  this.isBookable, this.profileImageUrl
-  });
+  TeamMemberBookingProfile(
+      {this.teamMemberId,
+      this.description,
+      this.displayName,
+      this.isBookable,
+      this.profileImageUrl});
 
   factory TeamMemberBookingProfile.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberBookingProfileFromJson(json);
@@ -5983,7 +5984,6 @@ class TeamMemberBookingProfile {
 
 @JsonSerializable(includeIfNull: false)
 class Merchant {
-
   final String? id;
 
   final String? country;
@@ -6004,11 +6004,15 @@ class Merchant {
 
   final MerchantStatus? status;
 
-  Merchant({
-    this.createdAt, this.status, this.id, this.languageCode,
-    this.country, this.currency, this.businessName,
-    this.mainLocationId
-  });
+  Merchant(
+      {this.createdAt,
+      this.status,
+      this.id,
+      this.languageCode,
+      this.country,
+      this.currency,
+      this.businessName,
+      this.mainLocationId});
 
   factory Merchant.fromJson(Map<String, dynamic> json) =>
       _$MerchantFromJson(json);
@@ -6023,9 +6027,8 @@ class Merchant {
 
 @JsonSerializable(includeIfNull: false)
 class Location {
-
   final String? id;
-  
+
   final Address? address;
 
   @JsonKey(name: "business_email")
@@ -6093,16 +6096,34 @@ class Location {
   @JsonKey(name: "website_url")
   final String? websiteUrl;
 
-  Location({
-  this.businessName, this.currency, this.country,
-    this.languageCode, this.id, this.status,
-  this.createdAt, this.description, this.type, this.name,
-    this.phoneNumber, this.address, this.taxIds, this.timezone,
-  this.merchantId, this.businessEmail, this.businessHours, this.capabilities,
-  this.coordinates, this.facebookUrl, this.fullFormatLogoUrl,
-    this.instagramUsername, this.logoUrl, this.mcc, this.posBackgroundUrl,
-  this.twitterUsername, this.websiteUrl
-  });
+  Location(
+      {this.businessName,
+      this.currency,
+      this.country,
+      this.languageCode,
+      this.id,
+      this.status,
+      this.createdAt,
+      this.description,
+      this.type,
+      this.name,
+      this.phoneNumber,
+      this.address,
+      this.taxIds,
+      this.timezone,
+      this.merchantId,
+      this.businessEmail,
+      this.businessHours,
+      this.capabilities,
+      this.coordinates,
+      this.facebookUrl,
+      this.fullFormatLogoUrl,
+      this.instagramUsername,
+      this.logoUrl,
+      this.mcc,
+      this.posBackgroundUrl,
+      this.twitterUsername,
+      this.websiteUrl});
 
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
@@ -6115,23 +6136,20 @@ class Location {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class TaxIds {
   @JsonKey(name: "eu_vat")
   final String? euVat;
-  
+
   @JsonKey(name: "fr_naf")
   final String? frNaf;
 
   @JsonKey(name: "fr_siret")
   final String? frSiret;
 
-  TaxIds({
-    this.euVat, this.frNaf, this.frSiret
-  });
+  TaxIds({this.euVat, this.frNaf, this.frSiret});
 
-  factory TaxIds.fromJson(Map<String, dynamic> json) =>
-      _$TaxIdsFromJson(json);
+  factory TaxIds.fromJson(Map<String, dynamic> json) => _$TaxIdsFromJson(json);
 
   Map<String, dynamic> toJson() => _$TaxIdsToJson(this);
 
@@ -6144,12 +6162,10 @@ class TaxIds {
 @JsonSerializable(includeIfNull: false)
 class SquareCoordinates {
   final String? latitude;
-  
+
   final String? longitude;
 
-  SquareCoordinates({
-    this.longitude, this.latitude
-  });
+  SquareCoordinates({this.longitude, this.latitude});
 
   factory SquareCoordinates.fromJson(Map<String, dynamic> json) =>
       _$SquareCoordinatesFromJson(json);
@@ -6160,17 +6176,13 @@ class SquareCoordinates {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class BusinessHours {
-
   final List<BusinessHoursPeriod>? periods;
 
-  BusinessHours({
-    this.periods
-  });
+  BusinessHours({this.periods});
 
   factory BusinessHours.fromJson(Map<String, dynamic> json) =>
       _$BusinessHoursFromJson(json);
@@ -6181,12 +6193,10 @@ class BusinessHours {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class BusinessHoursPeriod {
-
   @JsonKey(name: "day_of_week")
   final DayOfWeek? dayOfWeek;
 
@@ -6196,9 +6206,7 @@ class BusinessHoursPeriod {
   @JsonKey(name: "start_local_time")
   final String? startLocalTime;
 
-  BusinessHoursPeriod({
-    this.dayOfWeek, this.endLocalTime, this.startLocalTime
-  });
+  BusinessHoursPeriod({this.dayOfWeek, this.endLocalTime, this.startLocalTime});
 
   factory BusinessHoursPeriod.fromJson(Map<String, dynamic> json) =>
       _$BusinessHoursPeriodFromJson(json);
@@ -6242,12 +6250,18 @@ class DeviceCode {
   @JsonKey(name: "status_changed_at")
   final String? statusChangedAt;
 
-  DeviceCode({
-    this.name, this.createdAt, this.status, this.id,
-    this.locationId, this.productType, this.code,
-  this.deviceId, this.pairBy, this.pairedAt,
-    this.statusChangedAt
-  });
+  DeviceCode(
+      {this.name,
+      this.createdAt,
+      this.status,
+      this.id,
+      this.locationId,
+      this.productType,
+      this.code,
+      this.deviceId,
+      this.pairBy,
+      this.pairedAt,
+      this.statusChangedAt});
 
   factory DeviceCode.fromJson(Map<String, dynamic> json) =>
       _$DeviceCodeFromJson(json);
@@ -6262,7 +6276,6 @@ class DeviceCode {
 
 @JsonSerializable(includeIfNull: false)
 class CashDrawerShiftSummary {
-
   final String? id;
 
   @JsonKey(name: "closed_at")
@@ -6282,16 +6295,21 @@ class CashDrawerShiftSummary {
   @JsonKey(name: "opened_at")
   final String? openedAt;
 
-  @JsonKey(name:"opened_cash_money")
+  @JsonKey(name: "opened_cash_money")
   final Money? openedCashMoney;
 
   final CashDrawerShiftState? state;
 
-  CashDrawerShiftSummary({
-    this.id, this.description, this.state, this.closedAt,
-  this.closedCashMoney, this.endedAt, this.expectedCashMoney,
-  this.openedAt, this.openedCashMoney
-  });
+  CashDrawerShiftSummary(
+      {this.id,
+      this.description,
+      this.state,
+      this.closedAt,
+      this.closedCashMoney,
+      this.endedAt,
+      this.expectedCashMoney,
+      this.openedAt,
+      this.openedCashMoney});
 
   factory CashDrawerShiftSummary.fromJson(Map<String, dynamic> json) =>
       _$CashDrawerShiftSummaryFromJson(json);
@@ -6306,7 +6324,6 @@ class CashDrawerShiftSummary {
 
 @JsonSerializable(includeIfNull: false)
 class CashDrawerShiftEvent {
-
   final String? id;
 
   @JsonKey(name: "created_at")
@@ -6323,11 +6340,13 @@ class CashDrawerShiftEvent {
   @JsonKey(name: "event_type")
   final CashDrawerEventType? eventType;
 
-  CashDrawerShiftEvent({
-    this.description, this.id, this.createdAt,
-  this.employeeId, this.eventMoney, this.eventType
-
-  });
+  CashDrawerShiftEvent(
+      {this.description,
+      this.id,
+      this.createdAt,
+      this.employeeId,
+      this.eventMoney,
+      this.eventType});
 
   factory CashDrawerShiftEvent.fromJson(Map<String, dynamic> json) =>
       _$CashDrawerShiftEventFromJson(json);
@@ -6342,7 +6361,6 @@ class CashDrawerShiftEvent {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMember {
-
   final String? id;
 
   @JsonKey(name: "assigned_locations")
@@ -6374,13 +6392,18 @@ class TeamMember {
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  TeamMember({
-  this.createdAt, this.id, this.status, this.phoneNumber,
-  this.updatedAt, this.referenceId, this.emailAddress,
-  this.givenName, this.familyName, this.assignedLocations,
-    this.is_owner
-
-  });
+  TeamMember(
+      {this.createdAt,
+      this.id,
+      this.status,
+      this.phoneNumber,
+      this.updatedAt,
+      this.referenceId,
+      this.emailAddress,
+      this.givenName,
+      this.familyName,
+      this.assignedLocations,
+      this.is_owner});
 
   factory TeamMember.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberFromJson(json);
@@ -6391,21 +6414,16 @@ class TeamMember {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberAssignedLocations {
-
   final TeamMemberAssignedLocationsAssignmentType? assignment_type;
 
   @JsonKey(name: "location_ids")
   final List<String>? locationIds;
 
-  TeamMemberAssignedLocations({
-    this.locationIds, this.assignment_type
-
-  });
+  TeamMemberAssignedLocations({this.locationIds, this.assignment_type});
 
   factory TeamMemberAssignedLocations.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberAssignedLocationsFromJson(json);
@@ -6416,7 +6434,6 @@ class TeamMemberAssignedLocations {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
@@ -6440,14 +6457,18 @@ class BreakType {
 
   @JsonKey(name: "updated_at")
   final String? updatedAt;
-  
+
   final int? version;
 
-  BreakType({
-
-      this.updatedAt, this.id, this.createdAt, this.locationId,
-  this.version, this.breakMame, this.expectedDuration, this.isPaid
-  });
+  BreakType(
+      {this.updatedAt,
+      this.id,
+      this.createdAt,
+      this.locationId,
+      this.version,
+      this.breakMame,
+      this.expectedDuration,
+      this.isPaid});
 
   factory BreakType.fromJson(Map<String, dynamic> json) =>
       _$BreakTypeFromJson(json);
@@ -6462,7 +6483,6 @@ class BreakType {
 
 @JsonSerializable(includeIfNull: false)
 class Shift {
-
   final String? id;
 
   @JsonKey(name: "start_at")
@@ -6496,15 +6516,22 @@ class Shift {
   @JsonKey(name: "employee_id")
   final String? employeeId;
 
-  Shift({
-    this.version, this.locationId, this.createdAt, this.id,
-    this.updatedAt, this.status, this.employeeId, this.timezone,
-  this.teamMemberId, this.startAt, this.endAt, this.breaks,
-  this.wage
-  });
+  Shift(
+      {this.version,
+      this.locationId,
+      this.createdAt,
+      this.id,
+      this.updatedAt,
+      this.status,
+      this.employeeId,
+      this.timezone,
+      this.teamMemberId,
+      this.startAt,
+      this.endAt,
+      this.breaks,
+      this.wage});
 
-  factory Shift.fromJson(Map<String, dynamic> json) =>
-      _$ShiftFromJson(json);
+  factory Shift.fromJson(Map<String, dynamic> json) => _$ShiftFromJson(json);
 
   Map<String, dynamic> toJson() => _$ShiftToJson(this);
 
@@ -6516,7 +6543,6 @@ class Shift {
 
 @JsonSerializable(includeIfNull: false)
 class Break {
-
   final String? id;
 
   @JsonKey(name: "break_type_id")
@@ -6536,13 +6562,16 @@ class Break {
   @JsonKey(name: "end_at")
   final String? endAt;
 
-  Break({
-    this.id, this.endAt, this.startAt, this.isPaid, this.expectedDuration,
-    this.name, this.breakTypeId
-  });
+  Break(
+      {this.id,
+      this.endAt,
+      this.startAt,
+      this.isPaid,
+      this.expectedDuration,
+      this.name,
+      this.breakTypeId});
 
-  factory Break.fromJson(Map<String, dynamic> json) =>
-      _$BreakFromJson(json);
+  factory Break.fromJson(Map<String, dynamic> json) => _$BreakFromJson(json);
 
   Map<String, dynamic> toJson() => _$BreakToJson(this);
 
@@ -6552,17 +6581,14 @@ class Break {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class ShiftWage {
-
   @JsonKey(name: "hourly_rate")
   final Money? hourlyRate;
 
   final String? title;
 
-  ShiftWage({
-    this.title, this.hourlyRate
-  });
+  ShiftWage({this.title, this.hourlyRate});
 
   factory ShiftWage.fromJson(Map<String, dynamic> json) =>
       _$ShiftWageFromJson(json);
@@ -6577,7 +6603,6 @@ class ShiftWage {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberWage {
-
   final String? id;
 
   @JsonKey(name: "hourly_rate")
@@ -6588,9 +6613,7 @@ class TeamMemberWage {
 
   final String? title;
 
-  TeamMemberWage({
-    this.hourlyRate, this.title, this.teamMemberId, this.id
-  });
+  TeamMemberWage({this.hourlyRate, this.title, this.teamMemberId, this.id});
 
   factory TeamMemberWage.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberWageFromJson(json);
@@ -6605,7 +6628,6 @@ class TeamMemberWage {
 
 @JsonSerializable(includeIfNull: false)
 class WorkweekConfig {
-
   final String? id;
 
   @JsonKey(name: "start_of_day_local_time")
@@ -6622,10 +6644,13 @@ class WorkweekConfig {
 
   final int? version;
 
-  WorkweekConfig({
-    this.id, this.updatedAt, this.createdAt, this.version,
-  this.startOfDayLocalTime, this.startOfWeek
-  });
+  WorkweekConfig(
+      {this.id,
+      this.updatedAt,
+      this.createdAt,
+      this.version,
+      this.startOfDayLocalTime,
+      this.startOfWeek});
 
   factory WorkweekConfig.fromJson(Map<String, dynamic> json) =>
       _$WorkweekConfigFromJson(json);
@@ -6638,7 +6663,7 @@ class WorkweekConfig {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class BankAccount {
   final String? id;
 
@@ -6663,7 +6688,7 @@ class BankAccount {
   final String? primaryBankIdentificationNumber;
 
   final BankAccountStatus? status;
-  
+
   @JsonKey(name: "bank_name")
   final String? bankName;
 
@@ -6671,10 +6696,10 @@ class BankAccount {
   final String? debitMandateReferenceId;
 
   final String? fingerprint;
-  
+
   @JsonKey(name: "location_id")
   final String? locationId;
-  
+
   @JsonKey(name: "reference_id")
   final String? referenceId;
 
@@ -6683,13 +6708,24 @@ class BankAccount {
 
   final int? version;
 
-  BankAccount({
-    this.id, this.version, this.status, this.locationId, this.referenceId,
-  this.country, this.currency, this.fingerprint, this.accountType,
-  this.accountNumberSuffix, this.bankName, this.creditable,
-  this.debitable, this.debitMandateReferenceId, this.holderName,
-  this.primaryBankIdentificationNumber, this.secondaryBankIdentificationNumber
-  });
+  BankAccount(
+      {this.id,
+      this.version,
+      this.status,
+      this.locationId,
+      this.referenceId,
+      this.country,
+      this.currency,
+      this.fingerprint,
+      this.accountType,
+      this.accountNumberSuffix,
+      this.bankName,
+      this.creditable,
+      this.debitable,
+      this.debitMandateReferenceId,
+      this.holderName,
+      this.primaryBankIdentificationNumber,
+      this.secondaryBankIdentificationNumber});
 
   factory BankAccount.fromJson(Map<String, dynamic> json) =>
       _$BankAccountFromJson(json);
@@ -6700,7 +6736,6 @@ class BankAccount {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
@@ -6721,13 +6756,15 @@ class Site {
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  Site({
-    this.id, this.createdAt, this.updatedAt, this.domain,
-  this.isPublished, this.siteTitle
-  });
+  Site(
+      {this.id,
+      this.createdAt,
+      this.updatedAt,
+      this.domain,
+      this.isPublished,
+      this.siteTitle});
 
-  factory Site.fromJson(Map<String, dynamic> json) =>
-      _$SiteFromJson(json);
+  factory Site.fromJson(Map<String, dynamic> json) => _$SiteFromJson(json);
 
   Map<String, dynamic> toJson() => _$SiteToJson(this);
 
@@ -6758,15 +6795,15 @@ class TerminalCheckout {
 
   @JsonKey(name: "customer_id")
   final String? customerId;
-  
+
   @JsonKey(name: "deadline_duration")
   final String? deadlineDuration;
-  
+
   @JsonKey(name: "location_id")
   final String? locationId;
-  
+
   final String? note;
-  
+
   @JsonKey(name: "payment_ids")
   final List<String>? paymentIds;
 
@@ -6781,12 +6818,22 @@ class TerminalCheckout {
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  TerminalCheckout({
-    this.updatedAt, this.createdAt, this.id, this.referenceId,
-  this.locationId, this.status, this.customerId, this.amountMoney,
-  this.note, this.cancelReason, this.appId, this.deadlineDuration,
-  this.deviceOptions, this.paymentIds, this.paymentType
- });
+  TerminalCheckout(
+      {this.updatedAt,
+      this.createdAt,
+      this.id,
+      this.referenceId,
+      this.locationId,
+      this.status,
+      this.customerId,
+      this.amountMoney,
+      this.note,
+      this.cancelReason,
+      this.appId,
+      this.deadlineDuration,
+      this.deviceOptions,
+      this.paymentIds,
+      this.paymentType});
 
   factory TerminalCheckout.fromJson(Map<String, dynamic> json) =>
       _$TerminalCheckoutFromJson(json);
@@ -6801,7 +6848,6 @@ class TerminalCheckout {
 
 @JsonSerializable(includeIfNull: false)
 class DeviceCheckoutOptions {
-
   @JsonKey(name: "device_id")
   final String? deviceId;
 
@@ -6811,9 +6857,8 @@ class DeviceCheckoutOptions {
   @JsonKey(name: "tip_settings")
   final TipSettings? tipSettings;
 
-  DeviceCheckoutOptions({
-    this.deviceId, this.skipReceiptScreen, this.tipSettings
-  });
+  DeviceCheckoutOptions(
+      {this.deviceId, this.skipReceiptScreen, this.tipSettings});
 
   factory DeviceCheckoutOptions.fromJson(Map<String, dynamic> json) =>
       _$DeviceCheckoutOptionsFromJson(json);
@@ -6828,10 +6873,9 @@ class DeviceCheckoutOptions {
 
 @JsonSerializable(includeIfNull: false)
 class TipSettings {
-
   @JsonKey(name: "allow_tipping")
   final bool? allowTipping;
-  
+
   @JsonKey(name: "custom_tip_field")
   final bool? customTipField;
 
@@ -6844,10 +6888,12 @@ class TipSettings {
   @JsonKey(name: "tip_percentages")
   final List<int>? tipPercentages;
 
-  TipSettings({
-    this.allowTipping, this.customTipField, this.separateTipScreen,
-  this.smartTipping, this.tipPercentages
-  });
+  TipSettings(
+      {this.allowTipping,
+      this.customTipField,
+      this.separateTipScreen,
+      this.smartTipping,
+      this.tipPercentages});
 
   factory TipSettings.fromJson(Map<String, dynamic> json) =>
       _$TipSettingsFromJson(json);
@@ -6862,7 +6908,6 @@ class TipSettings {
 
 @JsonSerializable(includeIfNull: false)
 class TerminalCheckoutResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "checkout")
@@ -6872,9 +6917,8 @@ class TerminalCheckoutResponse {
 
   final String? cursor;
 
-  TerminalCheckoutResponse({
-    this.errors, this.termCheckout, this.checkouts, this.cursor
-  });
+  TerminalCheckoutResponse(
+      {this.errors, this.termCheckout, this.checkouts, this.cursor});
 
   factory TerminalCheckoutResponse.fromJson(Map<String, dynamic> json) =>
       _$TerminalCheckoutResponseFromJson(json);
@@ -6889,7 +6933,6 @@ class TerminalCheckoutResponse {
 
 @JsonSerializable(includeIfNull: false)
 class TerminalRefundResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "checkout")
@@ -6899,9 +6942,7 @@ class TerminalRefundResponse {
 
   final String? cursor;
 
-  TerminalRefundResponse({
-    this.errors, this.refund, this.refunds, this.cursor
-  });
+  TerminalRefundResponse({this.errors, this.refund, this.refunds, this.cursor});
 
   factory TerminalRefundResponse.fromJson(Map<String, dynamic> json) =>
       _$TerminalRefundResponseFromJson(json);
@@ -6916,15 +6957,13 @@ class TerminalRefundResponse {
 
 @JsonSerializable(includeIfNull: false)
 class CreateTerminalCheckoutRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final TerminalCheckout checkout;
 
-  CreateTerminalCheckoutRequest({
-    required this.idempotencyKey, required this.checkout
-  });
+  CreateTerminalCheckoutRequest(
+      {required this.idempotencyKey, required this.checkout});
 
   factory CreateTerminalCheckoutRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateTerminalCheckoutRequestFromJson(json);
@@ -6939,15 +6978,12 @@ class CreateTerminalCheckoutRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreateOrderRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final Order? order;
 
-  CreateOrderRequest({
-    required this.idempotencyKey, required this.order
-  });
+  CreateOrderRequest({required this.idempotencyKey, required this.order});
 
   factory CreateOrderRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateOrderRequestFromJson(json);
@@ -6962,7 +6998,6 @@ class CreateOrderRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CalculateOrderRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -6971,10 +7006,10 @@ class CalculateOrderRequest {
   @JsonKey(name: "proposed_rewards")
   final List<OrderReward>? proposedRewards;
 
-
-  CalculateOrderRequest({
-    required this.idempotencyKey, required this.order, this.proposedRewards
-  });
+  CalculateOrderRequest(
+      {required this.idempotencyKey,
+      required this.order,
+      this.proposedRewards});
 
   factory CalculateOrderRequest.fromJson(Map<String, dynamic> json) =>
       _$CalculateOrderRequestFromJson(json);
@@ -6989,7 +7024,6 @@ class CalculateOrderRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CloneOrderRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
@@ -6998,9 +7032,7 @@ class CloneOrderRequest {
 
   final int? version;
 
-  CloneOrderRequest({
-    this.idempotencyKey, required this.orderId, this.version
-  });
+  CloneOrderRequest({this.idempotencyKey, required this.orderId, this.version});
 
   factory CloneOrderRequest.fromJson(Map<String, dynamic> json) =>
       _$CloneOrderRequestFromJson(json);
@@ -7015,7 +7047,6 @@ class CloneOrderRequest {
 
 @JsonSerializable(includeIfNull: false)
 class UpdateOrderRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
@@ -7024,9 +7055,7 @@ class UpdateOrderRequest {
   @JsonKey(name: "fields_to_clear")
   final List<String>? fieldsToClear;
 
-  UpdateOrderRequest({
-    this.idempotencyKey, this.fieldsToClear, this.order
-  });
+  UpdateOrderRequest({this.idempotencyKey, this.fieldsToClear, this.order});
 
   factory UpdateOrderRequest.fromJson(Map<String, dynamic> json) =>
       _$UpdateOrderRequestFromJson(json);
@@ -7041,7 +7070,6 @@ class UpdateOrderRequest {
 
 @JsonSerializable(includeIfNull: false)
 class PayOrderRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
@@ -7051,9 +7079,7 @@ class PayOrderRequest {
   @JsonKey(name: "payment_ids")
   final List<String>? paymentIds;
 
-  PayOrderRequest({
-    this.idempotencyKey, this.orderVersion, this.paymentIds
-  });
+  PayOrderRequest({this.idempotencyKey, this.orderVersion, this.paymentIds});
 
   factory PayOrderRequest.fromJson(Map<String, dynamic> json) =>
       _$PayOrderRequestFromJson(json);
@@ -7066,10 +7092,8 @@ class PayOrderRequest {
   }
 }
 
-
 @JsonSerializable(includeIfNull: false)
 class SearchOrderRequest {
-
   @JsonKey(name: "location_ids")
   final List<String>? locationIds;
 
@@ -7082,11 +7106,12 @@ class SearchOrderRequest {
   @JsonKey(name: "return_entries")
   final bool? returnEntries;
 
-
-  SearchOrderRequest({
-    this.limit,
-    this.query, this.cursor, this.locationIds, this.returnEntries
-  });
+  SearchOrderRequest(
+      {this.limit,
+      this.query,
+      this.cursor,
+      this.locationIds,
+      this.returnEntries});
 
   factory SearchOrderRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchOrderRequestFromJson(json);
@@ -7105,9 +7130,7 @@ class SearchOrdersQuery {
 
   final SearchOrdersSort? sort;
 
-  SearchOrdersQuery({
-    this.sort, this.filter
-  });
+  SearchOrdersQuery({this.sort, this.filter});
 
   factory SearchOrdersQuery.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersQueryFromJson(json);
@@ -7120,20 +7143,15 @@ class SearchOrdersQuery {
   }
 }
 
-
-
 @JsonSerializable(includeIfNull: false)
 class SearchOrdersSort {
-
   @JsonKey(name: "sort_field")
   final String? sortField;
 
   @JsonKey(name: "sort_order")
   final SortOrder? sortOrder;
 
-  SearchOrdersSort({
-    this.sortOrder, this.sortField
-  });
+  SearchOrdersSort({this.sortOrder, this.sortField});
 
   factory SearchOrdersSort.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersSortFromJson(json);
@@ -7144,12 +7162,10 @@ class SearchOrdersSort {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class SearchOrdersFilter {
-
   @JsonKey(name: "customer_filter")
   final SearchOrdersCustomerFilter? customerFilter;
 
@@ -7162,14 +7178,15 @@ class SearchOrdersFilter {
   @JsonKey(name: "source_filter")
   final SearchOrdersSourceFilter? sourceFilter;
 
-
   @JsonKey(name: "state_filter")
   final SearchOrdersStateFilter? stateFilter;
 
-  SearchOrdersFilter({
-    this.customerFilter, this.dateTimeFilter, this.fulfillmentFilter,
-    this.sourceFilter, this.stateFilter
-  });
+  SearchOrdersFilter(
+      {this.customerFilter,
+      this.dateTimeFilter,
+      this.fulfillmentFilter,
+      this.sourceFilter,
+      this.stateFilter});
 
   factory SearchOrdersFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersFilterFromJson(json);
@@ -7180,16 +7197,13 @@ class SearchOrdersFilter {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class SearchOrdersStateFilter {
   final List<OrderState>? states;
 
-  SearchOrdersStateFilter({
-    this.states
-  });
+  SearchOrdersStateFilter({this.states});
 
   factory SearchOrdersStateFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersStateFilterFromJson(json);
@@ -7204,13 +7218,10 @@ class SearchOrdersStateFilter {
 
 @JsonSerializable(includeIfNull: false)
 class SearchOrdersSourceFilter {
-
   @JsonKey(name: "source_names")
   final List<String>? sourceNames;
 
-  SearchOrdersSourceFilter({
-    this.sourceNames
-  });
+  SearchOrdersSourceFilter({this.sourceNames});
 
   factory SearchOrdersSourceFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersSourceFilterFromJson(json);
@@ -7223,18 +7234,16 @@ class SearchOrdersSourceFilter {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class SearchOrdersFulfillmentFilter {
-
   @JsonKey(name: "fulfillment_states")
   final List<OrderFulfillmentState>? fulfillmentStates;
 
   @JsonKey(name: "fulfillment_types")
   final List<OrderFulfillmentType>? fulfillmentTypes;
 
-  SearchOrdersFulfillmentFilter({
-    this.fulfillmentStates, this.fulfillmentTypes
-  });
+  SearchOrdersFulfillmentFilter(
+      {this.fulfillmentStates, this.fulfillmentTypes});
 
   factory SearchOrdersFulfillmentFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersFulfillmentFilterFromJson(json);
@@ -7249,7 +7258,6 @@ class SearchOrdersFulfillmentFilter {
 
 @JsonSerializable(includeIfNull: false)
 class SearchOrdersDateTimeFilter {
-
   @JsonKey(name: "closed_at")
   final TimeRange? closedAt;
 
@@ -7259,9 +7267,7 @@ class SearchOrdersDateTimeFilter {
   @JsonKey(name: "updated_at")
   final TimeRange? updatedAt;
 
-  SearchOrdersDateTimeFilter({
-    this.updatedAt, this.createdAt, this.closedAt
-  });
+  SearchOrdersDateTimeFilter({this.updatedAt, this.createdAt, this.closedAt});
 
   factory SearchOrdersDateTimeFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersDateTimeFilterFromJson(json);
@@ -7272,18 +7278,14 @@ class SearchOrdersDateTimeFilter {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class SearchOrdersCustomerFilter {
-
   @JsonKey(name: "customer_ids")
   final List<String>? customerIds;
 
-  SearchOrdersCustomerFilter({
-    this.customerIds
-  });
+  SearchOrdersCustomerFilter({this.customerIds});
 
   factory SearchOrdersCustomerFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchOrdersCustomerFilterFromJson(json);
@@ -7296,15 +7298,14 @@ class SearchOrdersCustomerFilter {
   }
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class SearchTerminalRequest {
   final TerminalSearchQuery query;
   final String? cursor;
   final int limit;
 
-  SearchTerminalRequest({
-    this.cursor, required this.query, required this.limit
-  });
+  SearchTerminalRequest(
+      {this.cursor, required this.query, required this.limit});
 
   factory SearchTerminalRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchTerminalRequestFromJson(json);
@@ -7319,15 +7320,12 @@ class SearchTerminalRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreateRefundRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final TerminalRefund refund;
 
-  CreateRefundRequest({
-    required this.idempotencyKey, required this.refund
-  });
+  CreateRefundRequest({required this.idempotencyKey, required this.refund});
 
   factory CreateRefundRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateRefundRequestFromJson(json);
@@ -7341,7 +7339,7 @@ class CreateRefundRequest {
 }
 
 @JsonSerializable(includeIfNull: false)
-class TerminalRefund{
+class TerminalRefund {
   final String? id;
 
   @JsonKey(name: "amount_money")
@@ -7372,21 +7370,30 @@ class TerminalRefund{
   final String? orderId;
 
   final String? reason;
-  
+
   @JsonKey(name: "refund_id")
   final String? refundId;
-  
+
   final TerimnalRefundStatus? status;
 
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  TerminalRefund({
-    this.createdAt, this.status, this.deviceId, this.deadlineDuration,
-  this.appId, this.cancelReason, this.amountMoney, this.locationId,
-  this.id, this.updatedAt, this.reason, this.orderId,
-    this.paymentId, this.refundId
-  });
+  TerminalRefund(
+      {this.createdAt,
+      this.status,
+      this.deviceId,
+      this.deadlineDuration,
+      this.appId,
+      this.cancelReason,
+      this.amountMoney,
+      this.locationId,
+      this.id,
+      this.updatedAt,
+      this.reason,
+      this.orderId,
+      this.paymentId,
+      this.refundId});
 
   factory TerminalRefund.fromJson(Map<String, dynamic> json) =>
       _$TerminalRefundFromJson(json);
@@ -7404,9 +7411,7 @@ class TerminalSearchQuery {
   final TerminalQueryFilter? filter;
   final TerminalQuerySort? sort;
 
-  TerminalSearchQuery({
-    this.filter, this.sort
-  });
+  TerminalSearchQuery({this.filter, this.sort});
 
   factory TerminalSearchQuery.fromJson(Map<String, dynamic> json) =>
       _$TerminalSearchQueryFromJson(json);
@@ -7421,7 +7426,6 @@ class TerminalSearchQuery {
 
 @JsonSerializable(includeIfNull: false)
 class TerminalQueryFilter {
-
   @JsonKey(name: "created_at")
   final String? createdAt;
 
@@ -7430,9 +7434,7 @@ class TerminalQueryFilter {
 
   final TerminalStatus? status;
 
-  TerminalQueryFilter({
-    this.deviceId, this.status, this.createdAt
-  });
+  TerminalQueryFilter({this.deviceId, this.status, this.createdAt});
 
   factory TerminalQueryFilter.fromJson(Map<String, dynamic> json) =>
       _$TerminalQueryFilterFromJson(json);
@@ -7443,18 +7445,14 @@ class TerminalQueryFilter {
   String toString() {
     return toJson().toString();
   }
-  
 }
 
 @JsonSerializable(includeIfNull: false)
 class TerminalQuerySort {
-
   @JsonKey(name: "sort_order")
   final SortOrder? sortOrder;
 
-  TerminalQuerySort({
-    this.sortOrder
-  });
+  TerminalQuerySort({this.sortOrder});
 
   factory TerminalQuerySort.fromJson(Map<String, dynamic> json) =>
       _$TerminalQuerySortFromJson(json);
@@ -7469,7 +7467,6 @@ class TerminalQuerySort {
 
 @JsonSerializable(includeIfNull: false)
 class OrderResponse {
-
   final List<SquareError>? errors;
 
   final Order? order;
@@ -7481,10 +7478,8 @@ class OrderResponse {
   @JsonKey(name: "order_entries")
   final OrderEntry? orderEntries;
 
-
-  OrderResponse({
-    this.errors, this.order, this.orders, this.cursor, this.orderEntries
-  });
+  OrderResponse(
+      {this.errors, this.order, this.orders, this.cursor, this.orderEntries});
 
   factory OrderResponse.fromJson(Map<String, dynamic> json) =>
       _$OrderResponseFromJson(json);
@@ -7499,16 +7494,13 @@ class OrderResponse {
 
 @JsonSerializable(includeIfNull: false)
 class BatchOrderRequest {
-
   @JsonKey(name: "location_id")
   final String? locationId;
 
   @JsonKey(name: "order_ids")
   final List<String> orderIds;
 
-  BatchOrderRequest({
-    this.locationId, required this.orderIds
-  });
+  BatchOrderRequest({this.locationId, required this.orderIds});
 
   factory BatchOrderRequest.fromJson(Map<String, dynamic> json) =>
       _$BatchOrderRequestFromJson(json);
@@ -7523,7 +7515,6 @@ class BatchOrderRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreateSubscriptionRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
@@ -7555,12 +7546,18 @@ class CreateSubscriptionRequest {
 
   final SubscriptionSource? source;
 
-  CreateSubscriptionRequest({
-  required this.locationId, this.idempotencyKey, required this.customerId,
-  this.timezone, this.source, this.cardId, this.taxPercentage,
-  this.startDate, this.priceOverrideMoney, this.canceledDate,
-  required this.planId
-  });
+  CreateSubscriptionRequest(
+      {required this.locationId,
+      this.idempotencyKey,
+      required this.customerId,
+      this.timezone,
+      this.source,
+      this.cardId,
+      this.taxPercentage,
+      this.startDate,
+      this.priceOverrideMoney,
+      this.canceledDate,
+      required this.planId});
 
   factory CreateSubscriptionRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateSubscriptionRequestFromJson(json);
@@ -7575,7 +7572,6 @@ class CreateSubscriptionRequest {
 
 @JsonSerializable(includeIfNull: false)
 class SubscriptionResponse {
-
   final List<SquareError>? errors;
 
   final Subscription? subscription;
@@ -7586,11 +7582,12 @@ class SubscriptionResponse {
 
   final List<SubscriptionAction>? actions;
 
-
-
-  SubscriptionResponse({
-    this.errors, this.subscriptions, this.subscription, this.cursor, this.actions
-  });
+  SubscriptionResponse(
+      {this.errors,
+      this.subscriptions,
+      this.subscription,
+      this.cursor,
+      this.actions});
 
   factory SubscriptionResponse.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionResponseFromJson(json);
@@ -7605,16 +7602,14 @@ class SubscriptionResponse {
 
 @JsonSerializable(includeIfNull: false)
 class SearchSubscriptionRequest {
-
   final String? cursor;
   final int? limit;
 
   final SearchSubscriptionsQuery? query;
   final List<String>? include;
 
-  SearchSubscriptionRequest({
-    this.cursor, this.query, this.limit, this.include
-  });
+  SearchSubscriptionRequest(
+      {this.cursor, this.query, this.limit, this.include});
 
   factory SearchSubscriptionRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchSubscriptionRequestFromJson(json);
@@ -7629,7 +7624,6 @@ class SearchSubscriptionRequest {
 
 @JsonSerializable(includeIfNull: false)
 class SubscriptionEventResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "subscription_event")
@@ -7640,9 +7634,11 @@ class SubscriptionEventResponse {
 
   final String? cursor;
 
-  SubscriptionEventResponse({
-    this.errors, this.subscriptionEvents, this.subscriptionEvent, this.cursor
-  });
+  SubscriptionEventResponse(
+      {this.errors,
+      this.subscriptionEvents,
+      this.subscriptionEvent,
+      this.cursor});
 
   factory SubscriptionEventResponse.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionEventResponseFromJson(json);
@@ -7657,7 +7653,6 @@ class SubscriptionEventResponse {
 
 @JsonSerializable(includeIfNull: false)
 class SubscriptionStateRequest {
-
   @JsonKey(name: "pause_effective_date")
   final String? pauseEffectiveDate;
 
@@ -7673,10 +7668,12 @@ class SubscriptionStateRequest {
   @JsonKey(name: "pause_reason")
   final String? pauseReason;
 
-  SubscriptionStateRequest({
-    this.pauseCycleDuration, this.pauseEffectiveDate, this.pauseReason,
-  this.resumeChangeTiming, this.resumeEffectiveDate
-  });
+  SubscriptionStateRequest(
+      {this.pauseCycleDuration,
+      this.pauseEffectiveDate,
+      this.pauseReason,
+      this.resumeChangeTiming,
+      this.resumeEffectiveDate});
 
   factory SubscriptionStateRequest.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionStateRequestFromJson(json);
@@ -7689,10 +7686,8 @@ class SubscriptionStateRequest {
   }
 }
 
-
 @JsonSerializable(includeIfNull: false)
 class InvoiceResponse {
-
   final List<SquareError>? errors;
 
   final Invoice? invoice;
@@ -7701,10 +7696,7 @@ class InvoiceResponse {
 
   final String? cursor;
 
-
-  InvoiceResponse({
-    this.errors, this.invoice, this.invoices, this.cursor
-  });
+  InvoiceResponse({this.errors, this.invoice, this.invoices, this.cursor});
 
   factory InvoiceResponse.fromJson(Map<String, dynamic> json) =>
       _$InvoiceResponseFromJson(json);
@@ -7719,16 +7711,12 @@ class InvoiceResponse {
 
 @JsonSerializable(includeIfNull: false)
 class CreateInvoiceRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
   final Invoice? invoice;
 
-
-  CreateInvoiceRequest({
-    this.idempotencyKey, this.invoice
-  });
+  CreateInvoiceRequest({this.idempotencyKey, this.invoice});
 
   factory CreateInvoiceRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateInvoiceRequestFromJson(json);
@@ -7743,16 +7731,13 @@ class CreateInvoiceRequest {
 
 @JsonSerializable(includeIfNull: false)
 class SearchInvoiceRequest {
-
   final InvoiceQuery query;
 
-  final int? limit; 
-  
+  final int? limit;
+
   final String? cursor;
 
-  SearchInvoiceRequest({
-    required this.query, this.limit, this.cursor
-  });
+  SearchInvoiceRequest({required this.query, this.limit, this.cursor});
 
   factory SearchInvoiceRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchInvoiceRequestFromJson(json);
@@ -7767,7 +7752,6 @@ class SearchInvoiceRequest {
 
 @JsonSerializable(includeIfNull: false)
 class UpdateInvoiceRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
@@ -7776,9 +7760,8 @@ class UpdateInvoiceRequest {
   @JsonKey(name: "fields_to_clear")
   final List<String>? fieldsToClear;
 
-  UpdateInvoiceRequest({
-    this.idempotencyKey, this.fieldsToClear, required this.order
-  });
+  UpdateInvoiceRequest(
+      {this.idempotencyKey, this.fieldsToClear, required this.order});
 
   factory UpdateInvoiceRequest.fromJson(Map<String, dynamic> json) =>
       _$UpdateInvoiceRequestFromJson(json);
@@ -7793,15 +7776,12 @@ class UpdateInvoiceRequest {
 
 @JsonSerializable(includeIfNull: false)
 class PublishInvoiceRequest {
-
   final int version;
 
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
-  PublishInvoiceRequest({
-  required this.version, this.idempotencyKey
-  });
+  PublishInvoiceRequest({required this.version, this.idempotencyKey});
 
   factory PublishInvoiceRequest.fromJson(Map<String, dynamic> json) =>
       _$PublishInvoiceRequestFromJson(json);
@@ -7814,11 +7794,8 @@ class PublishInvoiceRequest {
   }
 }
 
-
-
 @JsonSerializable(includeIfNull: false)
 class RetrieveCatalogRequest {
-
   @JsonKey(name: "object_ids")
   final List<String> objectIds;
 
@@ -7828,9 +7805,10 @@ class RetrieveCatalogRequest {
   @JsonKey(name: "catalogVersion")
   final int? catalogVersion;
 
-  RetrieveCatalogRequest({
-    required this.objectIds, this.catalogVersion, this.includeRelatedObjects
-  });
+  RetrieveCatalogRequest(
+      {required this.objectIds,
+      this.catalogVersion,
+      this.includeRelatedObjects});
 
   factory RetrieveCatalogRequest.fromJson(Map<String, dynamic> json) =>
       _$RetrieveCatalogRequestFromJson(json);
@@ -7845,15 +7823,13 @@ class RetrieveCatalogRequest {
 
 @JsonSerializable(includeIfNull: false)
 class BatchUpsertCatalogRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final List<CatalogObjectBatch> batches;
 
-  BatchUpsertCatalogRequest({
-    required this.idempotencyKey, required this.batches
-  });
+  BatchUpsertCatalogRequest(
+      {required this.idempotencyKey, required this.batches});
 
   factory BatchUpsertCatalogRequest.fromJson(Map<String, dynamic> json) =>
       _$BatchUpsertCatalogRequestFromJson(json);
@@ -7868,27 +7844,23 @@ class BatchUpsertCatalogRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogObjectBatch {
+  final List<CatalogObject> objects;
 
-    final List<CatalogObject> objects;
+  CatalogObjectBatch({required this.objects});
 
-    CatalogObjectBatch({
-      required this.objects
-    });
+  factory CatalogObjectBatch.fromJson(Map<String, dynamic> json) =>
+      _$CatalogObjectBatchFromJson(json);
 
-    factory CatalogObjectBatch.fromJson(Map<String, dynamic> json) =>
-        _$CatalogObjectBatchFromJson(json);
+  Map<String, dynamic> toJson() => _$CatalogObjectBatchToJson(this);
 
-    Map<String, dynamic> toJson() => _$CatalogObjectBatchToJson(this);
-
-    @override
-    String toString() {
-      return toJson().toString();
-    }
+  @override
+  String toString() {
+    return toJson().toString();
+  }
 }
 
 @JsonSerializable(includeIfNull: false)
 class CreateCatalogImageRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -7900,9 +7872,11 @@ class CreateCatalogImageRequest {
   @JsonKey(name: "is_primary")
   final bool? isPrimary;
 
-  CreateCatalogImageRequest({
-    required this.image, required this.idempotencyKey, this.objectId, this.isPrimary
-  });
+  CreateCatalogImageRequest(
+      {required this.image,
+      required this.idempotencyKey,
+      this.objectId,
+      this.isPrimary});
 
   factory CreateCatalogImageRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateCatalogImageRequestFromJson(json);
@@ -7913,21 +7887,17 @@ class CreateCatalogImageRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class UpdateCatalogImageRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final CatalogObject image;
 
-
-  UpdateCatalogImageRequest({
-    required this.image, required this.idempotencyKey
-  });
+  UpdateCatalogImageRequest(
+      {required this.image, required this.idempotencyKey});
 
   factory UpdateCatalogImageRequest.fromJson(Map<String, dynamic> json) =>
       _$UpdateCatalogImageRequestFromJson(json);
@@ -7938,12 +7908,10 @@ class UpdateCatalogImageRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class ListCatalogRequest {
-
   final String? cursor;
 
   final CatalogObjectType? type;
@@ -7951,9 +7919,7 @@ class ListCatalogRequest {
   @JsonKey(name: "catalog_version")
   final String? catalogVersion;
 
-  ListCatalogRequest({
-    this.catalogVersion, this.cursor, this.type
-  });
+  ListCatalogRequest({this.catalogVersion, this.cursor, this.type});
 
   factory ListCatalogRequest.fromJson(Map<String, dynamic> json) =>
       _$ListCatalogRequestFromJson(json);
@@ -7964,20 +7930,16 @@ class ListCatalogRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class UpsertCatalogRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final CatalogObject object;
 
-  UpsertCatalogRequest({
-    required this.idempotencyKey, required this.object
-  });
+  UpsertCatalogRequest({required this.idempotencyKey, required this.object});
 
   factory UpsertCatalogRequest.fromJson(Map<String, dynamic> json) =>
       _$UpsertCatalogRequestFromJson(json);
@@ -7992,7 +7954,6 @@ class UpsertCatalogRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogSearchRequest {
-
   final String? cursor;
 
   @JsonKey(name: "object_types")
@@ -8006,16 +7967,19 @@ class CatalogSearchRequest {
 
   @JsonKey(name: "begin_time")
   final String? beginTime;
-  
+
   final CatalogQuery? query;
 
   final int? limit;
 
-  CatalogSearchRequest({
-    this.cursor, this.includeRelatedObjects, this.limit,
-  this.query, this.beginTime, this.includeDeletedObjects,
-  this.objectTypes
-  });
+  CatalogSearchRequest(
+      {this.cursor,
+      this.includeRelatedObjects,
+      this.limit,
+      this.query,
+      this.beginTime,
+      this.includeDeletedObjects,
+      this.objectTypes});
 
   factory CatalogSearchRequest.fromJson(Map<String, dynamic> json) =>
       _$CatalogSearchRequestFromJson(json);
@@ -8030,7 +7994,6 @@ class CatalogSearchRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemsSearchRequest {
-
   @JsonKey(name: "text_filter")
   final String? textFilter;
 
@@ -8055,13 +8018,16 @@ class CatalogItemsSearchRequest {
   @JsonKey(name: "custom_attribute_filters")
   final List<CustomAttributeFilter>? customAttributeFilters;
 
-
-
-  CatalogItemsSearchRequest({
-  this.limit, this.cursor, this.sortOrder, this.categoryIds,
-  this.customAttributeFilters, this.enabledLocationIds, this.productTypes,
-  this.stockLevels, this.textFilter
-  });
+  CatalogItemsSearchRequest(
+      {this.limit,
+      this.cursor,
+      this.sortOrder,
+      this.categoryIds,
+      this.customAttributeFilters,
+      this.enabledLocationIds,
+      this.productTypes,
+      this.stockLevels,
+      this.textFilter});
 
   factory CatalogItemsSearchRequest.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemsSearchRequestFromJson(json);
@@ -8076,13 +8042,12 @@ class CatalogItemsSearchRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CustomAttributeFilter {
-
   @JsonKey(name: "bool_filter")
   final bool? boolFilter;
 
   @JsonKey(name: "custom_attribute_definition_id")
   final String? customAttributeDefinitionId;
-  
+
   final String? key;
 
   @JsonKey(name: "number_filter")
@@ -8094,10 +8059,13 @@ class CustomAttributeFilter {
   @JsonKey(name: "string_filter")
   final String? stringFilter;
 
-  CustomAttributeFilter({
-    this.key, this.customAttributeDefinitionId, this.boolFilter,
-  this.numberFilter, this.selectionUidsFilter, this.stringFilter
-  });
+  CustomAttributeFilter(
+      {this.key,
+      this.customAttributeDefinitionId,
+      this.boolFilter,
+      this.numberFilter,
+      this.selectionUidsFilter,
+      this.stringFilter});
 
   factory CustomAttributeFilter.fromJson(Map<String, dynamic> json) =>
       _$CustomAttributeFilterFromJson(json);
@@ -8113,14 +8081,11 @@ class CustomAttributeFilter {
 @JsonSerializable(includeIfNull: false)
 class Range {
   final String? max;
-  final String?  min;
+  final String? min;
 
-  Range({
-    this.max, this.min
-  });
+  Range({this.max, this.min});
 
-  factory Range.fromJson(Map<String, dynamic> json) =>
-      _$RangeFromJson(json);
+  factory Range.fromJson(Map<String, dynamic> json) => _$RangeFromJson(json);
 
   Map<String, dynamic> toJson() => _$RangeToJson(this);
 
@@ -8132,20 +8097,17 @@ class Range {
 
 @JsonSerializable(includeIfNull: false)
 class CatalogItemsResponse {
-
   final List<SquareError>? errors;
 
   final String? cursor;
 
   final List<CatalogObject>? items;
 
-  @JsonKey(name:"matched_variation_ids")
+  @JsonKey(name: "matched_variation_ids")
   final List<String>? matchedVariationIds;
 
-
-  CatalogItemsResponse({
-    this.cursor, this.errors, this.items, this.matchedVariationIds
-  });
+  CatalogItemsResponse(
+      {this.cursor, this.errors, this.items, this.matchedVariationIds});
 
   factory CatalogItemsResponse.fromJson(Map<String, dynamic> json) =>
       _$CatalogItemsResponseFromJson(json);
@@ -8160,7 +8122,6 @@ class CatalogItemsResponse {
 
 @JsonSerializable(includeIfNull: false)
 class UpdateCatalogItemsModifier {
-
   @JsonKey(name: "item_ids")
   final List<String> itemIds;
 
@@ -8170,9 +8131,10 @@ class UpdateCatalogItemsModifier {
   @JsonKey(name: "modifier_lists_to_disable")
   final List<String>? modifierListsToDisable;
 
-  UpdateCatalogItemsModifier({
-    required this.itemIds, this.modifierListsToDisable, this.modifierListsToEnable
-  });
+  UpdateCatalogItemsModifier(
+      {required this.itemIds,
+      this.modifierListsToDisable,
+      this.modifierListsToEnable});
 
   factory UpdateCatalogItemsModifier.fromJson(Map<String, dynamic> json) =>
       _$UpdateCatalogItemsModifierFromJson(json);
@@ -8187,7 +8149,6 @@ class UpdateCatalogItemsModifier {
 
 @JsonSerializable(includeIfNull: false)
 class UpdateCatalogItemsTaxes {
-
   @JsonKey(name: "item_ids")
   final List<String> itemIds;
 
@@ -8197,9 +8158,8 @@ class UpdateCatalogItemsTaxes {
   @JsonKey(name: "taxes_to_disable")
   final List<String>? taxesToDisable;
 
-  UpdateCatalogItemsTaxes({
-    required this.itemIds, this.taxesToDisable, this.taxesToEnable
-  });
+  UpdateCatalogItemsTaxes(
+      {required this.itemIds, this.taxesToDisable, this.taxesToEnable});
 
   factory UpdateCatalogItemsTaxes.fromJson(Map<String, dynamic> json) =>
       _$UpdateCatalogItemsTaxesFromJson(json);
@@ -8214,14 +8174,11 @@ class UpdateCatalogItemsTaxes {
 
 @JsonSerializable(includeIfNull: false)
 class InventoryAdjustmentResponse {
-
   final List<SquareError>? errors;
-  
+
   final InventoryAdjustment? adjustment;
 
-  InventoryAdjustmentResponse({
-    this.errors,  this.adjustment
-  });
+  InventoryAdjustmentResponse({this.errors, this.adjustment});
 
   factory InventoryAdjustmentResponse.fromJson(Map<String, dynamic> json) =>
       _$InventoryAdjustmentResponseFromJson(json);
@@ -8236,7 +8193,6 @@ class InventoryAdjustmentResponse {
 
 @JsonSerializable(includeIfNull: false)
 class InventoryResponse {
-
   final List<SquareError>? errors;
 
   final List<InventoryCount>? counts;
@@ -8244,12 +8200,11 @@ class InventoryResponse {
   final InventoryCount? count;
 
   final List<InventoryChange>? changes;
-  
+
   final String? cursor;
 
-  InventoryResponse({
-    this.errors, this.counts, this.changes, this.cursor, this.count
-  });
+  InventoryResponse(
+      {this.errors, this.counts, this.changes, this.cursor, this.count});
 
   factory InventoryResponse.fromJson(Map<String, dynamic> json) =>
       _$InventoryResponseFromJson(json);
@@ -8260,12 +8215,10 @@ class InventoryResponse {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class InventoryPhysicalResponse {
-
   final List<SquareError>? errors;
 
   final List<InventoryPhysicalCount>? counts;
@@ -8274,9 +8227,8 @@ class InventoryPhysicalResponse {
 
   final String? cursor;
 
-  InventoryPhysicalResponse({
-    this.errors, this.counts, this.cursor, this.count
-  });
+  InventoryPhysicalResponse(
+      {this.errors, this.counts, this.cursor, this.count});
 
   factory InventoryPhysicalResponse.fromJson(Map<String, dynamic> json) =>
       _$InventoryPhysicalResponseFromJson(json);
@@ -8287,12 +8239,10 @@ class InventoryPhysicalResponse {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class InventoryCount {
-
   @JsonKey(name: "calculated_at")
   final String? calculatedAt;
 
@@ -8312,10 +8262,14 @@ class InventoryCount {
 
   final InventoryState? state;
 
-  InventoryCount({
-    this.locationId, this.state, this.catalogObjectType, this.quantity,
-  this.catalogObjectId, this.calculatedAt, this.isEstimated
-  });
+  InventoryCount(
+      {this.locationId,
+      this.state,
+      this.catalogObjectType,
+      this.quantity,
+      this.catalogObjectId,
+      this.calculatedAt,
+      this.isEstimated});
 
   factory InventoryCount.fromJson(Map<String, dynamic> json) =>
       _$InventoryCountFromJson(json);
@@ -8330,7 +8284,6 @@ class InventoryCount {
 
 @JsonSerializable(includeIfNull: false)
 class BatchInventoryChangeRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -8339,9 +8292,8 @@ class BatchInventoryChangeRequest {
   @JsonKey(name: "ignore_unchanged_counts")
   final bool? ignoreUnchangedCounts;
 
-  BatchInventoryChangeRequest({
-    required this.idempotencyKey, this.changes, this.ignoreUnchangedCounts
-  });
+  BatchInventoryChangeRequest(
+      {required this.idempotencyKey, this.changes, this.ignoreUnchangedCounts});
 
   factory BatchInventoryChangeRequest.fromJson(Map<String, dynamic> json) =>
       _$BatchInventoryChangeRequestFromJson(json);
@@ -8356,7 +8308,6 @@ class BatchInventoryChangeRequest {
 
 @JsonSerializable(includeIfNull: false)
 class BatchInventoryReadRequest {
-  
   @JsonKey(name: "catalog_object_ids")
   final List<String>? catalogObjectIds;
 
@@ -8372,13 +8323,17 @@ class BatchInventoryReadRequest {
 
   @JsonKey(name: "updated_before")
   final String? updatedBefore;
-  
+
   final String? cursor;
 
-  BatchInventoryReadRequest({
-    this.cursor, this.locationIds, this.catalogObjectIds,
-  this.states, this.types, this.updatedAfter, this.updatedBefore
-  });
+  BatchInventoryReadRequest(
+      {this.cursor,
+      this.locationIds,
+      this.catalogObjectIds,
+      this.states,
+      this.types,
+      this.updatedAfter,
+      this.updatedBefore});
 
   factory BatchInventoryReadRequest.fromJson(Map<String, dynamic> json) =>
       _$BatchInventoryReadRequestFromJson(json);
@@ -8393,7 +8348,6 @@ class BatchInventoryReadRequest {
 
 @JsonSerializable(includeIfNull: false)
 class BatchInventoryReadCountRequest {
-
   @JsonKey(name: "catalog_object_ids")
   final List<String>? catalogObjectIds;
 
@@ -8407,10 +8361,12 @@ class BatchInventoryReadCountRequest {
 
   final String? cursor;
 
-  BatchInventoryReadCountRequest({
-    this.updatedAfter, this.states, this.catalogObjectIds, this.locationIds,
-  this.cursor
-  });
+  BatchInventoryReadCountRequest(
+      {this.updatedAfter,
+      this.states,
+      this.catalogObjectIds,
+      this.locationIds,
+      this.cursor});
 
   factory BatchInventoryReadCountRequest.fromJson(Map<String, dynamic> json) =>
       _$BatchInventoryReadCountRequestFromJson(json);
@@ -8428,9 +8384,7 @@ class InventoryTransferResponse {
   final List<SquareError>? errors;
   final InventoryTransfer? transfer;
 
-  InventoryTransferResponse({
-    this.errors, this.transfer
-  });
+  InventoryTransferResponse({this.errors, this.transfer});
 
   factory InventoryTransferResponse.fromJson(Map<String, dynamic> json) =>
       _$InventoryTransferResponseFromJson(json);
@@ -8448,9 +8402,7 @@ class InventoryPhysicalCountResponse {
   final List<SquareError>? errors;
   final InventoryPhysicalCount? count;
 
-  InventoryPhysicalCountResponse({
-    this.errors, this.count
-  });
+  InventoryPhysicalCountResponse({this.errors, this.count});
 
   factory InventoryPhysicalCountResponse.fromJson(Map<String, dynamic> json) =>
       _$InventoryPhysicalCountResponseFromJson(json);
@@ -8465,15 +8417,12 @@ class InventoryPhysicalCountResponse {
 
 @JsonSerializable(includeIfNull: false)
 class InventoryCountRequest {
-
   @JsonKey(name: "location_ids")
   final String? locationIds;
 
   final String? cursor;
 
-  InventoryCountRequest({
-    this.cursor, this.locationIds
-  });
+  InventoryCountRequest({this.cursor, this.locationIds});
 
   factory InventoryCountRequest.fromJson(Map<String, dynamic> json) =>
       _$InventoryCountRequestFromJson(json);
@@ -8489,7 +8438,7 @@ class InventoryCountRequest {
 @JsonSerializable(includeIfNull: false)
 class ListCustomerRequest {
   final String? cursor;
-  
+
   final int? limit;
 
   @JsonKey(name: "sort_field")
@@ -8498,9 +8447,8 @@ class ListCustomerRequest {
   @JsonKey(name: "sort_order")
   final SortOrder? sortOrder;
 
-  ListCustomerRequest({
-    this.cursor, this.sortOrder, this.limit, this.sortField
-  });
+  ListCustomerRequest(
+      {this.cursor, this.sortOrder, this.limit, this.sortField});
 
   factory ListCustomerRequest.fromJson(Map<String, dynamic> json) =>
       _$ListCustomerRequestFromJson(json);
@@ -8516,16 +8464,14 @@ class ListCustomerRequest {
 @JsonSerializable(includeIfNull: false)
 class CustomerResponse {
   final List<SquareError>? errors;
-  
+
   final Customer? customer;
-  
+
   final List<Customer>? customers;
-  
+
   final String? cursor;
 
-  CustomerResponse({
-    this.cursor, this.errors, this.customer, this.customers
-  });
+  CustomerResponse({this.cursor, this.errors, this.customer, this.customers});
 
   factory CustomerResponse.fromJson(Map<String, dynamic> json) =>
       _$CustomerResponseFromJson(json);
@@ -8540,7 +8486,6 @@ class CustomerResponse {
 
 @JsonSerializable(includeIfNull: false)
 class CustomerUpsertRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
@@ -8573,14 +8518,19 @@ class CustomerUpsertRequest {
   @JsonKey(name: "tax_ids")
   final CustomerTaxIds? taxIds;
 
-
-  CustomerUpsertRequest({
-    this.idempotencyKey,this.nickname,
-    this.referenceId, this.taxIds,
-    this.familyName, this.givenName,
-    this.companyName, this.phoneNumber, this.address, this.emailAddress,
-    this.note, this.birthday
-  });
+  CustomerUpsertRequest(
+      {this.idempotencyKey,
+      this.nickname,
+      this.referenceId,
+      this.taxIds,
+      this.familyName,
+      this.givenName,
+      this.companyName,
+      this.phoneNumber,
+      this.address,
+      this.emailAddress,
+      this.note,
+      this.birthday});
 
   factory CustomerUpsertRequest.fromJson(Map<String, dynamic> json) =>
       _$CustomerUpsertRequestFromJson(json);
@@ -8591,20 +8541,17 @@ class CustomerUpsertRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class SearchCustomerRequest {
   final String? cursor;
-  
+
   final int? limit;
 
   final CustomerQuery? query;
 
-  SearchCustomerRequest({
-    this.cursor, this.limit, this.query
-  });
+  SearchCustomerRequest({this.cursor, this.limit, this.query});
 
   factory SearchCustomerRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchCustomerRequestFromJson(json);
@@ -8627,9 +8574,7 @@ class CustomerGroupResponse {
 
   final String? cursor;
 
-  CustomerGroupResponse({
-    this.cursor, this.errors, this.group, this.groups
-  });
+  CustomerGroupResponse({this.cursor, this.errors, this.group, this.groups});
 
   factory CustomerGroupResponse.fromJson(Map<String, dynamic> json) =>
       _$CustomerGroupResponseFromJson(json);
@@ -8644,14 +8589,11 @@ class CustomerGroupResponse {
 
 @JsonSerializable(includeIfNull: false)
 class SearchRequest {
-
   final String? cursor;
 
   final int? limit;
 
-  SearchRequest({
-    this.cursor, this.limit
-  });
+  SearchRequest({this.cursor, this.limit});
 
   factory SearchRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchRequestFromJson(json);
@@ -8666,15 +8608,12 @@ class SearchRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreateCustomerGroup {
-  
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
-  
+
   final CustomerGroup group;
 
-  CreateCustomerGroup({
-    required this.group, this.idempotencyKey
-  });
+  CreateCustomerGroup({required this.group, this.idempotencyKey});
 
   factory CreateCustomerGroup.fromJson(Map<String, dynamic> json) =>
       _$CreateCustomerGroupFromJson(json);
@@ -8697,9 +8636,8 @@ class CustomerSegmentResponse {
 
   final String? cursor;
 
-  CustomerSegmentResponse({
-    this.cursor, this.errors, this.segment, this.segments
-  });
+  CustomerSegmentResponse(
+      {this.cursor, this.errors, this.segment, this.segments});
 
   factory CustomerSegmentResponse.fromJson(Map<String, dynamic> json) =>
       _$CustomerSegmentResponseFromJson(json);
@@ -8714,16 +8652,13 @@ class CustomerSegmentResponse {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyUpsertRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
   @JsonKey(name: "loyalty_account")
   final LoyaltyAccount? loyaltyAccount;
 
-  LoyaltyUpsertRequest({
-    this.idempotencyKey, this.loyaltyAccount
-  });
+  LoyaltyUpsertRequest({this.idempotencyKey, this.loyaltyAccount});
 
   factory LoyaltyUpsertRequest.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyUpsertRequestFromJson(json);
@@ -8748,9 +8683,8 @@ class LoyaltyResponse {
 
   final String? cursor;
 
-  LoyaltyResponse({
-    this.loyaltyAccount, this.errors, this.cursor, this.loyaltyAccounts
-  });
+  LoyaltyResponse(
+      {this.loyaltyAccount, this.errors, this.cursor, this.loyaltyAccounts});
 
   factory LoyaltyResponse.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyResponseFromJson(json);
@@ -8765,16 +8699,13 @@ class LoyaltyResponse {
 
 @JsonSerializable(includeIfNull: false)
 class SearchLoyaltyRequest {
-
   final SearchLoyaltyAccountsRequestLoyaltyAccountQuery? query;
-  
+
   final int? limit;
 
   final String? cursor;
 
-  SearchLoyaltyRequest({
-    this.query, this.cursor, this.limit
-  });
+  SearchLoyaltyRequest({this.query, this.cursor, this.limit});
 
   factory SearchLoyaltyRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchLoyaltyRequestFromJson(json);
@@ -8825,12 +8756,20 @@ class LoyaltyEvent {
   @JsonKey(name: "redeem_reward")
   final LoyaltyEventRedeemReward? redeemReward;
 
-  LoyaltyEvent({
-    this.locationId, this.type, this.id, this.createdAt, this.source,
-  this.loyaltyAccountId, this.accumulatePoints, this.adjustPoints,
-  this.createReward, this.deleteReward, this.expirePoints, this.otherEvent,
-    this.redeemReward
-  });
+  LoyaltyEvent(
+      {this.locationId,
+      this.type,
+      this.id,
+      this.createdAt,
+      this.source,
+      this.loyaltyAccountId,
+      this.accumulatePoints,
+      this.adjustPoints,
+      this.createReward,
+      this.deleteReward,
+      this.expirePoints,
+      this.otherEvent,
+      this.redeemReward});
 
   factory LoyaltyEvent.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventFromJson(json);
@@ -8841,12 +8780,10 @@ class LoyaltyEvent {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
-class LoyaltyEventRedeemReward{
-  
+class LoyaltyEventRedeemReward {
   @JsonKey(name: "loyalty_program_id")
   final String? loyaltyProgramId;
 
@@ -8856,9 +8793,8 @@ class LoyaltyEventRedeemReward{
   @JsonKey(name: "reward_id")
   final String? rewardId;
 
-  LoyaltyEventRedeemReward({
-  this.orderId, this.loyaltyProgramId, this.rewardId
-  });
+  LoyaltyEventRedeemReward(
+      {this.orderId, this.loyaltyProgramId, this.rewardId});
 
   factory LoyaltyEventRedeemReward.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventRedeemRewardFromJson(json);
@@ -8873,15 +8809,12 @@ class LoyaltyEventRedeemReward{
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventOther {
-
   @JsonKey(name: "loyalty_program_id")
   final String? loyaltyProgramId;
 
   final int? points;
 
-  LoyaltyEventOther({
-    this.loyaltyProgramId, this.points
-  });
+  LoyaltyEventOther({this.loyaltyProgramId, this.points});
 
   factory LoyaltyEventOther.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventOtherFromJson(json);
@@ -8896,15 +8829,12 @@ class LoyaltyEventOther {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventExpirePoints {
-
   @JsonKey(name: "loyalty_program_id")
   final String? loyaltyProgramId;
-  
+
   final int? points;
 
-  LoyaltyEventExpirePoints({
-    this.loyaltyProgramId, this.points
-  });
+  LoyaltyEventExpirePoints({this.loyaltyProgramId, this.points});
 
   factory LoyaltyEventExpirePoints.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventExpirePointsFromJson(json);
@@ -8927,9 +8857,7 @@ class LoyaltyEventDeleteReward {
   @JsonKey(name: "reward_id")
   final String? rewardId;
 
-  LoyaltyEventDeleteReward({
-    this.loyaltyProgramId, this.points, this.rewardId
-  });
+  LoyaltyEventDeleteReward({this.loyaltyProgramId, this.points, this.rewardId});
 
   factory LoyaltyEventDeleteReward.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventDeleteRewardFromJson(json);
@@ -8944,7 +8872,6 @@ class LoyaltyEventDeleteReward {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventCreateReward {
-
   @JsonKey(name: "loyalty_program_id")
   final String? loyaltyProgramId;
 
@@ -8953,9 +8880,7 @@ class LoyaltyEventCreateReward {
   @JsonKey(name: "reward_id")
   final String? rewardId;
 
-  LoyaltyEventCreateReward({
-    this.loyaltyProgramId, this.points, this.rewardId
-  });
+  LoyaltyEventCreateReward({this.loyaltyProgramId, this.points, this.rewardId});
 
   factory LoyaltyEventCreateReward.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventCreateRewardFromJson(json);
@@ -8970,17 +8895,14 @@ class LoyaltyEventCreateReward {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventAdjustPoints {
-
   final int? points;
-  
+
   @JsonKey(name: "loyalty_program_id")
   final String? loyaltyProgramId;
-  
+
   final String? reason;
 
-  LoyaltyEventAdjustPoints({
-    this.points, this.loyaltyProgramId, this.reason
-  });
+  LoyaltyEventAdjustPoints({this.points, this.loyaltyProgramId, this.reason});
 
   factory LoyaltyEventAdjustPoints.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventAdjustPointsFromJson(json);
@@ -8995,7 +8917,6 @@ class LoyaltyEventAdjustPoints {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventAccumulatePoints {
-
   final int? points;
 
   @JsonKey(name: "loyalty_program_id")
@@ -9003,9 +8924,8 @@ class LoyaltyEventAccumulatePoints {
 
   final String? reason;
 
-  LoyaltyEventAccumulatePoints({
-    this.points, this.loyaltyProgramId, this.reason
-  });
+  LoyaltyEventAccumulatePoints(
+      {this.points, this.loyaltyProgramId, this.reason});
 
   factory LoyaltyEventAccumulatePoints.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventAccumulatePointsFromJson(json);
@@ -9028,9 +8948,7 @@ class LoyaltyEventResponse {
 
   final String? cursor;
 
-  LoyaltyEventResponse({
-    this.event, this.errors, this.cursor, this.events
-  });
+  LoyaltyEventResponse({this.event, this.errors, this.cursor, this.events});
 
   factory LoyaltyEventResponse.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventResponseFromJson(json);
@@ -9045,7 +8963,6 @@ class LoyaltyEventResponse {
 
 @JsonSerializable(includeIfNull: false)
 class AccumulateLoyaltyPointRequest {
-
   @JsonKey(name: "accumulate_points")
   final LoyaltyEventAccumulatePoints? accumulatePoints;
 
@@ -9055,9 +8972,8 @@ class AccumulateLoyaltyPointRequest {
   @JsonKey(name: "location_id")
   final String? locationId;
 
-  AccumulateLoyaltyPointRequest({
-    this.accumulatePoints, this.locationId, this.idempotencyKey
-  });
+  AccumulateLoyaltyPointRequest(
+      {this.accumulatePoints, this.locationId, this.idempotencyKey});
 
   factory AccumulateLoyaltyPointRequest.fromJson(Map<String, dynamic> json) =>
       _$AccumulateLoyaltyPointRequestFromJson(json);
@@ -9072,16 +8988,13 @@ class AccumulateLoyaltyPointRequest {
 
 @JsonSerializable(includeIfNull: false)
 class AdjustLoyaltyPointRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
   @JsonKey(name: "adjust_points")
   final LoyaltyEventAdjustPoints? adjustPoints;
 
-  AdjustLoyaltyPointRequest({
-    this.idempotencyKey, this.adjustPoints
-  });
+  AdjustLoyaltyPointRequest({this.idempotencyKey, this.adjustPoints});
 
   factory AdjustLoyaltyPointRequest.fromJson(Map<String, dynamic> json) =>
       _$AdjustLoyaltyPointRequestFromJson(json);
@@ -9092,21 +9005,17 @@ class AdjustLoyaltyPointRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class SearchLoyaltyEventsRequest {
-  
   final LoyaltyEventQuery? query;
-  
+
   final int? limit;
-  
+
   final String? cursor;
 
-  SearchLoyaltyEventsRequest({
-    this.limit, this.cursor, this.query
-  });
+  SearchLoyaltyEventsRequest({this.limit, this.cursor, this.query});
 
   factory SearchLoyaltyEventsRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchLoyaltyEventsRequestFromJson(json);
@@ -9121,12 +9030,9 @@ class SearchLoyaltyEventsRequest {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventQuery {
-
   final LoyaltyEventFilter? query;
 
-  LoyaltyEventQuery({
-    this.query
-  });
+  LoyaltyEventQuery({this.query});
 
   factory LoyaltyEventQuery.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventQueryFromJson(json);
@@ -9141,7 +9047,6 @@ class LoyaltyEventQuery {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventFilter {
-
   @JsonKey(name: "date_time_filter")
   final LoyaltyEventDateTimeFilter? dateTimeFilter;
 
@@ -9157,10 +9062,12 @@ class LoyaltyEventFilter {
   @JsonKey(name: "type_filter")
   final LoyaltyEventTypeFilter? typeFilter;
 
-  LoyaltyEventFilter({
-    this.dateTimeFilter, this.locationFilter, this.loyaltyAccountFilter,
-  this.orderFilter, this.typeFilter
-  });
+  LoyaltyEventFilter(
+      {this.dateTimeFilter,
+      this.locationFilter,
+      this.loyaltyAccountFilter,
+      this.orderFilter,
+      this.typeFilter});
 
   factory LoyaltyEventFilter.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventFilterFromJson(json);
@@ -9175,12 +9082,9 @@ class LoyaltyEventFilter {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventTypeFilter {
-
   final List<LoyaltyEventType>? types;
 
-  LoyaltyEventTypeFilter({
-    this.types
-  });
+  LoyaltyEventTypeFilter({this.types});
 
   factory LoyaltyEventTypeFilter.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventTypeFilterFromJson(json);
@@ -9195,13 +9099,10 @@ class LoyaltyEventTypeFilter {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventOrderFilter {
-
   @JsonKey(name: "order_id")
   final String? orderId;
 
-  LoyaltyEventOrderFilter({
-    this.orderId
-  });
+  LoyaltyEventOrderFilter({this.orderId});
 
   factory LoyaltyEventOrderFilter.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventOrderFilterFromJson(json);
@@ -9216,7 +9117,6 @@ class LoyaltyEventOrderFilter {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventLoyaltyAccountFilter {
-
   @JsonKey(name: "loyalty_account_id")
   final String? loyaltyAccountId;
 
@@ -9224,10 +9124,12 @@ class LoyaltyEventLoyaltyAccountFilter {
     this.loyaltyAccountId,
   });
 
-  factory LoyaltyEventLoyaltyAccountFilter.fromJson(Map<String, dynamic> json) =>
+  factory LoyaltyEventLoyaltyAccountFilter.fromJson(
+          Map<String, dynamic> json) =>
       _$LoyaltyEventLoyaltyAccountFilterFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoyaltyEventLoyaltyAccountFilterToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$LoyaltyEventLoyaltyAccountFilterToJson(this);
 
   @override
   String toString() {
@@ -9237,13 +9139,10 @@ class LoyaltyEventLoyaltyAccountFilter {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventLocationFilter {
-
   @JsonKey(name: "location_ids")
   final List<String>? locationIds;
 
-  LoyaltyEventLocationFilter({
-    this.locationIds
-  });
+  LoyaltyEventLocationFilter({this.locationIds});
 
   factory LoyaltyEventLocationFilter.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventLocationFilterFromJson(json);
@@ -9258,13 +9157,10 @@ class LoyaltyEventLocationFilter {
 
 @JsonSerializable(includeIfNull: false)
 class LoyaltyEventDateTimeFilter {
-
   @JsonKey(name: "created_at")
   final TimeRange? createdAt;
 
-  LoyaltyEventDateTimeFilter({
-    this.createdAt
-  });
+  LoyaltyEventDateTimeFilter({this.createdAt});
 
   factory LoyaltyEventDateTimeFilter.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyEventDateTimeFilterFromJson(json);
@@ -9275,7 +9171,6 @@ class LoyaltyEventDateTimeFilter {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
@@ -9288,9 +9183,8 @@ class LoyaltyProgramResponse {
 
   final String? cursor;
 
-  LoyaltyProgramResponse({
-    this.cursor, this.errors, this.program, this.programs
-  });
+  LoyaltyProgramResponse(
+      {this.cursor, this.errors, this.program, this.programs});
 
   factory LoyaltyProgramResponse.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyProgramResponseFromJson(json);
@@ -9305,16 +9199,13 @@ class LoyaltyProgramResponse {
 
 @JsonSerializable(includeIfNull: false)
 class CalculateLoyaltyPointsRequest {
-
   @JsonKey(name: "order_id")
   final String? orderId;
 
   @JsonKey(name: "transaction_amount_money")
   final Money? transactionAmountMoney;
 
-  CalculateLoyaltyPointsRequest({
-    this.orderId, this.transactionAmountMoney
-  });
+  CalculateLoyaltyPointsRequest({this.orderId, this.transactionAmountMoney});
 
   factory CalculateLoyaltyPointsRequest.fromJson(Map<String, dynamic> json) =>
       _$CalculateLoyaltyPointsRequestFromJson(json);
@@ -9325,7 +9216,6 @@ class CalculateLoyaltyPointsRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
@@ -9334,9 +9224,7 @@ class LoyaltyPointResponse {
 
   final int? points;
 
-  LoyaltyPointResponse({
-    this.errors, this.points
-  });
+  LoyaltyPointResponse({this.errors, this.points});
 
   factory LoyaltyPointResponse.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyPointResponseFromJson(json);
@@ -9351,15 +9239,12 @@ class LoyaltyPointResponse {
 
 @JsonSerializable(includeIfNull: false)
 class UpsertLoyaltyRewardRequest {
-
   final LoyaltyReward reward;
 
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
-  UpsertLoyaltyRewardRequest({
-    required this.reward, this.idempotencyKey
-  });
+  UpsertLoyaltyRewardRequest({required this.reward, this.idempotencyKey});
 
   factory UpsertLoyaltyRewardRequest.fromJson(Map<String, dynamic> json) =>
       _$UpsertLoyaltyRewardRequestFromJson(json);
@@ -9382,9 +9267,7 @@ class LoyaltyRewardResponse {
 
   final String? cursor;
 
-  LoyaltyRewardResponse({
-    this.reward, this.errors, this.cursor, this.rewards
-  });
+  LoyaltyRewardResponse({this.reward, this.errors, this.cursor, this.rewards});
 
   factory LoyaltyRewardResponse.fromJson(Map<String, dynamic> json) =>
       _$LoyaltyRewardResponseFromJson(json);
@@ -9399,14 +9282,11 @@ class LoyaltyRewardResponse {
 
 @JsonSerializable(includeIfNull: false)
 class SearchLoyaltyRewardRequest {
-
   final SearchLoyaltyRewardsRequestLoyaltyRewardQuery? query;
   final int? limit;
   final String? cursor;
 
-  SearchLoyaltyRewardRequest({
-    this.cursor, this.query, this.limit
-  });
+  SearchLoyaltyRewardRequest({this.cursor, this.query, this.limit});
 
   factory SearchLoyaltyRewardRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchLoyaltyRewardRequestFromJson(json);
@@ -9417,12 +9297,10 @@ class SearchLoyaltyRewardRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "gift_card")
@@ -9433,9 +9311,7 @@ class GiftCardResponse {
 
   final String? cursor;
 
-  GiftCardResponse({
-    this.cursor, this.errors, this.giftCard, this.giftCards
-  });
+  GiftCardResponse({this.cursor, this.errors, this.giftCard, this.giftCards});
 
   factory GiftCardResponse.fromJson(Map<String, dynamic> json) =>
       _$GiftCardResponseFromJson(json);
@@ -9450,7 +9326,6 @@ class GiftCardResponse {
 
 @JsonSerializable(includeIfNull: false)
 class GiftCardActivityResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "gift_card_activity")
@@ -9461,9 +9336,11 @@ class GiftCardActivityResponse {
 
   final String? cursor;
 
-  GiftCardActivityResponse({
-    this.cursor, this.errors, this.giftCardActivities, this.giftCardActivity
-  });
+  GiftCardActivityResponse(
+      {this.cursor,
+      this.errors,
+      this.giftCardActivities,
+      this.giftCardActivity});
 
   factory GiftCardActivityResponse.fromJson(Map<String, dynamic> json) =>
       _$GiftCardActivityResponseFromJson(json);
@@ -9478,7 +9355,6 @@ class GiftCardActivityResponse {
 
 @JsonSerializable(includeIfNull: false)
 class ListGiftCardActivityRequest {
-
   @JsonKey(name: "gift_card_id")
   final String? giftCardId;
 
@@ -9494,15 +9370,21 @@ class ListGiftCardActivityRequest {
   final String? endTime;
 
   final int? limit;
-  
+
   final String? cursor;
 
   @JsonKey(name: "sort_order")
   final SortOrder? sortOrder;
 
   ListGiftCardActivityRequest({
-    this.cursor, this.giftCardId, this.locationId, this.type,
-  this.limit, this.sortOrder, this.beginTime, this.endTime,
+    this.cursor,
+    this.giftCardId,
+    this.locationId,
+    this.type,
+    this.limit,
+    this.sortOrder,
+    this.beginTime,
+    this.endTime,
   });
 
   factory ListGiftCardActivityRequest.fromJson(Map<String, dynamic> json) =>
@@ -9518,16 +9400,14 @@ class ListGiftCardActivityRequest {
 
 @JsonSerializable(includeIfNull: false)
 class RedeemLoyaltyRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   @JsonKey(name: "location_id")
   final String locationId;
 
-  RedeemLoyaltyRequest({
-    required this.idempotencyKey, required this.locationId
-  });
+  RedeemLoyaltyRequest(
+      {required this.idempotencyKey, required this.locationId});
 
   factory RedeemLoyaltyRequest.fromJson(Map<String, dynamic> json) =>
       _$RedeemLoyaltyRequestFromJson(json);
@@ -9550,10 +9430,8 @@ class ListGiftCardRequest {
   @JsonKey(name: "customer_id")
   final String? customerId;
 
-  ListGiftCardRequest({
-    this.cursor, this.limit, this.type, this.status,
-    this.customerId
-  });
+  ListGiftCardRequest(
+      {this.cursor, this.limit, this.type, this.status, this.customerId});
 
   factory ListGiftCardRequest.fromJson(Map<String, dynamic> json) =>
       _$ListGiftCardRequestFromJson(json);
@@ -9564,12 +9442,10 @@ class ListGiftCardRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CreateGiftCardRequest {
-  
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -9579,9 +9455,10 @@ class CreateGiftCardRequest {
   @JsonKey(name: "gift_card")
   final GiftCard giftCard;
 
-  CreateGiftCardRequest({
-    required this.giftCard, required this.locationId, required this.idempotencyKey
-  });
+  CreateGiftCardRequest(
+      {required this.giftCard,
+      required this.locationId,
+      required this.idempotencyKey});
 
   factory CreateGiftCardRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateGiftCardRequestFromJson(json);
@@ -9596,16 +9473,14 @@ class CreateGiftCardRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreateGiftCardActivityRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
   @JsonKey(name: "gift_card_activity")
   final GiftCardActivity giftCardActivity;
 
-  CreateGiftCardActivityRequest({
-    required this.giftCardActivity, this.idempotencyKey
-  });
+  CreateGiftCardActivityRequest(
+      {required this.giftCardActivity, this.idempotencyKey});
 
   factory CreateGiftCardActivityRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateGiftCardActivityRequestFromJson(json);
@@ -9622,7 +9497,7 @@ class CreateGiftCardActivityRequest {
 class ListBookingsRequest {
   final int? limit;
   final String? cursor;
-  
+
   @JsonKey(name: "team_member_id")
   final String? teamMemberId;
 
@@ -9632,10 +9507,12 @@ class ListBookingsRequest {
   @JsonKey(name: "start_at_max")
   final String? startAtMax;
 
-  ListBookingsRequest({
-    this.limit, this.locationId, this.cursor, this.teamMemberId,
-    this.startAtMax
-  });
+  ListBookingsRequest(
+      {this.limit,
+      this.locationId,
+      this.cursor,
+      this.teamMemberId,
+      this.startAtMax});
 
   factory ListBookingsRequest.fromJson(Map<String, dynamic> json) =>
       _$ListBookingsRequestFromJson(json);
@@ -9650,18 +9527,15 @@ class ListBookingsRequest {
 
 @JsonSerializable(includeIfNull: false)
 class BookingsResponse {
-
   final Booking? booking;
 
   final List<Booking>? bookings;
 
   final String? cursor;
-  
+
   final List<SquareError>? errors;
 
-  BookingsResponse({
-    this.cursor, this.errors, this.booking, this.bookings
-  });
+  BookingsResponse({this.cursor, this.errors, this.booking, this.bookings});
 
   factory BookingsResponse.fromJson(Map<String, dynamic> json) =>
       _$BookingsResponseFromJson(json);
@@ -9672,20 +9546,16 @@ class BookingsResponse {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class UpsertBookingRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final Booking booking;
 
-  UpsertBookingRequest({
-    required this.booking, required this.idempotencyKey
-  });
+  UpsertBookingRequest({required this.booking, required this.idempotencyKey});
 
   factory UpsertBookingRequest.fromJson(Map<String, dynamic> json) =>
       _$UpsertBookingRequestFromJson(json);
@@ -9700,16 +9570,13 @@ class UpsertBookingRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CancelBookingRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
   @JsonKey(name: "booking_version")
   final String? bookingVersion;
 
-  CancelBookingRequest({
-     this.bookingVersion, required this.idempotencyKey
-  });
+  CancelBookingRequest({this.bookingVersion, required this.idempotencyKey});
 
   factory CancelBookingRequest.fromJson(Map<String, dynamic> json) =>
       _$CancelBookingRequestFromJson(json);
@@ -9724,7 +9591,6 @@ class CancelBookingRequest {
 
 @JsonSerializable(includeIfNull: false)
 class AvailabilityResponse {
-
   final Availability? availability;
 
   final List<Availability>? availabilities;
@@ -9733,9 +9599,8 @@ class AvailabilityResponse {
 
   final List<SquareError>? errors;
 
-  AvailabilityResponse({
-    this.errors, this.cursor, this.availabilities, this.availability
-  });
+  AvailabilityResponse(
+      {this.errors, this.cursor, this.availabilities, this.availability});
 
   factory AvailabilityResponse.fromJson(Map<String, dynamic> json) =>
       _$AvailabilityResponseFromJson(json);
@@ -9746,13 +9611,10 @@ class AvailabilityResponse {
   String toString() {
     return toJson().toString();
   }
-
 }
-
 
 @JsonSerializable(includeIfNull: false)
 class BusinessBookingProfileResponse {
-
   @JsonKey(name: "business_booking_profile")
   final BusinessBookingProfile? businessBookingProfile;
 
@@ -9763,10 +9625,11 @@ class BusinessBookingProfileResponse {
 
   final List<SquareError>? errors;
 
-  BusinessBookingProfileResponse({
-    this.errors, this.cursor, this.businessBookingProfile, this.businessBookingProfiles
-
-  });
+  BusinessBookingProfileResponse(
+      {this.errors,
+      this.cursor,
+      this.businessBookingProfile,
+      this.businessBookingProfiles});
 
   factory BusinessBookingProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$BusinessBookingProfileResponseFromJson(json);
@@ -9777,12 +9640,10 @@ class BusinessBookingProfileResponse {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberBookingProfileResponse {
-
   @JsonKey(name: "team_member_booking_profile")
   final TeamMemberBookingProfile? teamMemberBookingProfile;
 
@@ -9793,26 +9654,27 @@ class TeamMemberBookingProfileResponse {
 
   final List<SquareError>? errors;
 
-  TeamMemberBookingProfileResponse({
-    this.errors, this.cursor, this.teamMemberBookingProfile, this.teamMemberBookingProfiles
+  TeamMemberBookingProfileResponse(
+      {this.errors,
+      this.cursor,
+      this.teamMemberBookingProfile,
+      this.teamMemberBookingProfiles});
 
-  });
-
-  factory TeamMemberBookingProfileResponse.fromJson(Map<String, dynamic> json) =>
+  factory TeamMemberBookingProfileResponse.fromJson(
+          Map<String, dynamic> json) =>
       _$TeamMemberBookingProfileResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TeamMemberBookingProfileResponseToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$TeamMemberBookingProfileResponseToJson(this);
 
   @override
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class ReadTeamMemberBookingProfileRequest {
-
   @JsonKey(name: "bookable_only")
   final String? bookableOnly;
 
@@ -9823,14 +9685,15 @@ class ReadTeamMemberBookingProfileRequest {
   @JsonKey(name: "location_id")
   final String? locationId;
 
-  ReadTeamMemberBookingProfileRequest({
-    this.cursor, this.locationId, this.limit, this.bookableOnly
-  });
+  ReadTeamMemberBookingProfileRequest(
+      {this.cursor, this.locationId, this.limit, this.bookableOnly});
 
-  factory ReadTeamMemberBookingProfileRequest.fromJson(Map<String, dynamic> json) =>
+  factory ReadTeamMemberBookingProfileRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$ReadTeamMemberBookingProfileRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ReadTeamMemberBookingProfileRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$ReadTeamMemberBookingProfileRequestToJson(this);
 
   @override
   String toString() {
@@ -9840,7 +9703,6 @@ class ReadTeamMemberBookingProfileRequest {
 
 @JsonSerializable(includeIfNull: false)
 class MerchantResponse {
-  
   final List<SquareError>? errors;
 
   @JsonKey(name: "merchant")
@@ -9848,9 +9710,7 @@ class MerchantResponse {
 
   final String? cursor;
 
-  MerchantResponse({
-    this.errors, this.cursor, this.merchants
-  });
+  MerchantResponse({this.errors, this.cursor, this.merchants});
 
   factory MerchantResponse.fromJson(Map<String, dynamic> json) =>
       _$MerchantResponseFromJson(json);
@@ -9865,7 +9725,6 @@ class MerchantResponse {
 
 @JsonSerializable(includeIfNull: false)
 class LocationResponse {
-
   final List<SquareError>? errors;
 
   final Location? location;
@@ -9873,9 +9732,7 @@ class LocationResponse {
 
   final String? cursor;
 
-  LocationResponse({
-    this.errors, this.cursor, this.location, this.locations
-  });
+  LocationResponse({this.errors, this.cursor, this.location, this.locations});
 
   factory LocationResponse.fromJson(Map<String, dynamic> json) =>
       _$LocationResponseFromJson(json);
@@ -9890,16 +9747,13 @@ class LocationResponse {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberUpsertRequest {
-  
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
   @JsonKey(name: "team_member")
   final TeamMember? teamMember;
 
-  TeamMemberUpsertRequest({
-    this.idempotencyKey, this.teamMember
-  });
+  TeamMemberUpsertRequest({this.idempotencyKey, this.teamMember});
 
   factory TeamMemberUpsertRequest.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberUpsertRequestFromJson(json);
@@ -9914,13 +9768,10 @@ class TeamMemberUpsertRequest {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberBatchUpsertRequest {
-
   @JsonKey(name: "team_members")
   final Map<String, TeamMemberUpsertRequest>? teamMembers;
 
-  TeamMemberBatchUpsertRequest({
-     this.teamMembers
-  });
+  TeamMemberBatchUpsertRequest({this.teamMembers});
 
   factory TeamMemberBatchUpsertRequest.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberBatchUpsertRequestFromJson(json);
@@ -9935,7 +9786,6 @@ class TeamMemberBatchUpsertRequest {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "team_member")
@@ -9946,9 +9796,8 @@ class TeamMemberResponse {
 
   final String? cursor;
 
-  TeamMemberResponse({
-    this.errors, this.cursor, this.teamMember, this.teamMembers
-  });
+  TeamMemberResponse(
+      {this.errors, this.cursor, this.teamMember, this.teamMembers});
 
   factory TeamMemberResponse.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberResponseFromJson(json);
@@ -9963,15 +9812,12 @@ class TeamMemberResponse {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberBatchResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "team_members")
   final Map<String, TeamMemberResponse>? teamMembers;
 
-  TeamMemberBatchResponse({
-    this.errors, this.teamMembers
-  });
+  TeamMemberBatchResponse({this.errors, this.teamMembers});
 
   factory TeamMemberBatchResponse.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberBatchResponseFromJson(json);
@@ -9989,12 +9835,10 @@ class TeamMemberSearchRequest {
   final SearchTeamMembersQuery? query;
 
   final int? limit;
-  
+
   final String? cursor;
 
-  TeamMemberSearchRequest({
-    this.query, this.limit, this.cursor
-  });
+  TeamMemberSearchRequest({this.query, this.limit, this.cursor});
 
   factory TeamMemberSearchRequest.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberSearchRequestFromJson(json);
@@ -10005,17 +9849,13 @@ class TeamMemberSearchRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class SearchTeamMembersQuery {
-
   final SearchTeamMembersFilter? filter;
 
-  SearchTeamMembersQuery({
-    this.filter
-  });
+  SearchTeamMembersQuery({this.filter});
 
   factory SearchTeamMembersQuery.fromJson(Map<String, dynamic> json) =>
       _$SearchTeamMembersQueryFromJson(json);
@@ -10030,7 +9870,6 @@ class SearchTeamMembersQuery {
 
 @JsonSerializable(includeIfNull: false)
 class SearchTeamMembersFilter {
-
   @JsonKey(name: "is_owner")
   final bool? isOwner;
 
@@ -10039,9 +9878,7 @@ class SearchTeamMembersFilter {
 
   final TeamMemberStatus? status;
 
-  SearchTeamMembersFilter({
-    this.isOwner, this.status, this.locationIds
-  });
+  SearchTeamMembersFilter({this.isOwner, this.status, this.locationIds});
 
   factory SearchTeamMembersFilter.fromJson(Map<String, dynamic> json) =>
       _$SearchTeamMembersFilterFromJson(json);
@@ -10056,15 +9893,12 @@ class SearchTeamMembersFilter {
 
 @JsonSerializable(includeIfNull: false)
 class WageSettingResponse {
-
   final List<SquareError>? errors;
 
   @JsonKey(name: "wage_setting")
   final WageSetting? wageSetting;
 
-  WageSettingResponse({
-    this.errors, this.wageSetting
-  });
+  WageSettingResponse({this.errors, this.wageSetting});
 
   factory WageSettingResponse.fromJson(Map<String, dynamic> json) =>
       _$WageSettingResponseFromJson(json);
@@ -10079,7 +9913,6 @@ class WageSettingResponse {
 
 @JsonSerializable(includeIfNull: false)
 class WageSetting {
-
   @JsonKey(name: "created_at")
   final String? createdAt;
 
@@ -10094,13 +9927,16 @@ class WageSetting {
 
   @JsonKey(name: "updated_at")
   final String? updatedAt;
-  
+
   final int? version;
 
-  WageSetting({
-    this.teamMemberId, this.createdAt, this.updatedAt,
-    this.version, this.isOvertimeExempt, this.jobAssignments
-  });
+  WageSetting(
+      {this.teamMemberId,
+      this.createdAt,
+      this.updatedAt,
+      this.version,
+      this.isOvertimeExempt,
+      this.jobAssignments});
 
   factory WageSetting.fromJson(Map<String, dynamic> json) =>
       _$WageSettingFromJson(json);
@@ -10111,12 +9947,10 @@ class WageSetting {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class JobAssignment {
-
   @JsonKey(name: "job_title")
   final String? jobTitle;
 
@@ -10132,10 +9966,12 @@ class JobAssignment {
   @JsonKey(name: "weekly_hours")
   final int? weeklyHours;
 
-  JobAssignment({
-    this.hourlyRate, this.annualRate, this.jobTitle, this.payType,
-    this.weeklyHours
-  });
+  JobAssignment(
+      {this.hourlyRate,
+      this.annualRate,
+      this.jobTitle,
+      this.payType,
+      this.weeklyHours});
 
   factory JobAssignment.fromJson(Map<String, dynamic> json) =>
       _$JobAssignmentFromJson(json);
@@ -10150,17 +9986,14 @@ class JobAssignment {
 
 @JsonSerializable(includeIfNull: false)
 class ListBreakTypesRequest {
-
   @JsonKey(name: "location_id")
   final String? locationId;
-  
+
   final int? limit;
 
   final String? cursor;
 
-  ListBreakTypesRequest({
-    this.cursor, this.limit, this.locationId
-  });
+  ListBreakTypesRequest({this.cursor, this.limit, this.locationId});
 
   factory ListBreakTypesRequest.fromJson(Map<String, dynamic> json) =>
       _$ListBreakTypesRequestFromJson(json);
@@ -10175,7 +10008,6 @@ class ListBreakTypesRequest {
 
 @JsonSerializable(includeIfNull: false)
 class BreakTypeResponse {
-
   @JsonKey(name: "break_types")
   final List<BreakType>? breakTypes;
 
@@ -10186,9 +10018,8 @@ class BreakTypeResponse {
 
   final List<SquareError>? errors;
 
-  BreakTypeResponse({
-    this.cursor, this.breakTypes, this.errors, this.breakType
-  });
+  BreakTypeResponse(
+      {this.cursor, this.breakTypes, this.errors, this.breakType});
 
   factory BreakTypeResponse.fromJson(Map<String, dynamic> json) =>
       _$BreakTypeResponseFromJson(json);
@@ -10199,21 +10030,17 @@ class BreakTypeResponse {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CreateBreakTypeRequest {
-
   @JsonKey(name: "idempotency_key")
   final String? idempotencyKey;
 
   @JsonKey(name: "break_type")
   final BreakType? breakType;
 
-  CreateBreakTypeRequest({
-    this.breakType, this.idempotencyKey
-  });
+  CreateBreakTypeRequest({this.breakType, this.idempotencyKey});
 
   factory CreateBreakTypeRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateBreakTypeRequestFromJson(json);
@@ -10224,20 +10051,16 @@ class CreateBreakTypeRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class CreateShiftRequest {
-  
   @JsonKey(name: "idempotency_key")
-  final String? idempotencyKey;    
-  
+  final String? idempotencyKey;
+
   final Shift shift;
 
-  CreateShiftRequest({
-    required this.shift, this.idempotencyKey
-  });
+  CreateShiftRequest({required this.shift, this.idempotencyKey});
 
   factory CreateShiftRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateShiftRequestFromJson(json);
@@ -10248,12 +10071,10 @@ class CreateShiftRequest {
   String toString() {
     return toJson().toString();
   }
-  
 }
 
 @JsonSerializable(includeIfNull: false)
 class ShiftResponse {
-
   final List<Shift>? shifts;
 
   final Shift? shift;
@@ -10262,9 +10083,7 @@ class ShiftResponse {
 
   final List<SquareError>? errors;
 
-  ShiftResponse({
-    this.cursor, this.errors, this.shift, this.shifts
-  });
+  ShiftResponse({this.cursor, this.errors, this.shift, this.shifts});
 
   factory ShiftResponse.fromJson(Map<String, dynamic> json) =>
       _$ShiftResponseFromJson(json);
@@ -10275,21 +10094,17 @@ class ShiftResponse {
   String toString() {
     return toJson().toString();
   }
-
 }
 
-@JsonSerializable(includeIfNull:false)
+@JsonSerializable(includeIfNull: false)
 class SearchShiftRequest {
-  
   final ShiftQuery? query;
-  
+
   final int? limit;
-  
+
   final String? cursor;
 
-  SearchShiftRequest({
-    this.cursor, this.limit, this.query
-  });
+  SearchShiftRequest({this.cursor, this.limit, this.query});
 
   factory SearchShiftRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchShiftRequestFromJson(json);
@@ -10300,20 +10115,15 @@ class SearchShiftRequest {
   String toString() {
     return toJson().toString();
   }
-  
 }
 
 @JsonSerializable(includeIfNull: false)
 class ShiftQuery {
-
   final ShiftFilter? filter;
 
   final SearchOrdersSort? sort;
 
-
-  ShiftQuery({
-    this.filter, this.sort
-  });
+  ShiftQuery({this.filter, this.sort});
 
   factory ShiftQuery.fromJson(Map<String, dynamic> json) =>
       _$ShiftQueryFromJson(json);
@@ -10324,23 +10134,20 @@ class ShiftQuery {
   String toString() {
     return toJson().toString();
   }
-
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class ShiftFilter {
-
   @JsonKey(name: "location_ids")
   final List<String> locationIds;
 
   @JsonKey(name: "team_member_ids")
   final List<String> teamMemberIds;
- 
+
   final TimeRange? end;
-  
+
   final TimeRange? start;
-  
+
   final ShiftStatus? status;
 
   final ShiftWorkday? workday;
@@ -10348,10 +10155,14 @@ class ShiftFilter {
   @JsonKey(name: "employee_ids")
   final List<String>? employeeIds;
 
-  ShiftFilter({
-    required this.locationIds, this.status, required this.teamMemberIds,
-  this.employeeIds, this.end, this.start, this.workday
- });
+  ShiftFilter(
+      {required this.locationIds,
+      this.status,
+      required this.teamMemberIds,
+      this.employeeIds,
+      this.end,
+      this.start,
+      this.workday});
 
   factory ShiftFilter.fromJson(Map<String, dynamic> json) =>
       _$ShiftFilterFromJson(json);
@@ -10362,24 +10173,20 @@ class ShiftFilter {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class ShiftWorkday {
-
   @JsonKey(name: "date_range")
   final DateRange? dateRange;
-  
+
   @JsonKey(name: "default_timezone")
   final String? defaultTimezone;
 
   @JsonKey(name: "match_shifts_by")
-  final ShiftWorkdayMatcher ? matchShiftsBy;
+  final ShiftWorkdayMatcher? matchShiftsBy;
 
-  ShiftWorkday({
-    this.dateRange, this.defaultTimezone, this.matchShiftsBy
-  });
+  ShiftWorkday({this.dateRange, this.defaultTimezone, this.matchShiftsBy});
 
   factory ShiftWorkday.fromJson(Map<String, dynamic> json) =>
       _$ShiftWorkdayFromJson(json);
@@ -10394,16 +10201,13 @@ class ShiftWorkday {
 
 @JsonSerializable(includeIfNull: false)
 class DateRange {
-
   @JsonKey(name: "end_date")
   final String? endDate;
 
   @JsonKey(name: "start_date")
   final String? startDate;
 
-  DateRange({
-   this.startDate, this.endDate
-  });
+  DateRange({this.startDate, this.endDate});
 
   factory DateRange.fromJson(Map<String, dynamic> json) =>
       _$DateRangeFromJson(json);
@@ -10418,7 +10222,6 @@ class DateRange {
 
 @JsonSerializable(includeIfNull: false)
 class TeamMemberWageResponse {
-
   @JsonKey(name: "team_member_wages")
   final List<TeamMemberWage>? teamMemberWages;
 
@@ -10429,9 +10232,8 @@ class TeamMemberWageResponse {
 
   final String? cursor;
 
-  TeamMemberWageResponse({
-    this.errors, this.cursor, this.teamMemberWage, this.teamMemberWages
-  });
+  TeamMemberWageResponse(
+      {this.errors, this.cursor, this.teamMemberWage, this.teamMemberWages});
 
   factory TeamMemberWageResponse.fromJson(Map<String, dynamic> json) =>
       _$TeamMemberWageResponseFromJson(json);
@@ -10446,7 +10248,6 @@ class TeamMemberWageResponse {
 
 @JsonSerializable(includeIfNull: false)
 class ListTeamMemberWageRequest {
-
   @JsonKey(name: "team_member_id")
   final String? teamMemberId;
 
@@ -10454,9 +10255,7 @@ class ListTeamMemberWageRequest {
 
   final String? cursor;
 
-  ListTeamMemberWageRequest({
-    this.cursor, this.limit, this.teamMemberId
-  });
+  ListTeamMemberWageRequest({this.cursor, this.limit, this.teamMemberId});
 
   factory ListTeamMemberWageRequest.fromJson(Map<String, dynamic> json) =>
       _$ListTeamMemberWageRequestFromJson(json);
@@ -10469,10 +10268,8 @@ class ListTeamMemberWageRequest {
   }
 }
 
-
 @JsonSerializable(includeIfNull: false)
 class WorkWeekConfigResponse {
-
   @JsonKey(name: "workweek_configs")
   final List<WorkweekConfig>? workweekConfigs;
 
@@ -10483,9 +10280,8 @@ class WorkWeekConfigResponse {
 
   final List<SquareError>? errors;
 
-  WorkWeekConfigResponse({
-    this.cursor, this.errors, this.workweekConfig, this.workweekConfigs
-  });
+  WorkWeekConfigResponse(
+      {this.cursor, this.errors, this.workweekConfig, this.workweekConfigs});
 
   factory WorkWeekConfigResponse.fromJson(Map<String, dynamic> json) =>
       _$WorkWeekConfigResponseFromJson(json);
@@ -10503,9 +10299,7 @@ class SearchWorkWeekConfigRequest {
   final int? limit;
   final String? cursor;
 
-  SearchWorkWeekConfigRequest({
-    this.cursor, this.limit
-  });
+  SearchWorkWeekConfigRequest({this.cursor, this.limit});
 
   factory SearchWorkWeekConfigRequest.fromJson(Map<String, dynamic> json) =>
       _$SearchWorkWeekConfigRequestFromJson(json);
@@ -10518,10 +10312,8 @@ class SearchWorkWeekConfigRequest {
   }
 }
 
-
 @JsonSerializable(includeIfNull: false)
 class BankAccountResponse {
-
   @JsonKey(name: "bank_accounts")
   final List<BankAccount>? bankAccounts;
 
@@ -10532,9 +10324,8 @@ class BankAccountResponse {
 
   final List<SquareError>? errors;
 
-  BankAccountResponse({
-    this.cursor, this.errors, this.bankAccount, this.bankAccounts
-  });
+  BankAccountResponse(
+      {this.cursor, this.errors, this.bankAccount, this.bankAccounts});
 
   factory BankAccountResponse.fromJson(Map<String, dynamic> json) =>
       _$BankAccountResponseFromJson(json);
@@ -10548,18 +10339,15 @@ class BankAccountResponse {
 }
 
 @JsonSerializable(includeIfNull: false)
-class ListBankAccountsRequest  {
-
+class ListBankAccountsRequest {
   final String? cursor;
-  
+
   final int? limit;
 
   @JsonKey(name: "location_id")
   final String? locationId;
 
-  ListBankAccountsRequest({
-    this.cursor, this.limit, this.locationId
-  });
+  ListBankAccountsRequest({this.cursor, this.limit, this.locationId});
 
   factory ListBankAccountsRequest.fromJson(Map<String, dynamic> json) =>
       _$ListBankAccountsRequestFromJson(json);
@@ -10574,7 +10362,6 @@ class ListBankAccountsRequest  {
 
 @JsonSerializable(includeIfNull: false)
 class SitesResponse {
-
   final List<SquareError>? errors;
 
   final List<Site>? sites;
@@ -10583,9 +10370,7 @@ class SitesResponse {
 
   final String? cursor;
 
-  SitesResponse({
-    this.cursor, this.errors, this.site, this.sites
-  });
+  SitesResponse({this.cursor, this.errors, this.site, this.sites});
 
   factory SitesResponse.fromJson(Map<String, dynamic> json) =>
       _$SitesResponseFromJson(json);
@@ -10600,7 +10385,6 @@ class SitesResponse {
 
 @JsonSerializable(includeIfNull: false)
 class SnippetResponse {
-
   final List<SquareError>? errors;
 
   final List<Snippet>? snippets;
@@ -10609,9 +10393,7 @@ class SnippetResponse {
 
   final String? cursor;
 
-  SnippetResponse({
-    this.cursor, this.errors, this.snippet, this.snippets
-  });
+  SnippetResponse({this.cursor, this.errors, this.snippet, this.snippets});
 
   factory SnippetResponse.fromJson(Map<String, dynamic> json) =>
       _$SnippetResponseFromJson(json);
@@ -10639,9 +10421,7 @@ class Snippet {
   @JsonKey(name: "updated_at")
   final String? updatedAt;
 
-  Snippet({
-    this.id, this.updatedAt, this.createdAt, this.content, this.siteId
-  });
+  Snippet({this.id, this.updatedAt, this.createdAt, this.content, this.siteId});
 
   factory Snippet.fromJson(Map<String, dynamic> json) =>
       _$SnippetFromJson(json);
@@ -10656,18 +10436,16 @@ class Snippet {
 
 @JsonSerializable(includeIfNull: false)
 class SquarePaymentResponse {
-
-  final List<Payment>?payments;
+  final List<Payment>? payments;
 
   final Payment? payment;
 
   final List<SquareError>? errors;
 
-  final String ? cursor;
+  final String? cursor;
 
-  SquarePaymentResponse({
-    this.errors, this.cursor, this.payment, this.payments
-  });
+  SquarePaymentResponse(
+      {this.errors, this.cursor, this.payment, this.payments});
 
   factory SquarePaymentResponse.fromJson(Map<String, dynamic> json) =>
       _$SquarePaymentResponseFromJson(json);
@@ -10682,22 +10460,21 @@ class SquarePaymentResponse {
 
 @JsonSerializable(includeIfNull: false)
 class Payment {
-
   final String? id;
 
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
-  
+
   @JsonKey(name: "app_fee_money")
   final Money? appFeeMoney;
-  
+
   @JsonKey(name: "application_details")
   final ApplicationDetails? applicationDetails;
-  
+
   @JsonKey(name: "approved_money")
   final Money? approvedMoney;
-  
-  @JsonKey(name:"bank_account_details")
+
+  @JsonKey(name: "bank_account_details")
   final BankAccountPaymentDetails? bankAccountDetails;
 
   @JsonKey(name: "billing_address")
@@ -10705,7 +10482,7 @@ class Payment {
 
   @JsonKey(name: "buyer_email_address")
   final String? buyerEmailAddress;
-  
+
   final List<String>? capabilities;
 
   @JsonKey(name: "card_details")
@@ -10716,7 +10493,7 @@ class Payment {
 
   @JsonKey(name: "created_at")
   final String? createdAt;
-  
+
   @JsonKey(name: "customer_id")
   final String? customerId;
 
@@ -10728,7 +10505,7 @@ class Payment {
 
   @JsonKey(name: "delayed_until")
   final String? delayedUntil;
-  
+
   @JsonKey(name: "device_details")
   final DeviceDetails? deviceDetails;
 
@@ -10769,13 +10546,13 @@ class Payment {
 
   @JsonKey(name: "source_type")
   final PaymentSourceType? sourceType;
-  
+
   @JsonKey(name: "statement_description_identifier")
   final String? statementDescriptionIdentifier;
-  
+
   @JsonKey(name: "team_member_id")
   final String? teamMemberId;
-  
+
   @JsonKey(name: "tip_money")
   final Money? tipMoney;
 
@@ -10794,21 +10571,45 @@ class Payment {
   @JsonKey(name: "employee_id")
   final String? employeeId;
 
-  Payment({
-    this.createdAt, this.id, this.updatedAt, this.locationId,
-  this.teamMemberId, this.customerId, this.orderId,
-  this.amountMoney, this.note, this.referenceId,
-  this.employeeId, this.capabilities, this.billingAddress,
-  this.totalMoney, this.cashDetails, this.cardDetails,
-  this.tipMoney, this.appFeeMoney, this.applicationDetails,
-  this.approvedMoney, this.bankAccountDetails, this.buyerEmailAddress,
-    this.delayAction, this.delayDuration, this.delayedUntil,
-  this.deviceDetails, this.externalDetails, this.shippingAddress,
-  this.processingFee, this.receiptNumber, this.receiptUrl,
-  this.refundedMoney, this.refundIds, this.riskEvaluation,
-  this.sourceType, this.statementDescriptionIdentifier, this.versionToken,
-    this.walletDetails
-  });
+  Payment(
+      {this.createdAt,
+      this.id,
+      this.updatedAt,
+      this.locationId,
+      this.teamMemberId,
+      this.customerId,
+      this.orderId,
+      this.amountMoney,
+      this.note,
+      this.referenceId,
+      this.employeeId,
+      this.capabilities,
+      this.billingAddress,
+      this.totalMoney,
+      this.cashDetails,
+      this.cardDetails,
+      this.tipMoney,
+      this.appFeeMoney,
+      this.applicationDetails,
+      this.approvedMoney,
+      this.bankAccountDetails,
+      this.buyerEmailAddress,
+      this.delayAction,
+      this.delayDuration,
+      this.delayedUntil,
+      this.deviceDetails,
+      this.externalDetails,
+      this.shippingAddress,
+      this.processingFee,
+      this.receiptNumber,
+      this.receiptUrl,
+      this.refundedMoney,
+      this.refundIds,
+      this.riskEvaluation,
+      this.sourceType,
+      this.statementDescriptionIdentifier,
+      this.versionToken,
+      this.walletDetails});
 
   factory Payment.fromJson(Map<String, dynamic> json) =>
       _$PaymentFromJson(json);
@@ -10823,12 +10624,9 @@ class Payment {
 
 @JsonSerializable(includeIfNull: false)
 class DigitalWalletDetails {
-
   final DigitalWalletStatus? status;
 
-  DigitalWalletDetails({
-  this.status
-  });
+  DigitalWalletDetails({this.status});
 
   factory DigitalWalletDetails.fromJson(Map<String, dynamic> json) =>
       _$DigitalWalletDetailsFromJson(json);
@@ -10841,19 +10639,15 @@ class DigitalWalletDetails {
   }
 }
 
-
-@JsonSerializable (includeIfNull: false)
+@JsonSerializable(includeIfNull: false)
 class RiskEvaluation {
-
   @JsonKey(name: "created_at")
   final String? createdAt;
 
   @JsonKey(name: "risk_level")
   final RiskEvaluationRiskLevel? riskLevel;
 
-  RiskEvaluation({
-    this.createdAt, this.riskLevel
-  });
+  RiskEvaluation({this.createdAt, this.riskLevel});
 
   factory RiskEvaluation.fromJson(Map<String, dynamic> json) =>
       _$RiskEvaluationFromJson(json);
@@ -10868,18 +10662,15 @@ class RiskEvaluation {
 
 @JsonSerializable(includeIfNull: false)
 class ProcessingFee {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
   @JsonKey(name: "effective_at")
   final String? effectiveAt;
-  
+
   final ProcessingFeeType? type;
 
-  ProcessingFee({
-    this.amountMoney, this.type, this.effectiveAt
-  });
+  ProcessingFee({this.amountMoney, this.type, this.effectiveAt});
 
   factory ProcessingFee.fromJson(Map<String, dynamic> json) =>
       _$ProcessingFeeFromJson(json);
@@ -10894,9 +10685,8 @@ class ProcessingFee {
 
 @JsonSerializable(includeIfNull: false)
 class ExternalPaymentDetails {
-
   final String? source;
-  
+
   final ExternalPaymentType? type;
 
   @JsonKey(name: "source_fee_money")
@@ -10905,9 +10695,8 @@ class ExternalPaymentDetails {
   @JsonKey(name: "source_id")
   final String? sourceId;
 
-  ExternalPaymentDetails({
-    this.type, this.source, this.sourceFeeMoney, this.sourceId
-  });
+  ExternalPaymentDetails(
+      {this.type, this.source, this.sourceFeeMoney, this.sourceId});
 
   factory ExternalPaymentDetails.fromJson(Map<String, dynamic> json) =>
       _$ExternalPaymentDetailsFromJson(json);
@@ -10922,7 +10711,6 @@ class ExternalPaymentDetails {
 
 @JsonSerializable(includeIfNull: false)
 class DeviceDetails {
-
   @JsonKey(name: "device_id")
   final String? deviceId;
 
@@ -10932,9 +10720,7 @@ class DeviceDetails {
   @JsonKey(name: "device_name")
   final String? deviceName;
 
-  DeviceDetails({
-    this.deviceId, this.deviceInstallationId, this.deviceName
-  });
+  DeviceDetails({this.deviceId, this.deviceInstallationId, this.deviceName});
 
   factory DeviceDetails.fromJson(Map<String, dynamic> json) =>
       _$DeviceDetailsFromJson(json);
@@ -10949,16 +10735,13 @@ class DeviceDetails {
 
 @JsonSerializable(includeIfNull: false)
 class CashPaymentDetails {
-
   @JsonKey(name: "buyer_supplied_money")
   final Money? buyerSuppliedMoney;
 
   @JsonKey(name: "change_back_money")
   final Money? changeBackMoney;
 
-  CashPaymentDetails({
-    this.buyerSuppliedMoney, this.changeBackMoney
-  });
+  CashPaymentDetails({this.buyerSuppliedMoney, this.changeBackMoney});
 
   factory CashPaymentDetails.fromJson(Map<String, dynamic> json) =>
       _$CashPaymentDetailsFromJson(json);
@@ -10973,7 +10756,6 @@ class CashPaymentDetails {
 
 @JsonSerializable(includeIfNull: false)
 class CardPaymentDetails {
-
   @JsonKey(name: "application_cryptogram")
   final String? applicationCryptogram;
 
@@ -11009,23 +10791,33 @@ class CardPaymentDetails {
   final String? statementDescription;
 
   final TenderCardDetailsStatus? status;
-  
+
   @JsonKey(name: "verification_method")
   final String? verificationMethod;
-  
+
   @JsonKey(name: "verification_results")
   final String? verificationResults;
 
   @JsonKey(name: "device_details")
   final DeviceDetails? deviceDetails;
 
-  CardPaymentDetails({
-    this.status, this.deviceDetails, this.errors, this.card,
-    this.entryMethod, this.applicationCryptogram, this.applicationIdentifier,
-  this.applicationName, this.authResultCode, this.avsStatus,
-    this.cardPaymentTimeline, this.cvv_status, this.refundRequiresCardPresence,
-this.statementDescription, this.verificationMethod, this.verificationResults
- });
+  CardPaymentDetails(
+      {this.status,
+      this.deviceDetails,
+      this.errors,
+      this.card,
+      this.entryMethod,
+      this.applicationCryptogram,
+      this.applicationIdentifier,
+      this.applicationName,
+      this.authResultCode,
+      this.avsStatus,
+      this.cardPaymentTimeline,
+      this.cvv_status,
+      this.refundRequiresCardPresence,
+      this.statementDescription,
+      this.verificationMethod,
+      this.verificationResults});
 
   factory CardPaymentDetails.fromJson(Map<String, dynamic> json) =>
       _$CardPaymentDetailsFromJson(json);
@@ -11040,7 +10832,6 @@ this.statementDescription, this.verificationMethod, this.verificationResults
 
 @JsonSerializable(includeIfNull: false)
 class CardPaymentTimeline {
-
   @JsonKey(name: "authorized_at")
   final String? authorizedAt;
 
@@ -11050,9 +10841,7 @@ class CardPaymentTimeline {
   @JsonKey(name: "voided_at")
   final String? voidedAt;
 
-  CardPaymentTimeline({
-    this.authorizedAt, this.capturedAt, this.voidedAt
-  });
+  CardPaymentTimeline({this.authorizedAt, this.capturedAt, this.voidedAt});
 
   factory CardPaymentTimeline.fromJson(Map<String, dynamic> json) =>
       _$CardPaymentTimelineFromJson(json);
@@ -11063,15 +10852,13 @@ class CardPaymentTimeline {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class BankAccountPaymentDetails {
-
   @JsonKey(name: "account_ownership_type")
   final String? accountOwnershipType;
-  
+
   @JsonKey(name: "ach_details")
   final ACHDetails? achDetails;
 
@@ -11079,22 +10866,26 @@ class BankAccountPaymentDetails {
   final String? bankName;
 
   final String? country;
-  
+
   final List<SquareError>? errors;
-  
+
   final String? fingerprint;
-  
+
   @JsonKey(name: "statement_description")
   final String? statementDescription;
 
   @JsonKey(name: "transfer_type")
   final TransferType? transferType;
 
-  BankAccountPaymentDetails({
-    this.statementDescription, this.errors, this.bankName,
-    this.fingerprint, this.country, this.accountOwnershipType,
-  this.achDetails, this.transferType
-  });
+  BankAccountPaymentDetails(
+      {this.statementDescription,
+      this.errors,
+      this.bankName,
+      this.fingerprint,
+      this.country,
+      this.accountOwnershipType,
+      this.achDetails,
+      this.transferType});
 
   factory BankAccountPaymentDetails.fromJson(Map<String, dynamic> json) =>
       _$BankAccountPaymentDetailsFromJson(json);
@@ -11105,13 +10896,10 @@ class BankAccountPaymentDetails {
   String toString() {
     return toJson().toString();
   }
-
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class ACHDetails {
-
   @JsonKey(name: "account_number_suffix")
   final String? accountNumberSuffix;
 
@@ -11121,9 +10909,7 @@ class ACHDetails {
   @JsonKey(name: "routing_number")
   final String? routingNumber;
 
-  ACHDetails({
-  this.accountNumberSuffix, this.accountType, this.routingNumber
-  });
+  ACHDetails({this.accountNumberSuffix, this.accountType, this.routingNumber});
 
   factory ACHDetails.fromJson(Map<String, dynamic> json) =>
       _$ACHDetailsFromJson(json);
@@ -11134,20 +10920,17 @@ class ACHDetails {
   String toString() {
     return toJson().toString();
   }
-
 }
+
 @JsonSerializable(includeIfNull: false)
 class ApplicationDetails {
-
   @JsonKey(name: "application_id")
   final String? applicationId;
 
   @JsonKey(name: "squareProduct")
   final ApplicationDetailsExternalSquareProduct? squareProduct;
 
-  ApplicationDetails({
-    this.applicationId, this.squareProduct
-  });
+  ApplicationDetails({this.applicationId, this.squareProduct});
 
   factory ApplicationDetails.fromJson(Map<String, dynamic> json) =>
       _$ApplicationDetailsFromJson(json);
@@ -11162,7 +10945,6 @@ class ApplicationDetails {
 
 @JsonSerializable(includeIfNull: false)
 class ListPaymentRequest {
-
   @JsonKey(name: "begin_time")
   final String? beginTime;
 
@@ -11181,17 +10963,22 @@ class ListPaymentRequest {
 
   @JsonKey(name: "last_4")
   final String? last4;
-  
+
   @JsonKey(name: "card_brand")
   final String? cardBrand;
-  
+
   final int? limit;
 
-  ListPaymentRequest({
-    this.locationId, this.cursor, this.limit, this.endTime,
-  this.beginTime, this.sortOrder, this.last4, this.cardBrand,
-  this.total
-  });
+  ListPaymentRequest(
+      {this.locationId,
+      this.cursor,
+      this.limit,
+      this.endTime,
+      this.beginTime,
+      this.sortOrder,
+      this.last4,
+      this.cardBrand,
+      this.total});
 
   factory ListPaymentRequest.fromJson(Map<String, dynamic> json) =>
       _$ListPaymentRequestFromJson(json);
@@ -11206,7 +10993,6 @@ class ListPaymentRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreatePaymentRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -11265,14 +11051,27 @@ class CreatePaymentRequest {
   @JsonKey(name: "external_details")
   final ExternalPaymentDetails? externalDetails;
 
-  CreatePaymentRequest({
-  this.locationId, required this.sourceId, this.amountMoney, this.appFeeMoney,
-  this.externalDetails, this.delayDuration, this.tipMoney,
-  this.buyerEmailAddress, this.cashDetails, this.billingAddress,
-  this.referenceId, this.note, this.orderId, this.customerId,
-  this.teamMemberId, required this.idempotencyKey, this.acceptPartialAuthorization,
-  this.autocomplete, this.shippingAddress, this.verificationToken
-  });
+  CreatePaymentRequest(
+      {this.locationId,
+      required this.sourceId,
+      this.amountMoney,
+      this.appFeeMoney,
+      this.externalDetails,
+      this.delayDuration,
+      this.tipMoney,
+      this.buyerEmailAddress,
+      this.cashDetails,
+      this.billingAddress,
+      this.referenceId,
+      this.note,
+      this.orderId,
+      this.customerId,
+      this.teamMemberId,
+      required this.idempotencyKey,
+      this.acceptPartialAuthorization,
+      this.autocomplete,
+      this.shippingAddress,
+      this.verificationToken});
 
   factory CreatePaymentRequest.fromJson(Map<String, dynamic> json) =>
       _$CreatePaymentRequestFromJson(json);
@@ -11287,15 +11086,12 @@ class CreatePaymentRequest {
 
 @JsonSerializable(includeIfNull: false)
 class UpdatePaymentRequest {
-  
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
   final Payment payment;
 
-  UpdatePaymentRequest({
-    required this.idempotencyKey, required this.payment
-  });
+  UpdatePaymentRequest({required this.idempotencyKey, required this.payment});
 
   factory UpdatePaymentRequest.fromJson(Map<String, dynamic> json) =>
       _$UpdatePaymentRequestFromJson(json);
@@ -11310,13 +11106,10 @@ class UpdatePaymentRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CompletePaymentRequest {
-
   @JsonKey(name: "version_token")
   final String? versionToken;
 
-  CompletePaymentRequest({
-    this.versionToken
-  });
+  CompletePaymentRequest({this.versionToken});
 
   factory CompletePaymentRequest.fromJson(Map<String, dynamic> json) =>
       _$CompletePaymentRequestFromJson(json);
@@ -11331,18 +11124,15 @@ class CompletePaymentRequest {
 
 @JsonSerializable(includeIfNull: false)
 class SquareRefundResponse {
-
-  final List<Refund>?refunds;
+  final List<Refund>? refunds;
 
   final Refund? refund;
 
   final List<SquareError>? errors;
 
-  final String ? cursor;
+  final String? cursor;
 
-  SquareRefundResponse({
-    this.errors, this.cursor, this.refund, this.refunds
-  });
+  SquareRefundResponse({this.errors, this.cursor, this.refund, this.refunds});
 
   factory SquareRefundResponse.fromJson(Map<String, dynamic> json) =>
       _$SquareRefundResponseFromJson(json);
@@ -11357,32 +11147,36 @@ class SquareRefundResponse {
 
 @JsonSerializable(includeIfNull: false)
 class ListRefundsRequest {
-
   @JsonKey(name: "begin_time")
   final String? beginTime;
-  
+
   @JsonKey(name: "end_time")
   final String? endTime;
 
-  @JsonKey(name:"sort_order")
+  @JsonKey(name: "sort_order")
   final SortOrder? sortOrder;
 
   final String? cursor;
-  
+
   @JsonKey(name: "location_id")
   final String? locationId;
-  
+
   final RefundStatus? status;
-  
+
   @JsonKey(name: "source_type")
   final PaymentSourceType? sourceType;
-  
+
   final int? limit;
 
-  ListRefundsRequest({
-    this.locationId, this.sortOrder, this.beginTime, this.endTime,
-  this.limit, this.cursor, this.status, this.sourceType
- });
+  ListRefundsRequest(
+      {this.locationId,
+      this.sortOrder,
+      this.beginTime,
+      this.endTime,
+      this.limit,
+      this.cursor,
+      this.status,
+      this.sourceType});
 
   factory ListRefundsRequest.fromJson(Map<String, dynamic> json) =>
       _$ListRefundsRequestFromJson(json);
@@ -11397,7 +11191,6 @@ class ListRefundsRequest {
 
 @JsonSerializable(includeIfNull: false)
 class RefundPaymentRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -11409,7 +11202,7 @@ class RefundPaymentRequest {
 
   @JsonKey(name: "payment_id")
   final String? paymentId;
-  
+
   final String? reason;
 
   @JsonKey(name: "payment_version_token")
@@ -11418,10 +11211,14 @@ class RefundPaymentRequest {
   @JsonKey(name: "team_member_id")
   final String? teamMemberId;
 
-  RefundPaymentRequest({
-    required this.idempotencyKey, this.teamMemberId, this.appFeeMoney,
-  required this.amountMoney, this.reason, this.paymentId, this.paymentVersionToken
-  });
+  RefundPaymentRequest(
+      {required this.idempotencyKey,
+      this.teamMemberId,
+      this.appFeeMoney,
+      required this.amountMoney,
+      this.reason,
+      this.paymentId,
+      this.paymentVersionToken});
 
   factory RefundPaymentRequest.fromJson(Map<String, dynamic> json) =>
       _$RefundPaymentRequestFromJson(json);
@@ -11436,7 +11233,6 @@ class RefundPaymentRequest {
 
 @JsonSerializable(includeIfNull: false)
 class ListDisputesRequest {
-
   final String? cursor;
 
   final DisputeState? states;
@@ -11444,9 +11240,7 @@ class ListDisputesRequest {
   @JsonKey(name: "location_id")
   final String? locationId;
 
-  ListDisputesRequest({
-    this.cursor, this.locationId, this.states
-  });
+  ListDisputesRequest({this.cursor, this.locationId, this.states});
 
   factory ListDisputesRequest.fromJson(Map<String, dynamic> json) =>
       _$ListDisputesRequestFromJson(json);
@@ -11461,7 +11255,6 @@ class ListDisputesRequest {
 
 @JsonSerializable(includeIfNull: false)
 class DisputeResponse {
-
   final List<SquareError>? errors;
 
   final List<Dispute>? disputes;
@@ -11470,9 +11263,7 @@ class DisputeResponse {
 
   final String? cursor;
 
-  DisputeResponse({
-    this.cursor, this.errors, this.dispute, this.disputes
-  });
+  DisputeResponse({this.cursor, this.errors, this.dispute, this.disputes});
 
   factory DisputeResponse.fromJson(Map<String, dynamic> json) =>
       _$DisputeResponseFromJson(json);
@@ -11487,12 +11278,11 @@ class DisputeResponse {
 
 @JsonSerializable(includeIfNull: false)
 class Dispute {
-
   final String? id;
-  
+
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
-  
+
   @JsonKey(name: "brand_dispute_id")
   final String? brandDisputeId;
 
@@ -11532,12 +11322,23 @@ class Dispute {
   @JsonKey(name: "reported_date")
   final String? reportedDate;
 
-  Dispute({
-    this.amountMoney, this.id, this.locationId, this.reason,
-  this.cardBrand, this.createdAt, this.updatedAt, this.version,
-  this.state, this.brandDisputeId, this.disputedPayment, this.disputeId,
-  this.dueAt, this.evidenceIds, this.reportedAt, this.reportedDate
-  });
+  Dispute(
+      {this.amountMoney,
+      this.id,
+      this.locationId,
+      this.reason,
+      this.cardBrand,
+      this.createdAt,
+      this.updatedAt,
+      this.version,
+      this.state,
+      this.brandDisputeId,
+      this.disputedPayment,
+      this.disputeId,
+      this.dueAt,
+      this.evidenceIds,
+      this.reportedAt,
+      this.reportedDate});
 
   factory Dispute.fromJson(Map<String, dynamic> json) =>
       _$DisputeFromJson(json);
@@ -11552,13 +11353,10 @@ class Dispute {
 
 @JsonSerializable(includeIfNull: false)
 class DisputedPayment {
-
   @JsonKey(name: "payment_id")
   final String? paymentId;
 
-  DisputedPayment({
-    this.paymentId
-  });
+  DisputedPayment({this.paymentId});
 
   factory DisputedPayment.fromJson(Map<String, dynamic> json) =>
       _$DisputedPaymentFromJson(json);
@@ -11573,16 +11371,13 @@ class DisputedPayment {
 
 @JsonSerializable(includeIfNull: false)
 class DisputeEvidenceListResponse {
-
   final List<SquareError>? errors;
 
   final List<DisputeEvidence>? evidence;
 
   final String? cursor;
 
-  DisputeEvidenceListResponse({
-    this.errors, this.cursor, this.evidence
-  });
+  DisputeEvidenceListResponse({this.errors, this.cursor, this.evidence});
 
   factory DisputeEvidenceListResponse.fromJson(Map<String, dynamic> json) =>
       _$DisputeEvidenceListResponseFromJson(json);
@@ -11610,17 +11405,21 @@ class DisputeEvidence {
 
   @JsonKey(name: "evidence_type")
   final DisputeEvidenceType? evidenceType;
-  
+
   @JsonKey(name: "uploaded_at")
   final String? uploadedAt;
 
   @JsonKey(name: "evidence_id")
   final String? evidenceId;
 
-  DisputeEvidence({
-    this.id, this.disputeId, this.evidenceFile, this.evidenceId,
-  this.evidenceType, this.evidenceText, this.uploadedAt
-  });
+  DisputeEvidence(
+      {this.id,
+      this.disputeId,
+      this.evidenceFile,
+      this.evidenceId,
+      this.evidenceType,
+      this.evidenceText,
+      this.uploadedAt});
 
   factory DisputeEvidence.fromJson(Map<String, dynamic> json) =>
       _$DisputeEvidenceFromJson(json);
@@ -11631,7 +11430,6 @@ class DisputeEvidence {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
@@ -11640,9 +11438,7 @@ class DisputeEvidenceFile {
 
   final String? filetype;
 
-  DisputeEvidenceFile({
-    this.filename, this.filetype
-  });
+  DisputeEvidenceFile({this.filename, this.filetype});
 
   factory DisputeEvidenceFile.fromJson(Map<String, dynamic> json) =>
       _$DisputeEvidenceFileFromJson(json);
@@ -11657,15 +11453,12 @@ class DisputeEvidenceFile {
 
 @JsonSerializable(includeIfNull: false)
 class ListDisputeEvidenceRequest {
-
   @JsonKey(name: "dispute_id")
-  final String ? disputeId;
+  final String? disputeId;
 
   final String? cursor;
 
-  ListDisputeEvidenceRequest({
-    this.disputeId, this.cursor
-  });
+  ListDisputeEvidenceRequest({this.disputeId, this.cursor});
 
   factory ListDisputeEvidenceRequest.fromJson(Map<String, dynamic> json) =>
       _$ListDisputeEvidenceRequestFromJson(json);
@@ -11677,18 +11470,16 @@ class ListDisputeEvidenceRequest {
     return toJson().toString();
   }
 }
+
 @JsonSerializable(includeIfNull: false)
 class DisputeEvidenceResponse {
-
   final List<SquareError>? errors;
 
   final DisputeEvidence? evidence;
 
   final String? cursor;
 
-  DisputeEvidenceResponse({
-    this.errors, this.cursor, this.evidence
-  });
+  DisputeEvidenceResponse({this.errors, this.cursor, this.evidence});
 
   factory DisputeEvidenceResponse.fromJson(Map<String, dynamic> json) =>
       _$DisputeEvidenceResponseFromJson(json);
@@ -11703,7 +11494,6 @@ class DisputeEvidenceResponse {
 
 @JsonSerializable(includeIfNull: false)
 class CreateDisputeEvidenceFileRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -11713,14 +11503,15 @@ class CreateDisputeEvidenceFileRequest {
   @JsonKey(name: "content_type")
   final String? contentType;
 
-  CreateDisputeEvidenceFileRequest({
-    this.evidenceType, required this.idempotencyKey, this.contentType
-  });
+  CreateDisputeEvidenceFileRequest(
+      {this.evidenceType, required this.idempotencyKey, this.contentType});
 
-  factory CreateDisputeEvidenceFileRequest.fromJson(Map<String, dynamic> json) =>
+  factory CreateDisputeEvidenceFileRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$CreateDisputeEvidenceFileRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CreateDisputeEvidenceFileRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CreateDisputeEvidenceFileRequestToJson(this);
 
   @override
   String toString() {
@@ -11730,7 +11521,6 @@ class CreateDisputeEvidenceFileRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreateDisputeEvidenceTextRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -11740,14 +11530,17 @@ class CreateDisputeEvidenceTextRequest {
   @JsonKey(name: "evidence_text")
   final String evidenceText;
 
-  CreateDisputeEvidenceTextRequest({
-    this.evidenceType, required this.idempotencyKey, required this.evidenceText
-  });
+  CreateDisputeEvidenceTextRequest(
+      {this.evidenceType,
+      required this.idempotencyKey,
+      required this.evidenceText});
 
-  factory CreateDisputeEvidenceTextRequest.fromJson(Map<String, dynamic> json) =>
+  factory CreateDisputeEvidenceTextRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$CreateDisputeEvidenceTextRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CreateDisputeEvidenceTextRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CreateDisputeEvidenceTextRequestToJson(this);
 
   @override
   String toString() {
@@ -11757,7 +11550,6 @@ class CreateDisputeEvidenceTextRequest {
 
 @JsonSerializable(includeIfNull: false)
 class CreateCheckoutRequest {
-
   @JsonKey(name: "idempotency_key")
   final String idempotencyKey;
 
@@ -11779,15 +11571,20 @@ class CreateCheckoutRequest {
   final String? redirectUrl;
 
   @JsonKey(name: "additional_recipients")
-  final List<ChargeRequestAdditionalRecipient> ? additionalRecipients;
+  final List<ChargeRequestAdditionalRecipient>? additionalRecipients;
 
   final String? note;
 
-  CreateCheckoutRequest({
-    required this.idempotencyKey, this.note, this.order, this.additionalRecipients,
-  this.redirectUrl, this.askForShippingAddress, this.merchantSupportEmail,
-  this.prePopulateBuyerEmail, this.prePopulateShippingAddress
-  });
+  CreateCheckoutRequest(
+      {required this.idempotencyKey,
+      this.note,
+      this.order,
+      this.additionalRecipients,
+      this.redirectUrl,
+      this.askForShippingAddress,
+      this.merchantSupportEmail,
+      this.prePopulateBuyerEmail,
+      this.prePopulateShippingAddress});
 
   factory CreateCheckoutRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateCheckoutRequestFromJson(json);
@@ -11802,7 +11599,6 @@ class CreateCheckoutRequest {
 
 @JsonSerializable(includeIfNull: false)
 class ChargeRequestAdditionalRecipient {
-
   @JsonKey(name: "amount_money")
   final Money? amountMoney;
 
@@ -11811,14 +11607,15 @@ class ChargeRequestAdditionalRecipient {
   @JsonKey(name: "location_id")
   final String? locationId;
 
-  ChargeRequestAdditionalRecipient({
-    this.locationId, this.amountMoney, this.description
-    });
+  ChargeRequestAdditionalRecipient(
+      {this.locationId, this.amountMoney, this.description});
 
-  factory ChargeRequestAdditionalRecipient.fromJson(Map<String, dynamic> json) =>
+  factory ChargeRequestAdditionalRecipient.fromJson(
+          Map<String, dynamic> json) =>
       _$ChargeRequestAdditionalRecipientFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ChargeRequestAdditionalRecipientToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$ChargeRequestAdditionalRecipientToJson(this);
 
   @override
   String toString() {
@@ -11828,16 +11625,13 @@ class ChargeRequestAdditionalRecipient {
 
 @JsonSerializable(includeIfNull: false)
 class CheckoutResponse {
-
   final List<SquareError>? errors;
 
   final Checkout? checkout;
 
   final String? cursor;
 
-  CheckoutResponse({
-    this.checkout, this.errors, this.cursor
-  });
+  CheckoutResponse({this.checkout, this.errors, this.cursor});
 
   factory CheckoutResponse.fromJson(Map<String, dynamic> json) =>
       _$CheckoutResponseFromJson(json);
@@ -11852,9 +11646,8 @@ class CheckoutResponse {
 
 @JsonSerializable(includeIfNull: false)
 class Checkout {
-
   final String? id;
-  
+
   @JsonKey(name: "ask_for_shipping_address")
   final bool? askForShippingAddress;
 
@@ -11874,18 +11667,24 @@ class Checkout {
 
   @JsonKey(name: "pre_populate_shipping_address")
   final Address? prePopulateShippingAddress;
-  
+
   @JsonKey(name: "redirect_url")
   final String? redirectUrl;
 
   @JsonKey(name: "additional_recipients")
-  final List<AdditionalRecipient> ? additionalRecipients;
+  final List<AdditionalRecipient>? additionalRecipients;
 
-  Checkout({
-    this.prePopulateShippingAddress, this.prePopulateBuyerEmail, this.merchantSupportEmail,
-  this.askForShippingAddress, this.redirectUrl, this.additionalRecipients,
-    this.order, this.id, this.createdAt, this.checkoutPageUrl
-  });
+  Checkout(
+      {this.prePopulateShippingAddress,
+      this.prePopulateBuyerEmail,
+      this.merchantSupportEmail,
+      this.askForShippingAddress,
+      this.redirectUrl,
+      this.additionalRecipients,
+      this.order,
+      this.id,
+      this.createdAt,
+      this.checkoutPageUrl});
 
   factory Checkout.fromJson(Map<String, dynamic> json) =>
       _$CheckoutFromJson(json);
@@ -11896,21 +11695,17 @@ class Checkout {
   String toString() {
     return toJson().toString();
   }
-
 }
 
 @JsonSerializable(includeIfNull: false)
 class RegisterDomainResponse {
-
   final List<SquareError>? errors;
 
   final RegisterDomainResponseStatus? status;
 
   final String? cursor;
 
-  RegisterDomainResponse({
-    this.status, this.errors, this.cursor
-  });
+  RegisterDomainResponse({this.status, this.errors, this.cursor});
 
   factory RegisterDomainResponse.fromJson(Map<String, dynamic> json) =>
       _$RegisterDomainResponseFromJson(json);
@@ -11925,7 +11720,6 @@ class RegisterDomainResponse {
 
 @JsonSerializable(includeIfNull: false)
 class CardResponse {
-
   final List<SquareError>? errors;
 
   final Card? card;
@@ -11934,9 +11728,7 @@ class CardResponse {
 
   final String? cursor;
 
-  CardResponse({
-    this.cursor, this.errors, this.card, this.cards
-  });
+  CardResponse({this.cursor, this.errors, this.card, this.cards});
 
   factory CardResponse.fromJson(Map<String, dynamic> json) =>
       _$CardResponseFromJson(json);
@@ -11951,7 +11743,6 @@ class CardResponse {
 
 @JsonSerializable(includeIfNull: false)
 class ListCardRequest {
-  
   final String? cursor;
 
   @JsonKey(name: "customer_id")
@@ -11966,10 +11757,12 @@ class ListCardRequest {
   @JsonKey(name: "sort_order")
   final SortOrder? sortOrder;
 
-  ListCardRequest({
-    this.cursor, this.sortOrder, this.customerId, this.referenceId,
-    this.includeDisabled
-  });
+  ListCardRequest(
+      {this.cursor,
+      this.sortOrder,
+      this.customerId,
+      this.referenceId,
+      this.includeDisabled});
 
   factory ListCardRequest.fromJson(Map<String, dynamic> json) =>
       _$ListCardRequestFromJson(json);
@@ -11995,9 +11788,11 @@ class CreateCardRequest {
 
   final Card card;
 
-  CreateCardRequest({
-    required this.card, required this.idempotencyKey, this.verificationToken, required this.sourceId
-  });
+  CreateCardRequest(
+      {required this.card,
+      required this.idempotencyKey,
+      this.verificationToken,
+      required this.sourceId});
 
   factory CreateCardRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateCardRequestFromJson(json);
@@ -12008,13 +11803,9 @@ class CreateCardRequest {
   String toString() {
     return toJson().toString();
   }
-
 }
 
-enum RegisterDomainResponseStatus {
-  PENDING,
-  VERIFIED
-}
+enum RegisterDomainResponseStatus { PENDING, VERIFIED }
 
 enum DisputeEvidenceType {
   GENERIC_EVIDENCE,
@@ -12032,7 +11823,6 @@ enum DisputeEvidenceType {
   RELATED_TRANSACTION_DOCUMENTATION,
   REBUTTAL_EXPLANATION,
   TRACKING_NUMBER,
-  
 }
 
 enum DisputeReason {
@@ -12045,7 +11835,6 @@ enum DisputeReason {
   PAID_BY_OTHER_MEANS,
   CUSTOMER_REQUESTS_CREDIT,
   EMV_LIABILITY_SHIFT,
-
 }
 
 enum DisputeState {
@@ -12057,7 +11846,6 @@ enum DisputeState {
   WON,
   LOST,
   ACCEPTED,
-
 }
 
 enum ApplicationDetailsExternalSquareProduct {
@@ -12073,28 +11861,19 @@ enum ApplicationDetailsExternalSquareProduct {
   VIRTUAL_TERMINAL
 }
 
+enum AchAccountType { CHECKING, SAVINGS, UNKNOWN }
 
-enum AchAccountType {
-  CHECKING,
-  SAVINGS,
-  UNKNOWN
-}
 enum TransferType {
   ACH,
   UNKNOWN,
 }
 
-enum CvvStatus {
-  CVV_ACCEPTED,
-  CVV_REJECTED,
-  CVV_NOT_CHECKED
-}
+enum CvvStatus { CVV_ACCEPTED, CVV_REJECTED, CVV_NOT_CHECKED }
 
 enum AvsStatus {
   AVS_ACCEPTED,
   AVS_REJECTED,
   AVS_NOT_CHECKED,
-  
 }
 
 enum ExternalPaymentType {
@@ -12112,33 +11891,13 @@ enum ExternalPaymentType {
   OTHER,
 }
 
-enum ProcessingFeeType {
-  INITIAL,
-  ADJUSTMENT
-}
+enum ProcessingFeeType { INITIAL, ADJUSTMENT }
 
-enum RiskEvaluationRiskLevel {
-  PENDING,
-  NORMAL,
-  MODERATE,
-  HIGH
-}
+enum RiskEvaluationRiskLevel { PENDING, NORMAL, MODERATE, HIGH }
 
-enum DigitalWalletStatus {
-  WALLET,
-  AUTHORIZED,
-  CAPTURED,
-  VOIDED,
-  FAILED
-}
+enum DigitalWalletStatus { WALLET, AUTHORIZED, CAPTURED, VOIDED, FAILED }
 
-enum PaymentStatus {
-  APPROVED,
-  PENDING,
-  COMPLETED,
-  CANCELED,
-  FAILED
-}
+enum PaymentStatus { APPROVED, PENDING, COMPLETED, CANCELED, FAILED }
 
 enum PaymentSourceType {
   CARD,
@@ -12147,55 +11906,31 @@ enum PaymentSourceType {
   BUY_NOW_PAY_LATER,
   CASH,
   EXTERNAL,
-  
 }
 
-enum ShiftWorkdayMatcher {
-  START_AT,
-  END_AT,
-  INTERSECTION
-}
+enum ShiftWorkdayMatcher { START_AT, END_AT, INTERSECTION }
 
-enum JobAssignmentPayType {
-  NONE,
-  HOURLY,
-  SALARY
-}
+enum JobAssignmentPayType { NONE, HOURLY, SALARY }
 
-enum LoyaltyEventType {
-  ACCUMULATE_POINTS,
-  CREATE_REWARD,
-  REDEEM_REWARD
-}
+enum LoyaltyEventType { ACCUMULATE_POINTS, CREATE_REWARD, REDEEM_REWARD }
 
+enum LoyaltyEventSource { SQUARE, LOYALTY_API }
 
-enum LoyaltyEventSource {
-  SQUARE,
-  LOYALTY_API
-}
-
-enum SearchCatalogItemsRequestStockLevel {
-  OUT,
-  LOW
-}
+enum SearchCatalogItemsRequestStockLevel { OUT, LOW }
 
 enum ChangeTiming {
   IMMEDIATE,
   END_OF_BILLING_CYCLE,
-
 }
+
 enum OrderState {
   OPEN,
   COMPLETED,
   CANCELED,
   DRAFT,
-
 }
 
-enum OrderFulfillmentType {
-  PICKUP,
-  SHIPMENT
-}
+enum OrderFulfillmentType { PICKUP, SHIPMENT }
 
 enum OrderFulfillmentState {
   PROPOSED,
@@ -12211,16 +11946,9 @@ enum TerimnalRefundStatus {
   IN_PROGRESS,
   CANCELED,
   COMPLETED,
-
 }
 
-enum TerminalStatus {
-  PENDING,
-  IN_PROGRESS,
-  CANCELED,
-  COMPLETED
-
-}
+enum TerminalStatus { PENDING, IN_PROGRESS, CANCELED, COMPLETED }
 
 enum CheckoutOptionsPaymentType {
   CARD_PRESENT,
@@ -12231,26 +11959,15 @@ enum CheckoutOptionsPaymentType {
   FELICA_ALL
 }
 
-enum ActionCancelReason {
-  BUYER_CANCELED,
-  SELLER_CANCELED,
-  TIMED_OUT
-}
+enum ActionCancelReason { BUYER_CANCELED, SELLER_CANCELED, TIMED_OUT }
 
 enum BankAccountStatus {
   VERIFICATION_IN_PROGRESS,
   VERIFIED,
   DISABLED,
-  
 }
 
-enum BankAccountType {
-  CHECKING,
-  SAVINGS,
-  INVESTMENT,
-  OTHER,
-  BUSINESS_CHECKING
-}
+enum BankAccountType { CHECKING, SAVINGS, INVESTMENT, OTHER, BUSINESS_CHECKING }
 
 enum Weekday {
   MON,
@@ -12260,24 +11977,16 @@ enum Weekday {
   FRI,
   SAT,
   SUN,
-
 }
 
-enum ShiftStatus {
-  OPEN,
-  CLOSED
-}
+enum ShiftStatus { OPEN, CLOSED }
 
 enum TeamMemberAssignedLocationsAssignmentType {
   ALL_CURRENT_AND_FUTURE_LOCATIONS,
   EXPLICIT_LOCATIONS
 }
 
-enum TeamMemberStatus {
-  ACTIVE,
-  INACTIVE
-}
-
+enum TeamMemberStatus { ACTIVE, INACTIVE }
 
 enum CashDrawerEventType {
   NO_SALE,
@@ -12289,27 +11998,17 @@ enum CashDrawerEventType {
   OTHER_TENDER_REFUND,
   PAID_IN,
   PAID_OUT,
-
 }
 
 enum CashDrawerShiftState {
   OPEN,
   ENDED,
   CLOSED,
-
 }
 
+enum DeviceCodeStatus { UNKNOWN, UNPAIRED, PAIRED, EXPIRED }
 
-enum DeviceCodeStatus {
-  UNKNOWN,
-  UNPAIRED,
-  PAIRED,
-  EXPIRED
-}
-
-enum ProductType {
-  TERMINAL_API
-}
+enum ProductType { TERMINAL_API }
 
 enum DayOfWeek {
   SUN,
@@ -12319,29 +12018,15 @@ enum DayOfWeek {
   THU,
   FRI,
   SAT,
-
 }
 
-enum LocationStatus {
-  ACTIVE,
-  INACTIVE
-}
+enum LocationStatus { ACTIVE, INACTIVE }
 
-enum LocationType {
-  PHYSICAL,
-  MOBILE
-}
+enum LocationType { PHYSICAL, MOBILE }
 
-enum LocationCapability {
-  CREDIT_CARD_PROCESSING,
-  AUTOMATIC_TRANSFERS
-}
+enum LocationCapability { CREDIT_CARD_PROCESSING, AUTOMATIC_TRANSFERS }
 
-enum MerchantStatus {
-  ACTIVE,
-  INACTIVE
-}
-
+enum MerchantStatus { ACTIVE, INACTIVE }
 
 enum BusinessAppointmentSettingsMaxAppointmentsPerDayLimitType {
   PER_TEAM_MEMBER,
@@ -12352,13 +12037,11 @@ enum BusinessAppointmentSettingsBookingLocationType {
   BUSINESS_LOCATION,
   CUSTOMER_LOCATION,
   PHONE,
-
 }
 
 enum BusinessAppointmentSettingsCancellationPolicy {
   CANCELLATION_TREATED_AS_NO_SHOW,
   CUSTOM_POLICY,
-
 }
 
 enum BusinessAppointmentSettingsAlignmentTime {
@@ -12366,7 +12049,6 @@ enum BusinessAppointmentSettingsAlignmentTime {
   QUARTER_HOURLY,
   HALF_HOURLY,
   HOURLY,
-
 }
 
 enum BusinessBookingProfileCustomerTimezoneChoice {
@@ -12379,11 +12061,7 @@ enum BusinessBookingProfileBookingPolicy {
   REQUIRES_ACCEPTANCE,
 }
 
-enum BookingCreatorDetailsCreatorType {
-  TEAM_MEMBER,
-  CUSTOMER
-}
-
+enum BookingCreatorDetailsCreatorType { TEAM_MEMBER, CUSTOMER }
 
 enum BookingStatus {
   PENDING,
@@ -12400,7 +12078,6 @@ enum BookingBookingSource {
   THIRD_PARTY_BUYER,
   API
 }
-
 
 enum GiftCardActivityType {
   ACTIVATE,
@@ -12423,54 +12100,27 @@ enum GiftCardStatus {
   DEACTIVATED,
   BLOCKED,
   PENDING,
-
 }
 
-enum GiftCardGANSource {
-  SQUARE,
-  OTHER
-}
+enum GiftCardGANSource { SQUARE, OTHER }
 
+enum GiftCardType { PHYSICAL, DIGITAL }
 
-enum GiftCardType {
-  PHYSICAL,
-  DIGITAL
-}
+enum LoyaltyRewardStatus { ISSUED, REDEEMED, DELETED }
 
-enum LoyaltyRewardStatus {
-  ISSUED,
-  REDEEMED,
-  DELETED
-}
+enum LoyaltyProgramAccrualRuleTaxMode { BEFORE_TAX, AFTER_TAX }
 
-enum LoyaltyProgramAccrualRuleTaxMode {
-  BEFORE_TAX,
-  AFTER_TAX
-}
-
-enum LoyaltyProgramAccrualRuleType {
-  VISIT,
-  SPEND,
-  ITEM_VARIATION,
-  CATEGORY
-}
+enum LoyaltyProgramAccrualRuleType { VISIT, SPEND, ITEM_VARIATION, CATEGORY }
 
 enum LoyaltyProgramRewardDefinitionScope {
   ORDER,
   ITEM_VARIATION,
   CATEGORY,
-
 }
 
-enum LoyaltyProgramRewardDefinitionType {
-  FIXED_AMOUNT,
-  FIXED_PERCENTAGE
-}
+enum LoyaltyProgramRewardDefinitionType { FIXED_AMOUNT, FIXED_PERCENTAGE }
 
-enum LoyaltyProgramStatus {
-  INACTIVE,
-  ACTIVE
-}
+enum LoyaltyProgramStatus { INACTIVE, ACTIVE }
 
 enum CustomerSortField {
   DEFAULT,
@@ -12480,7 +12130,6 @@ enum CustomerSortField {
 enum CustomerInclusionExclusion {
   INCLUDE,
   EXCLUDE,
-
 }
 
 enum CustomerCreationSource {
@@ -12503,14 +12152,9 @@ enum CustomerCreationSource {
   THIRD_PARTY,
   THIRD_PARTY_IMPORT,
   UNMERGE_RECOVERY,
-
 }
 
-enum InventoryChangeType {
-  PHYSICAL_COUNT,
-  ADJUSTMENT,
-  TRANSFER
-}
+enum InventoryChangeType { PHYSICAL_COUNT, ADJUSTMENT, TRANSFER }
 
 enum InventoryState {
   CUSTOM,
@@ -12528,7 +12172,6 @@ enum InventoryState {
   COMPOSED,
   DECOMPOSED,
   SUPPORTED_BY_NEWER_VERSION,
-
 }
 
 enum ProductValue {
@@ -12547,59 +12190,29 @@ enum ProductValue {
 enum CatalogCustomAttributeDefinitionSellerVisibility {
   SELLER_VISIBILITY_HIDDEN,
   SELLER_VISIBILITY_READ_WRITE_VALUES,
-
 }
 
 enum CatalogCustomAttributeDefinitionAppVisibility {
   APP_VISIBILITY_HIDDEN,
   APP_VISIBILITY_READ_ONLY,
   APP_VISIBILITY_READ_WRITE_VALUES,
-
 }
 
-enum CatalogCustomAttributeDefinitionType {
-  STRING,
-  BOOLEAN,
-  NUMBER,
-  SELECTION
-}
+enum CatalogCustomAttributeDefinitionType { STRING, BOOLEAN, NUMBER, SELECTION }
 
-enum CatalogDiscountModifyTaxBasis {
-  MODIFY_TAX_BASIS,
-  DO_NOT_MODIFY_TAX_BASIS
-}
+enum CatalogDiscountModifyTaxBasis { MODIFY_TAX_BASIS, DO_NOT_MODIFY_TAX_BASIS }
 
-enum CatalogDiscountType {
-  FIXED_PERCENTAGE,
-  FIXED_AMOUNT,
-  VARIABLE_PERCENTAGE
-}
+enum CatalogDiscountType { FIXED_PERCENTAGE, FIXED_AMOUNT, VARIABLE_PERCENTAGE }
 
-enum CatalogItemProductType {
-  REGULAR,
-  GIFT_CARD,
-  APPOINTMENTS_SERVICE
-}
+enum CatalogItemProductType { REGULAR, GIFT_CARD, APPOINTMENTS_SERVICE }
 
-enum CatalogPricingType {
-  FIXED_PRICING,
-  VARIABLE_PRICING
-}
+enum CatalogPricingType { FIXED_PRICING, VARIABLE_PRICING }
 
-enum InventoryAlertType {
-  NONE,
-  LOW_QUANTITY
-}
+enum InventoryAlertType { NONE, LOW_QUANTITY }
 
-enum CatalogModifierListSelectionType {
-  SINGLE,
-  MULTIPLE
-}
+enum CatalogModifierListSelectionType { SINGLE, MULTIPLE }
 
-enum ExcludeStrategy {
-  LEAST_EXPENSIVE,
-  MOST_EXPENSIVE
-}
+enum ExcludeStrategy { LEAST_EXPENSIVE, MOST_EXPENSIVE }
 
 enum CatalogQuickAmountType {
   QUICK_AMOUNT_TYPE_MANUAL,
@@ -12626,18 +12239,11 @@ enum SubscriptionCadence {
   EVERY_SIX_MONTHS,
   ANNUAL,
   EVERY_TWO_YEARS,
-
 }
 
-enum TaxInclusionType {
-  ADDITIVE,
-  INCLUSIVE
-}
+enum TaxInclusionType { ADDITIVE, INCLUSIVE }
 
-enum TaxCalculationPhase {
-  TAX_SUBTOTAL_PHASE,
-  TAX_TOTAL_PHASE
-}
+enum TaxCalculationPhase { TAX_SUBTOTAL_PHASE, TAX_TOTAL_PHASE }
 
 enum CatalogObjectType {
   ITEM,
@@ -12657,18 +12263,11 @@ enum CatalogObjectType {
   ITEM_OPTION_VAL,
   CUSTOM_ATTRIBUTE_DEFINITION,
   QUICK_AMOUNTS_SETTINGS,
-
-
 }
 
-enum SortOrder {
-  DESC,
-  ASC
-}
+enum SortOrder { DESC, ASC }
 
-enum InvoiceSortField {
-  INVOICE_SORT_DATE
-}
+enum InvoiceSortField { INVOICE_SORT_DATE }
 
 enum InvoiceCustomFieldPlacement {
   ABOVE_LINE_ITEMS,
