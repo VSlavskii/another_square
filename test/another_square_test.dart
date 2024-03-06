@@ -4,18 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:another_square/another_square.dart';
 
 void main() {
-  const String applicationId = "sandbox-sq0idb-lZHiG9Ww8_5AwBx1KmP4PA";
-  const String clientId = "sandbox-sq0idb-lZHiG9Ww8_5AwBx1KmP4PA";
-  const String clientSecret =
-      "sandbox-sq0csb-VFEpzNUra5KajfCBT48uUzoI15e2s2R2jnSDhK9K_y8";
+  const String applicationId = "";
+  const String clientId = "";
+  const String clientSecret = "";
 
   //const String applicationId = "sandbox-sq0idb-BOZshuZ7XTKLKpBk73rJtQ";
   //const String clientId = "sandbox-sq0idb-BOZshuZ7XTKLKpBk73rJtQ";
   //const String clientSecret = "sandbox-sq0csb-JFyKEpzTvo2Sp_TXf8yZ20FAaOycuokBeQR0Fj3KXaQ";
-  const String refreshToken =
-      "EAAAlw0W0S97-EQAAl3HoR01sEJCqsUDPl6phcu0MjuaJQdqx9P3Pc1YxUCqXs9Hk3X6LOYPAuAsr";
-  const String authToken =
-      "EAAAl0ao3ZDPHb7msEd3MC4cGitqUxn9xwU4gGx5sSDpAxHEk6ePsfBBoDmwTSNS";
+  const String refreshToken = "";
+  const String authToken = "";
 
   ///
   /// Test that the correct auth URL is generated
@@ -73,9 +70,7 @@ void main() {
     await squareClient.initialize();
     expect(squareClient.isInitialized(), true);
 
-    var response = await squareClient.refreshToken(
-        refreshToken:
-            refreshToken);
+    var response = await squareClient.refreshToken(refreshToken: refreshToken);
 
     expect(response, isNotNull);
   });
