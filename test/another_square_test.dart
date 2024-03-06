@@ -56,8 +56,7 @@ void main() {
     expect(squareClient.isInitialized(), true);
 
     var response = await squareClient.getAuthToken(
-        code:
-            'sandbox-sq0cgb-WVkZbHO0ROTlxHuKrsllfQ', //"sandbox-sq0cgb-g-AjFOCFJtBmtIUIKqk8hg",
+        code: 'code-goes-here', //"sandbox-sq0cgb-g-AjFOCFJtBmtIUIKqk8hg",
         redirectUrl: "https://localhost/v2/OAuth2Playground/RedirectUrl");
 
     expect(response.accessToken, isNotNull);
@@ -76,7 +75,7 @@ void main() {
 
     var response = await squareClient.refreshToken(
         refreshToken:
-            "EQAAlxOXwyaM_JtycGypfkgJN5z3MCinFzvcbcyjxrxfxhv5gqzoCZ8k6ruCMj_W");
+            refreshToken);
 
     expect(response, isNotNull);
   });
